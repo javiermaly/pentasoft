@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	<persistence-unit name="SGTI_JPA" transaction-type="JTA">
+		<jta-data-source>java:mysqlds_sgti</jta-data-source>
+	 
+	 
+		<class>beans.Usuario</class>
+		<class>beans.Estado</class>
+		<class>beans.Tarea</class>
+		<class>beans.Tiene</class>
+		<class>beans.Tipo</class>
+		<class>beans.Cliente</class>
+		<class>beans.Grupo</class>
+		<class>beans.Realiza</class>
+		<class>beans.Tecnico</class>
+		<class>beans.Encargado</class>
+		<class>beans.Administrador</class>
+		<class>beans.Administrativo</class>		
+		
+		<properties>
+			
+			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" /> 
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="eclipselink.ddl-generation" value="drop-and-create-tables"/> 
+			<property name="hibernate.show_sql" value="true" />
+						
+		</properties>
+	</persistence-unit>
+</persistence>

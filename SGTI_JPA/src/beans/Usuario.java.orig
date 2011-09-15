@@ -1,0 +1,122 @@
+package beans;
+
+import java.io.Serializable;
+import java.lang.String;
+import javax.persistence.*;
+
+/**
+ * Entity implementation class for Entity: Usuario
+ *
+ */
+@Entity
+
+public class Usuario implements Serializable {
+
+	   
+	@Id
+<<<<<<< local
+	private long cedula;
+=======
+	private Long cedula;
+>>>>>>> other
+	private String nombre;
+<<<<<<< local
+	private String apellido;
+=======
+	private String apellido;//hice esta modificación desde mi PC
+>>>>>>> other
+	private String usuario;
+	private String pwd;
+	private String telefono;
+	private String direccion;
+	private String celular;
+	private static final long serialVersionUID = 1L;
+
+	public Usuario() {
+		super();
+	}   
+	public long getCedula() {
+		return this.cedula;
+	}
+
+	public void setCedula(long cedula) {
+		this.cedula = cedula;
+	}   
+<<<<<<< local
+=======
+	
+ 
+>>>>>>> other
+	public String getNombre() {
+<<<<<<< local
+		return this.nombre;
+=======
+		return nombre;
+>>>>>>> other
+	}
+<<<<<<< local
+
+=======
+>>>>>>> other
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+<<<<<<< local
+	}   
+=======
+	}
+>>>>>>> other
+	public String getApellido() {
+<<<<<<< local
+		return this.apellido;
+=======
+		return apellido;
+>>>>>>> other
+	}
+<<<<<<< local
+
+=======
+>>>>>>> other
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+<<<<<<< local
+	}   
+=======
+	}
+>>>>>>> other
+	public String getUsuario() {
+		return this.usuario;
+	}
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}   
+	public String getPwd() {
+		return this.pwd;
+	}
+
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
+	}   
+	public String getTelefono() {
+		return this.telefono;
+	}
+
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}   
+	public String getDireccion() {
+		return this.direccion;
+	}
+
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}   
+	public String getCelular() {
+		return this.celular;
+	}
+
+	public void setCelular(String celular) {
+		this.celular = celular;
+	}
+   
+}
