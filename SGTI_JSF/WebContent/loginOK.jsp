@@ -90,6 +90,16 @@
 
 				
 				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="ACCIÓN"></h:outputText>
+					</f:facet>
+					<h:commandLink value="Re-Abrir" target="loginOK.jsf" action="#{TareaBean.reabrirTarea}"> 
+						<f:param id="idTareaReAbrir" name="idTareaReAbrir" value="#{tarea.id}" /> 
+					</h:commandLink>
+
+				
+				</h:column>
 
 			</h:dataTable>
 		</center>

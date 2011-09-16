@@ -288,6 +288,7 @@ public class TareaBean {
 		Usuario usu=statelessFacade.encontrarUsuario(usuSession.usuarioSession.getCedula());
 		if(statelessFacade.cerrarTarea(tarea, usu)){
 			retorno="tareaCerrada";
+			
 			//habria que poner la tarea colgada de la session en null
 		}
 		else{
@@ -307,4 +308,38 @@ public class TareaBean {
 		return retorno;
 	}
 	
+	public String reabrirTarea(){
+		String retorno;
+		FacesContext context = FacesContext.getCurrentInstance();
+		HttpServletRequest myRequest = (HttpServletRequest) context.getExternalContext().getRequest();
+		System.out.println("id de la tarea recibido: "+myRequest.getParameter("idTareaReAbrir"));
+		try{
+		id = Long.parseLong(myRequest.getParameter("idTareaReAbrir"));
+		
+		Tarea tarea=statelessFacade.buscarTarea(id);
+		System.out.println("tarea: "+tarea.getDescripcion());
+		System.out.println(usuSession.getUsuarioSession().getApellido());
+		System.out.println(usuSession.perfil);
+		Usuario usu=statelessFacade.encontrarUsuario(usuSession.usuarioSession.getCedula());
+		if(statelessFacade.reabrirTarea(tarea, usu)){
+			retorno="tareaReAbierta";
+			//habria que poner la tarea colgada de la session en null
+		}
+		else{
+			retorno="tareaNoReAbierta";
+		}
+		
+		//System.out.println("usuario: "+usu.getApellido());
+		System.out.println("entre a cerrar tarea");
+		System.out.println("id de la tarea recibido: "+getId());
+		}
+		catch(Exception e){
+			System.out.println("error en parametro recibido");
+			System.out.println(usuSession.getUsuarioSession().getApellido());
+			retorno="tareaNoCerrada";
+		}
+		
+		return retorno;
+	
+	}
 }
