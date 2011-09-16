@@ -66,7 +66,7 @@ public class LoginBean {
 				
 				
 			}else if(usuSession.getUsuarioSession() instanceof Administrativo){
-				System.out.println("es administrativor");
+				System.out.println("es administrativo");
 				usuSession.setPerfil(2);
 				//perfil=2;
 				

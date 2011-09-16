@@ -28,11 +28,15 @@
 <managed-bean>
 		<managed-bean-name>TareaBean</managed-bean-name>
 		<managed-bean-class>negocio.TareaBean</managed-bean-class>
-		<managed-bean-scope>request</managed-bean-scope>
+		<managed-bean-scope>session</managed-bean-scope>
 		<managed-property>
 			<property-name>cliSession</property-name>
 			<value>#{ClienteSession}</value>
 		</managed-property>
+		<managed-property>
+			<property-name>usuSession</property-name>
+			<value>#{UsuarioBean}</value>
+		</managed-property>	
 		
 </managed-bean>
 <managed-bean>
@@ -75,6 +79,41 @@
 		</navigation-case>
 </navigation-rule>
 
+ <navigation-rule>
+		<from-view-id>/bajaGrupo.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>grupoEliminado</from-outcome>
+			<to-view-id>/bajaGrupo.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>grupoNoEliminado</from-outcome>
+			<to-view-id>/bajaGrupo.jsp</to-view-id>
+		</navigation-case>
+</navigation-rule>
+
+ <navigation-rule>
+	<from-view-id>/modificarGrupo.jsp</from-view-id>
+	<navigation-case>
+			<from-outcome>grupoModificado</from-outcome>
+			<to-view-id>/modificarGrupo.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>grupoNoModificado</from-outcome>
+			<to-view-id>/modificarGrupo.jsp</to-view-id>
+		</navigation-case>
+</navigation-rule>
+
+<navigation-rule>
+		<from-view-id>/buscarGrupo.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>grupoEncontrado</from-outcome>
+			<to-view-id>/buscarGrupo.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>grupoNoEncontrado</from-outcome>
+			<to-view-id>/buscarGrupo.jsp</to-view-id>
+		</navigation-case>
+</navigation-rule>
 <navigation-rule>
 		<from-view-id>/login.jsp</from-view-id>
 		<navigation-case>

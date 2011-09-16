@@ -21,7 +21,7 @@ import javax.persistence.*;
     resultClass=Tarea.class),
     
     @NamedNativeQuery(name="tareasFinalizadasNoCerradas",
-    query = "SELECT * from Tarea where id= ANY( SELECT Ta.Tarea_id FROM Tiene T join Tarea_Tiene Ta on T.id=Ta.Tarea_id  where T.estado_id=6);",
+    query = "SELECT * from Tarea where id= ANY( SELECT Ta.Tarea_id FROM Tiene T join Tarea_Tiene Ta on T.id=Ta.Tarea_id  where T.estado_id=6 and T.fechaFin IS NULL);",
     resultClass=Tarea.class)
 		}
 )

@@ -3,6 +3,10 @@ package negocio;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
+
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
 
 import beans.Cliente;
 import beans.Estado;
@@ -10,6 +14,7 @@ import beans.Grupo;
 import beans.Tarea;
 import beans.Tiene;
 import beans.Tipo;
+import beans.Usuario;
 
 import stateless.FacadeRemote;
 import conexion.ConexionEJB;
@@ -37,6 +42,8 @@ public class TareaBean {
 	private int evento = 0;
 
 	private ClienteSession cliSession;
+	
+	private UsuarioBean usuSession;
 
 	ConexionEJB con = new ConexionEJB();
 	FacadeRemote statelessFacade = con.conectar();
@@ -174,6 +181,15 @@ public class TareaBean {
 	public void setCliSession(ClienteSession cliSession) {
 		this.cliSession = cliSession;
 	}
+	
+
+	public UsuarioBean getUsuSession() {
+		return usuSession;
+	}
+
+	public void setUsuSession(UsuarioBean usuSession) {
+		this.usuSession = usuSession;
+	}
 
 	public int getEvento() {
 		return evento;
@@ -256,5 +272,39 @@ public class TareaBean {
 			return "TareaNoEncontrada";
 		}
 	}
-
+	
+	public String cerrarTarea(){
+		String retorno;
+		FacesContext context = FacesContext.getCurrentInstance();
+		HttpServletRequest myRequest = (HttpServletRequest) context.getExternalContext().getRequest();
+		System.out.println("id de la tarea recibido: "+myRequest.getParameter("idTareaBoton"));
+		try{
+		id = Long.parseLong(myRequest.getParameter("idTareaBoton"));
+		
+		Tarea tarea=statelessFacade.buscarTarea(id);
+		System.out.println("tarea: "+tarea.getDescripcion());
+		System.out.println(usuSession.getUsuarioSession().getApellido());
+		System.out.println(usuSession.perfil);
+		Usuario usu=statelessFacade.encontrarUsuario(usuSession.usuarioSession.getCedula());
+		if(statelessFacade.cerrarTarea(tarea, usu)){
+			retorno="tareaCerrada";
+			//habria que poner la tarea colgada de la session en null
+		}
+		else{
+			retorno="tareaNoCerrada";
+		}
+		
+		//System.out.println("usuario: "+usu.getApellido());
+		System.out.println("entre a cerrar tarea");
+		System.out.println("id de la tarea recibido: "+getId());
+		}
+		catch(Exception e){
+			System.out.println("error en parametro recibido");
+			System.out.println(usuSession.getUsuarioSession().getApellido());
+			retorno="tareaNoCerrada";
+		}
+		
+		return retorno;
+	}
+	
 }
