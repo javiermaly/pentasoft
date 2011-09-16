@@ -1,6 +1,7 @@
 package negocio;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.faces.model.SelectItem;
@@ -11,6 +12,7 @@ import conexion.ConexionEJB;
 import beans.Administrador;
 import beans.Administrativo;
 
+import beans.Cliente;
 import beans.Encargado;
 import beans.Grupo;
 import beans.Tecnico;
@@ -339,23 +341,33 @@ public class UsuariosBean {
 	// buscador para usuarios
 	public String buscarUsuario() {
 		Usuario u = new Usuario();
-
+				
 		u = statelessFacade.encontrarUsuario(cedula);
+		
+		
 		if (u != null) {
 
 			this.nombre = u.getNombre();
 			this.celular = u.getCelular();
-
+			this.apellido=u.getApellido();
+			this.direccion=u.getDireccion();
+			this.habilitado=u.isHabilitado();
+			this.usuario=u.getUsuario();
+			this.pwd=u.getPwd();
+			this.telefono=u.getTelefono();
+			
 			if (u instanceof Administrativo) {
 				System.out.println("es administrativo");
 				this.perfil = "Administrativo";
+				
 			} else if (u instanceof Administrador) {
 				System.out.println("es administrador");
 				this.perfil = "Administrador";
 			} else if (u instanceof Encargado) {
 				this.perfil = "Encargado";
 			} else if (u instanceof Tecnico) {
-				this.perfil = "Técnico";
+				this.esExterno=((Tecnico) u).isEsExterno();
+				this.perfil = "Tecnico";
 			} else
 				this.perfil = "basura";
 
@@ -371,7 +383,65 @@ public class UsuariosBean {
 		}
 	}
 	
-	
+	public String modificarUsuario(){
+		
+		System.out.println("modificar Usuario");
+		Usuario ussu = new Usuario();
+		ussu=statelessFacade.encontrarUsuario(cedula);
+		
+		if ((ussu != null)) {
+			ussu.setApellido(apellido);
+			ussu.setCedula(cedula);
+			ussu.setCelular(celular);
+			ussu.setDireccion(direccion);
+			ussu.setNombre(nombre);
+			ussu.setPwd(pwd);
+			ussu.setTelefono(telefono);
+			ussu.setUsuario(usuario);
+			ussu.setHabilitado(habilitado);
+			
+			
+			if (ussu instanceof Encargado ) {
+				Encargado e = (Encargado) ussu;
+							
+				e.setEsExterno(esExterno);
+				if(statelessFacade.modifUsuario(e)){
+					evento=1;
+					return "UsuarioModificado";
+				}else{
+					evento=2;//error
+					return "errorModificarUsuario";
+				}
+				
+			} else if (ussu instanceof Tecnico) {
+				
+				Tecnico t=(Tecnico) ussu;
+				t.setEsExterno(esExterno);				
+				if(statelessFacade.modifUsuario(t)){
+					evento=1;
+					return "UsuarioModificado";
+				}else{
+					evento=2;//error
+					return "errorModificarUsuario";
+				}
+				
+			}else{
+				if(statelessFacade.modifUsuario(ussu)){
+					evento=1;
+					return "UsuarioModificado";
+				}else{
+					evento=2;//error
+					return "errorModificarUsuario";
+				}
+			}//else
+			
+
+		}else 
+			evento=3;//noexiste
+			return "UsuarioNoExiste";
+		
+		
+	}
 
 	
 

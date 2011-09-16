@@ -200,6 +200,7 @@ public List<ClienteSession> getListClienteSession() {
 			return "clienteNoExiste";
 
 	}
+	
 	public String bajaCliente(){
 		Cliente c=cliSession.getClienteSession();
 		if(statelessFacade.bajaCliente(c)){

@@ -33,10 +33,8 @@
             <li><span>Usuarios</span>
                 <ul>
                     <li><a href="buscarUsuario.jsf">Buscar Usuario </a></li>
-                    <li><a href="#">Alta Usuario</a></li>
-                    <li><a href="#">Baja Usuario</a></li>
-                    <li><a href="#">Modificación Usuario</a></li>
-                    <li><a href="#">Habilitación Usuario</a></li>
+                    <li><a href="altaUsuario.jsf">Alta Usuario</a></li>
+                    <li><a href="modificarUsuario.jsf">Modificación Usuario</a></li>
                     <li><a href="listadoUsuarios.jsf">Listado de Usuarios</a></li>
                </ul>
             </li>            
