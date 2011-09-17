@@ -44,6 +44,7 @@ public interface TareaRemote {
 	public boolean reabrirTarea(Tarea t);
 	public boolean cerrarTarea(Tarea t);
 	public List<Tarea> tareasFinalizadasNoCerradas();
+	public List<Tarea> listTareasAbiertasGrupos(Usuario u);//lista de tareas con estado abierta para un encargado en un determinado grupo
 	public List<Grupo> listadoGrupos();
 
 	

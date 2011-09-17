@@ -84,17 +84,15 @@
 					<f:facet name="header">
 						<h:outputText value="ACCIÓN"></h:outputText>
 					</f:facet>
-					<h:commandLink value="Cerrar" target="loginOK.jsf" action="#{TareaBean.cerrarTarea}"> 
+					<h:commandLink value="Cerrar" target="loginOK.jsf" action="#{TareaBean.cerrarTareaDesdeListado}"> 
 						<f:param id="idTareaBoton" name="idTareaBoton" value="#{tarea.id}" /> 
-					</h:commandLink>
-
-				
+					</h:commandLink>				
 				</h:column>
 				<h:column>
 					<f:facet name="header">
 						<h:outputText value="ACCIÓN"></h:outputText>
 					</f:facet>
-					<h:commandLink value="Re-Abrir" target="loginOK.jsf" action="#{TareaBean.reabrirTarea}"> 
+					<h:commandLink value="Re-Abrir" target="loginOK.jsf" action="#{TareaBean.reabrirTareaDesdeListado}"> 
 						<f:param id="idTareaReAbrir" name="idTareaReAbrir" value="#{tarea.id}" /> 
 					</h:commandLink>
 
@@ -104,6 +102,102 @@
 			</h:dataTable>
 		</center>
 	</h:form>
+
+	<h:form id="listadoEncargado" rendered="#{UsuarioBean.perfil==3}">
+
+		<center>
+			<h1>Listado de Tareas de su Grupo para Asignar</h1>
+
+			<h:dataTable value="#{TareaBean.listadoTareasAbiertas}"	var="tarea" border="1">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText id="idTarea" value="Id"></h:outputText>
+					</f:facet>
+					<h:outputText value="#{tarea.id}"></h:outputText>
+				</h:column>
+				<%--   					<h:column> --%>
+				<%--   						<f:facet name="header"> --%>
+				<%--   						<h:outputText value="Cliente"></h:outputText> --%>
+				<%--   						</f:facet> --%>
+				<%--   							<h:outputText value="#{tarea.cliente_cedRut}"></h:outputText> --%>
+				<%--   					</h:column>              --%>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Prioridad"></h:outputText>
+					</f:facet>
+					<h:outputText value="#{tarea.prioridad}"></h:outputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Es Externa"></h:outputText>
+					</f:facet>
+					<h:selectBooleanCheckbox disabled="true" value="#{tarea.esExterna}"></h:selectBooleanCheckbox>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Descripcion"></h:outputText>
+					</f:facet>
+					<h:outputText value="#{tarea.descripcion}">
+					</h:outputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Observacion"></h:outputText>
+					</f:facet>
+					<h:outputText value="#{tarea.observacion}">
+					</h:outputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Fecha Apertura"></h:outputText>
+					</f:facet>
+					<h:outputText value="#{tarea.fechaApertura.time}">
+						<f:convertDateTime type="both" dateStyle="short"
+							pattern="yyyy/MM/dd" />
+
+					</h:outputText>
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Fecha Comprometida"></h:outputText>
+					</f:facet>
+					<h:outputText value="#{tarea.fechaComprometida.time}">
+						<f:convertDateTime type="both" dateStyle="short"
+							pattern="yyyy/MM/dd" />
+					</h:outputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Tipo"></h:outputText>
+					</f:facet>
+					<h:outputText value="#{tarea.tipo.descripcion}">
+					</h:outputText>
+				</h:column>
+<%-- 				<h:column> --%>
+<%-- 					<f:facet name="header"> --%>
+<%-- 						<h:outputText value="ACCIÓN"></h:outputText> --%>
+<%-- 					</f:facet> --%>
+<%-- 					<h:commandLink value="Asingar" target="#" action="">  --%>
+<%-- 						<f:param id="idAsignar" name="idAsignar" value="#{tarea.id}" />  --%>
+<%-- 					</h:commandLink>				 --%>
+<%-- 				</h:column> --%>
+<%-- 				<h:column> --%>
+<%-- 					<f:facet name="header"> --%>
+<%-- 						<h:outputText value="ACCIÓN"></h:outputText> --%>
+<%-- 					</f:facet> --%>
+<%-- 					<h:commandLink value="Derviar" target="#" action="">  --%>
+<%-- 						<f:param id="idDerviar" name="idDerviar" value="#{tarea.id}" />  --%>
+<%-- 					</h:commandLink> --%>
+
+				
+<%-- 				</h:column> --%>
+
+			</h:dataTable>
+		</center>
+	</h:form>
+
+
 
 </f:view>
 

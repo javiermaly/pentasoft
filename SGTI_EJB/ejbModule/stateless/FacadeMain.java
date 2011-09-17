@@ -378,6 +378,11 @@ public class FacadeMain implements FacadeRemote {
 		return tareasFinalizadasNoCerradas;
 	}
 
+	 public List<Tarea> tareasAbiertasGrupo(Usuario u){
+		 List<Tarea> listTareasAbiertasGrupo=null;
+		 	listTareasAbiertasGrupo=statelessMTar.listTareasAbiertasGrupos(u);
+		 return listTareasAbiertasGrupo;
+	 }
 	
 	
 	

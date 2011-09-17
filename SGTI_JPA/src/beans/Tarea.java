@@ -21,9 +21,15 @@ import javax.persistence.*;
     resultClass=Tarea.class),
     
     @NamedNativeQuery(name="tareasFinalizadasNoCerradas",
-    query = "SELECT * from Tarea where id= ANY( SELECT Ta.Tarea_id FROM Tiene T join Tarea_Tiene Ta on T.id=Ta.Tarea_id  where T.estado_id=6 and T.fechaFin IS NULL);",
+    query = "select * from Tarea where id= ANY(select Tarea_id from Tarea_Tiene where colTiene_id=ANY(select id from Tiene where estado_id=6 and fechaFin IS NULL))",
+    resultClass=Tarea.class),
+    
+     @NamedNativeQuery(name="listTareasAbiertasGrupos",
+    query = "select * from Tarea where id= ANY(select Tarea_id from Tarea_Tiene where colTiene_id=ANY(select id from Tiene where estado_id=1 and fechaFin IS NULL) AND (Tarea_id= ANY( SELECT colTareas_id FROM Grupo_Tarea where Grupo_id=ANY(SELECT id FROM Grupo G where (enc_cedula=1?)))));",
     resultClass=Tarea.class)
+    
 		}
+	
 )
 
 

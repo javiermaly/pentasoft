@@ -56,9 +56,7 @@ public class ManagerT implements TareaRemote {
 	}
 
 	public List<Tarea> tareasPorUsuario(Usuario u) {
-		List<Tarea> tareas = em.createNamedQuery("tareasPorUsuario")
-				.setParameter(1, em.getReference(Usuario.class, u.getCedula()))
-				.getResultList();
+		List<Tarea> tareas = em.createNamedQuery("tareasPorUsuario").setParameter(1, em.getReference(Usuario.class, u.getCedula())).getResultList();
 		return tareas;
 	}
 
@@ -481,9 +479,16 @@ public class ManagerT implements TareaRemote {
 		System.out.println("tareasFinalizadasNoCerradas managerT");
 
 		List<Tarea> tareasFinalizadasNoCerradas;
-		tareasFinalizadasNoCerradas = em.createNamedQuery(
-				"tareasFinalizadasNoCerradas").getResultList();
+		tareasFinalizadasNoCerradas = em.createNamedQuery("tareasFinalizadasNoCerradas").getResultList();
 		return tareasFinalizadasNoCerradas;
+	}
+	
+	public List<Tarea> listTareasAbiertasGrupos(Usuario u){
+		
+		List<Tarea> listTareasAbiertasGrupos;
+		listTareasAbiertasGrupos = em.createNamedQuery("listTareasAbiertasGrupos").setParameter(1, em.getReference(Usuario.class, u.getCedula())).getResultList();
+		
+		return listTareasAbiertasGrupos;
 	}
 
 }

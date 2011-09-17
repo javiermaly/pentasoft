@@ -74,7 +74,7 @@
 						<th>Grupo Asingado: </th>
 						<td><h:selectOneMenu value="#{TareaBean.grupoId}">
 							<f:selectItem itemValue="1" itemLabel="soporte calle"/>
-							<f:selectItem itemValue="2" itemLabel="soporte redes"/>
+							<f:selectItem itemValue="7" itemLabel="soporte tecnico"/>
 							</h:selectOneMenu>						
 						</td>
 					</tr>

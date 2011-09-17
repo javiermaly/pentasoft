@@ -37,6 +37,7 @@ public class TareaBean {
 	private Calendar fechaCierre;
 	
 	private List<Tarea> listadoTareasFinalizadasNoCerradas;
+	private List<Tarea> listadoTareasAbiertas;
 
 	private int grupoId;
 	private int evento = 0;
@@ -58,6 +59,18 @@ public class TareaBean {
 	public void setListadoTareasFinalizadasNoCerradas(
 			List<Tarea> listadoTareasFinalizadasNoCerradas) {
 		this.listadoTareasFinalizadasNoCerradas = listadoTareasFinalizadasNoCerradas;
+	}
+	
+
+	public List<Tarea> getListadoTareasAbiertas() {
+		Usuario u = usuSession.getUsuarioSession();
+		System.out.println("Esta es la cedula que paso al listado" +u.getCedula());
+		listadoTareasAbiertas=statelessFacade.tareasAbiertasGrupo(u);
+		return listadoTareasAbiertas;
+	}
+
+	public void setListadoTareasAbiertas(List<Tarea> listadoTareasAbiertas) {
+		this.listadoTareasAbiertas = listadoTareasAbiertas;
 	}
 
 	public boolean isEsExterna() {
