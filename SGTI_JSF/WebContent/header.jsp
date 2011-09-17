@@ -101,38 +101,50 @@
     </div>	
 	</h:form>
 	<h:form rendered="#{UsuarioBean.perfil==3}">	
-		<h1>ENCARGADO</h1>			
-				<table border="1">
-					<tr>
-						<th><h:commandLink onfocus="sarasaaa">Listar Tareas</h:commandLink></th>
-					</tr>
-					<tr>
-						<th>Asignar Tareas</th>
-					</tr>
-					<tr>
-						<th>Derivar Tareas</th>
-					</tr>
-					<tr>
-						<th>Buscar Cliente</th>
-					</tr>
-					<tr>
-						<th>Buscar Técnico</th>
-					</tr>				
-				</table>		
+		<h1>ENCARGADO</h1>
+
+		<div id="menu">
+			<ul id="nav">
+
+				<li><span>Tareas</span>
+					<ul>
+						<li><a href="#">Buscar Tarea</a></li>
+						<li><a href="#">Asignar Tarea</a></li>
+						<li><a href="#">Tomar Tarea</a></li>
+						<li><a href="#">Derivar Tarea</a></li>
+						<li><a href="#">Finalizar Tarea</a></li>						
+					</ul>
+				</li>
+				<li><span>Clientes</span>
+					<ul>
+						<li><a href="buscarCliente.jsf">Buscar Cliente</a></li>
+					</ul>
+				</li>
+				<li><span>Usuarios</span>
+					<ul>
+						<li><a href="#">Buscar Tecnico</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+
+		
 	</h:form>
 	<h:form rendered="#{UsuarioBean.perfil==4}">	
 		<h1>TECNICO</h1>			
-				<table border="1">
-					<tr>
-						<th><h:commandLink onfocus="sarasaaa">Tomar Tarea</h:commandLink></th>
-					</tr>
-					<tr>
-						<th>Finalizar Tarea</th>
-					</tr>
-					<tr>
-						<th>Buscar Cliente</th>
-					</tr>					
-				</table>		
+		<div id="menu">
+			<ul id="nav">
+
+				<li><span>Tareas</span>
+					<ul>
+						<li><a href="buscarTarea.jsf">Buscar Tarea</a></li>
+						<li><a href="#">Tomar Tarea</a></li>
+						<li><a href="#">Derivar Tarea</a></li>
+						<li><a href="#">Finalizar Tarea</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>	
 	</h:form>
 </f:subview>
 </head>
