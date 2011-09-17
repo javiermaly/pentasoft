@@ -273,7 +273,7 @@ public class TareaBean {
 		}
 	}
 	
-	public String cerrarTarea(){
+	public String cerrarTareaDesdeListado(){
 		String retorno;
 		FacesContext context = FacesContext.getCurrentInstance();
 		HttpServletRequest myRequest = (HttpServletRequest) context.getExternalContext().getRequest();
@@ -308,7 +308,7 @@ public class TareaBean {
 		return retorno;
 	}
 	
-	public String reabrirTarea(){
+	public String reabrirTareaDesdeListado(){
 		String retorno;
 		FacesContext context = FacesContext.getCurrentInstance();
 		HttpServletRequest myRequest = (HttpServletRequest) context.getExternalContext().getRequest();
@@ -334,6 +334,72 @@ public class TareaBean {
 		System.out.println("id de la tarea recibido: "+getId());
 		}
 		catch(Exception e){
+			System.out.println("error en parametro recibido");
+			System.out.println(usuSession.getUsuarioSession().getApellido());
+			retorno="tareaNoCerrada";
+		}
+		
+		return retorno;
+	
+	}
+	
+	public String reabrirTarea(){
+		String retorno;
+		
+		try{
+		System.out.println("reabrir tarea id: "+getId()+id);
+		Tarea tarea=statelessFacade.buscarTarea(getId());
+		tarea.setObservacion(getObservacion());
+		System.out.println("tarea: "+tarea.getDescripcion());
+		System.out.println(usuSession.getUsuarioSession().getApellido());
+		System.out.println(usuSession.perfil);
+		Usuario usu=statelessFacade.encontrarUsuario(usuSession.usuarioSession.getCedula());
+		
+		if(statelessFacade.reabrirTarea(tarea, usu)){
+			retorno="tareaReAbierta";
+			//evento=4;//?
+		}
+		else{
+			retorno="tareaNoReAbierta";
+			//evento=3;//?
+		}
+		
+	
+		}
+		catch(Exception e){
+			//evento=2;//?
+			System.out.println("error en parametro recibido");
+			System.out.println(usuSession.getUsuarioSession().getApellido());
+			retorno="tareaNoCerrada";
+		}
+		
+		return retorno;
+	
+	}
+	public String cerrarTarea(){
+		String retorno;
+		
+		try{
+		Tarea tarea=statelessFacade.buscarTarea(getId());
+		tarea.setObservacion(getObservacion());
+		System.out.println("tarea: "+tarea.getDescripcion());
+		System.out.println(usuSession.getUsuarioSession().getApellido());
+		System.out.println(usuSession.perfil);
+		Usuario usu=statelessFacade.encontrarUsuario(usuSession.usuarioSession.getCedula());
+		
+		if(statelessFacade.cerrarTarea(tarea, usu)){
+			retorno="tareaCerrada";
+			//evento=4;//?
+		}
+		else{
+			retorno="tareaNoCerrada";
+			//evento=3;//?
+		}
+		
+	
+		}
+		catch(Exception e){
+			//evento=2;//?
 			System.out.println("error en parametro recibido");
 			System.out.println(usuSession.getUsuarioSession().getApellido());
 			retorno="tareaNoCerrada";
