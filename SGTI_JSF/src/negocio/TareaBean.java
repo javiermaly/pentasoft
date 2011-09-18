@@ -9,6 +9,7 @@ import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 
 import beans.Cliente;
+import beans.Encargado;
 import beans.Estado;
 import beans.Grupo;
 import beans.Tarea;
@@ -63,9 +64,9 @@ public class TareaBean {
 	
 
 	public List<Tarea> getListadoTareasAbiertas() {
-		Usuario u = usuSession.getUsuarioSession();
-		System.out.println("Esta es la cedula que paso al listado" +u.getCedula());
-		listadoTareasAbiertas=statelessFacade.tareasAbiertasGrupo(u);
+		Encargado e = (Encargado) usuSession.getUsuarioSession();
+		System.out.println("Esta es la cedula del ENCARGADO  " +e.getCedula());
+		listadoTareasAbiertas=statelessFacade.tareasAbiertasGrupo(e);
 		return listadoTareasAbiertas;
 	}
 

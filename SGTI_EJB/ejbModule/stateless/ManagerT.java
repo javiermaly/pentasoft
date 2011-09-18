@@ -9,6 +9,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import beans.Cliente;
+import beans.Encargado;
 import beans.Estado;
 import beans.Grupo;
 import beans.Realiza;
@@ -483,10 +484,9 @@ public class ManagerT implements TareaRemote {
 		return tareasFinalizadasNoCerradas;
 	}
 	
-	public List<Tarea> listTareasAbiertasGrupos(Usuario u){
-		
-		List<Tarea> listTareasAbiertasGrupos;
-		listTareasAbiertasGrupos = em.createNamedQuery("listTareasAbiertasGrupos").setParameter(1, em.getReference(Usuario.class, u.getCedula())).getResultList();
+	public List<Tarea> listTareasAbiertasGrupos(Encargado e){
+		System.out.println("el valor aca de encargado "+ e.getCedula());
+		List<Tarea> listTareasAbiertasGrupos = em.createNamedQuery("listTareasAbiertasGrupos").setParameter(1, em.getReference(Encargado.class, e.getCedula())).getResultList();
 		
 		return listTareasAbiertasGrupos;
 	}

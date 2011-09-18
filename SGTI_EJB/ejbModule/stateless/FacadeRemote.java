@@ -23,7 +23,7 @@ public interface FacadeRemote {
         public boolean cerrarTarea(Tarea tar, Usuario usu);//solo los ADM
         public Tiene tieneDeTarea(Tarea t);
         public List<Tarea> tareasFinalizadasNoCerradas();
-        public List<Tarea> tareasAbiertasGrupo(Usuario u);//tareas abiertas para el encargado de un determinado grupo
+        public List<Tarea> tareasAbiertasGrupo(Encargado e);//tareas abiertas para el encargado de un determinado grupo
         
         //CLIENTES
         public Cliente buscarCliente(long cedRut);

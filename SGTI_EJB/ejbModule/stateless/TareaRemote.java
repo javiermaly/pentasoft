@@ -6,6 +6,7 @@ import java.util.List;
 import javax.ejb.Remote;
 
 
+import beans.Encargado;
 import beans.Estado;
 import beans.Grupo;
 import beans.Realiza;
@@ -44,7 +45,7 @@ public interface TareaRemote {
 	public boolean reabrirTarea(Tarea t);
 	public boolean cerrarTarea(Tarea t);
 	public List<Tarea> tareasFinalizadasNoCerradas();
-	public List<Tarea> listTareasAbiertasGrupos(Usuario u);//lista de tareas con estado abierta para un encargado en un determinado grupo
+	public List<Tarea> listTareasAbiertasGrupos(Encargado e);//lista de tareas con estado abierta para un encargado en un determinado grupo
 	public List<Grupo> listadoGrupos();
 
 	
