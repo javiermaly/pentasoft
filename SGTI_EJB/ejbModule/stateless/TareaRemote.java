@@ -50,7 +50,8 @@ public interface TareaRemote {
 
 	
     //buscar el tipo de tarea
-    public Tipo encontrarTipo(int id);       
+    public Tipo encontrarTipo(int id);
+    public List<Tipo> listadoTipos();
 
 	
 }

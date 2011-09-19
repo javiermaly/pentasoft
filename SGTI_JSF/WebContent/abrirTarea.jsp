@@ -64,18 +64,18 @@
 					</tr>
 					<tr>
 						<th>Tipo: </th>
-						<td><h:selectOneMenu value="#{TareaBean.tipo}">
-							<f:selectItem itemValue="2" itemLabel="Desarrollo"/>
-							<f:selectItem itemValue="1" itemLabel="Soporte Técnico"/>
-							</h:selectOneMenu>						
+						<td>
+							<h:selectOneMenu id="comboTipos" value="#{TareaBean.tipoId}"> 					 					
+								<f:selectItems value="#{TareaBean.comboTipos}"/>						
+							</h:selectOneMenu>					
 						</td>
 					</tr>
 					<tr>
 						<th>Grupo Asingado: </th>
-						<td><h:selectOneMenu value="#{TareaBean.grupoId}">
-							<f:selectItem itemValue="1" itemLabel="soporte calle"/>
-							<f:selectItem itemValue="7" itemLabel="soporte tecnico"/>
-							</h:selectOneMenu>						
+						<td>
+							<h:selectOneMenu id="comboGrupos" value="#{TareaBean.grupoId}"> 					 					
+								<f:selectItems value="#{TareaBean.comboGrupos}"/>						
+							</h:selectOneMenu>					
 						</td>
 					</tr>
 					<tr>
@@ -92,8 +92,9 @@
 						<th>Fecha Comprometida(año/mes/dia)</th>
 						<td><h:inputText id="fechaComprometida"  value="#{TareaBean.fechaComprometida}">
 							<f:convertDateTime pattern="yyyy/MM/dd"/>
-						</h:inputText> </td>
-						<h:message for="fechaComprometida" style="color:red"></h:message>
+							</h:inputText> <h:message for="fechaComprometida" style="color:red"></h:message>
+						</td>
+						
 					</tr>
 					<tr>
 						<td><h:commandButton value="Aceptar" action="#{TareaBean.abrirTarea}"></h:commandButton></td>

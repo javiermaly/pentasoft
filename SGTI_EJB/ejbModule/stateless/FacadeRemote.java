@@ -54,6 +54,7 @@ public interface FacadeRemote {
        
         //TIPO
         public Tipo buscarTipo(int id);
+        public List<Tipo> listTipos();
         
         //ESTADOS
         public Estado buscarEstado(int id);

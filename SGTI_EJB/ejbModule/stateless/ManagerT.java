@@ -288,6 +288,15 @@ public class ManagerT implements TareaRemote {
 		return listGrupos;
 
 	}
+	
+	
+	public List<Tipo> listadoTipos() {
+		@SuppressWarnings(value = "unchecked")
+		// para que deje de mostrar advertencia List need unchecked convertion
+		List<Tipo> listTipos = em.createNamedQuery("todosTipos").getResultList();
+		return listTipos;
+
+	}
 
 	// OBTIENE EL TIENE SIN FINALIZAR DE UNA TAREA
 	public Tiene tieneDeTarea(Tarea t) {

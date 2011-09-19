@@ -45,7 +45,7 @@
 			<tr>
 				<th>Encargado</th>
 				<td>
-					<h:selectOneMenu id="comboEncargadosHabilitados" value="#{GrupoBean.encargadoSeleccionado}"> 					 					
+					<h:selectOneMenu id="comboEncargadosHabilitados" value="#{GrupoBean.encargadoCed}"> 					 					
 						<f:selectItems value="#{GrupoBean.encargadosHabilitados}"/>
 								
 					</h:selectOneMenu>					

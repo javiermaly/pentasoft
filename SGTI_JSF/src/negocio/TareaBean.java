@@ -1,11 +1,13 @@
 package negocio;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
 import javax.faces.context.FacesContext;
+import javax.faces.model.SelectItem;
 import javax.servlet.http.HttpServletRequest;
 
 import beans.Cliente;
@@ -34,13 +36,16 @@ public class TareaBean {
 	private Tiene tiene;
 	private Tipo tipoTarea;
 	private Estado estado;
-	private int tipo;
+	private String tipoId;
 	private Calendar fechaCierre;
+	@SuppressWarnings("rawtypes")
+	private ArrayList comboGrupos = new ArrayList();
+	private ArrayList comboTipos = new ArrayList();
 	
 	private List<Tarea> listadoTareasFinalizadasNoCerradas;
 	private List<Tarea> listadoTareasAbiertas;
 
-	private int grupoId;
+	private String grupoId;
 	private int evento = 0;
 
 	private ClienteSession cliSession;
@@ -50,6 +55,7 @@ public class TareaBean {
 	ConexionEJB con = new ConexionEJB();
 	FacadeRemote statelessFacade = con.conectar();
 
+	
 	
 	
 	public List<Tarea> getListadoTareasFinalizadasNoCerradas() {
@@ -105,14 +111,6 @@ public class TareaBean {
 
 	public void setObservacion(String observacion) {
 		this.observacion = observacion;
-	}
-
-	public int getTipo() {
-		return tipo;
-	}
-
-	public void setTipo(int tipo) {
-		this.tipo = tipo;
 	}
 
 	public Calendar getFechaComprometida() {
@@ -180,14 +178,22 @@ public class TareaBean {
 		this.prioridad = prioridad;
 	}
 
-	public int getGrupoId() {
+	public String getGrupoId() {
 		return grupoId;
 	}
 
-	public void setGrupoId(int grupoId) {
+	public void setGrupoId(String grupoId) {
 		this.grupoId = grupoId;
 	}
 
+	public String getTipoId() {
+		return tipoId;
+	}
+
+	public void setTipo(String tipoId) {
+		this.tipoId = tipoId;
+	}
+	
 	public ClienteSession getCliSession() {
 		return cliSession;
 	}
@@ -212,7 +218,49 @@ public class TareaBean {
 	public void setEvento(int evento) {
 		this.evento = evento;
 	}
+	
 
+	
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	public ArrayList getComboGrupos() {
+		
+		List<Grupo> grupos = statelessFacade.listGrupos();
+		comboGrupos.clear();
+		for (int i = 0; i < grupos.size(); i++) {
+			Grupo g = new Grupo();
+			g = (Grupo) grupos.get(i);
+
+			comboGrupos.add(new SelectItem(g.getId(), g.getDescripcion()));
+		}		
+		
+		return comboGrupos;
+	}
+
+	public void setComboGrupos(ArrayList comboGrupos) {
+		this.comboGrupos = comboGrupos;
+	}
+
+	//combo para tipos
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	public ArrayList getComboTipos() {
+		List<Tipo> tipos = statelessFacade.listTipos();
+		
+		for (int i = 0; i < tipos.size(); i++) {
+			Tipo t = new Tipo();
+			t = (Tipo) tipos.get(i);
+
+			comboTipos.add(new SelectItem(t.getId(), t.getDescripcion()));
+		}		
+		
+		
+		return comboTipos;
+	}
+
+	public void setComboTipos(ArrayList comboTipos) {
+		this.comboTipos = comboTipos;
+	}
+
+	
 	// ABRIR/CREAR LA TAREA
 	public String abrirTarea() {
 
@@ -222,22 +270,23 @@ public class TareaBean {
 		Grupo g = new Grupo();
 		Cliente c = new Cliente();
 		
+		
 		c = cliSession.getClienteSession();// asignar a c el cliente que está en
 											// la sesion
-
-		tip = statelessFacade.buscarTipo(tipo);// encontrar el tipo pasado para
-												// asignarlo a la tarea
-
+		
+		tip = statelessFacade.buscarTipo(Integer.valueOf(tipoId));// encontrar el tipo pasado para asignarlo a la tarea
+		
+		
 		tiene.setEstado(statelessFacade.buscarEstado(1));
 		tiene.setFechaInicio(Calendar.getInstance());
 
 		if (fechaComprometida != null) { // comprueba si no ingresó una fecha
-			Calendar cal = Calendar.getInstance();
+			Calendar cal = Calendar.getInstance(); 
 			cal.setTime(fechaComprometida.getTime());
-			t.setFechaComprometida(cal);
+			t.setFechaComprometida(fechaComprometida);
 		}
 
-		g = statelessFacade.buscarGrupo(grupoId);
+		g = statelessFacade.buscarGrupo(Integer.valueOf(grupoId));
 
 		t.setCliente(c);
 		t.setDescripcion(descripcion);

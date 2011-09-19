@@ -312,6 +312,11 @@ public class FacadeMain implements FacadeRemote {
 		return statelessMTar.encontrarTipo(id);
 	}
 	
+	public List<Tipo> listTipos(){
+		return statelessMTar.listadoTipos();
+	}
+	
+	
 	//estado
 	public Estado buscarEstado(int id){
 		return statelessMTar.encontrarEstado(id);

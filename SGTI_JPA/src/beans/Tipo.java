@@ -9,6 +9,11 @@ import javax.persistence.*;
  *
  */
 
+ @NamedQueries(value = { 
+			@NamedQuery(name="todosTipos", query="select t from Tipo t"),
+			
+	})
+	
 @Entity
 
 public class Tipo implements Serializable {

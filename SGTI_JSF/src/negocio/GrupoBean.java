@@ -15,7 +15,7 @@ public class GrupoBean {
 	private String descripcion;
 	private String encargadoCed;
 	private List<Grupo> listGrupos;
-	private String encargadoSeleccionado;
+	//private String encargadoSeleccionado;
 	private int evento = 0;
 
 	ConexionEJB con = new ConexionEJB();
@@ -24,23 +24,23 @@ public class GrupoBean {
 	@SuppressWarnings("rawtypes")
 	private ArrayList encargadosHabilitados = new ArrayList();
 
-	public String getEncargadoSeleccionado() {
-		Grupo gr = statelessFacade.buscarGrupo(id);
-		if (gr != null) {
-			System.out.println(gr.getDescripcion());
-			encargadoSeleccionado = gr.getEnc().getCedula()+""; // This will be
-																// the
-																// default
-																// selected
-																// item.
-		}
-		return encargadoSeleccionado;
-	}
+//	public String getEncargadoSeleccionado() {
+//		Grupo gr = statelessFacade.buscarGrupo(id);
+//		if (gr != null) {
+//			System.out.println(gr.getDescripcion());
+//			encargadoSeleccionado = gr.getEnc().getCedula()+""; // This will be
+//																// the
+//																// default
+//																// selected
+//																// item.
+//		}
+//		return encargadoSeleccionado;
+//	}
 
-	public void setEncargadoSeleccionado(String encargado) {
-		System.out.println("encargado ced: "+encargado);
-		this.encargadoSeleccionado = encargado;
-	}
+//	public void setEncargadoSeleccionado(String encargado) {
+//		System.out.println("encargado ced: "+encargado);
+//		this.encargadoSeleccionado = encargado;
+//	}
 
 	public int getId() {
 		return id;
@@ -59,6 +59,16 @@ public class GrupoBean {
 	}
 
 	public String getEncargadoCed() {
+		Grupo gr = statelessFacade.buscarGrupo(id);
+		if (gr != null) {
+			System.out.println(gr.getDescripcion());
+			encargadoCed = gr.getEnc().getCedula()+""; // This will be
+																// the
+																// default
+																// selected
+																// item.
+		}
+		
 		return encargadoCed;
 	}
 
@@ -181,7 +191,7 @@ public class GrupoBean {
 				+ encargadoCed);
 
 		Encargado encargado = (Encargado) statelessFacade.encontrarUsuario(Long
-				.valueOf(encargadoSeleccionado));
+				.valueOf(encargadoCed));
 
 		System.out.println(encargado.getApellido());
 
