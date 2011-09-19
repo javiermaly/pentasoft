@@ -11,10 +11,11 @@ import beans.Grupo;
 import conexion.ConexionEJB;
 
 public class GrupoBean {
-	private int id;
+	private int id = 0;
 	private String descripcion;
 	private String encargadoCed;
 	private List<Grupo> listGrupos;
+	private long encargadoSeleccionado;
 	private int evento = 0;
 
 	ConexionEJB con = new ConexionEJB();
@@ -22,6 +23,24 @@ public class GrupoBean {
 
 	@SuppressWarnings("rawtypes")
 	private ArrayList encargadosHabilitados = new ArrayList();
+
+	public long getEncargadoSeleccionado() {
+		Grupo gr = statelessFacade.buscarGrupo(id);
+		if (gr != null) {
+			System.out.println(gr.getDescripcion());
+			encargadoSeleccionado = gr.getEnc().getCedula(); // This will be
+																// the
+																// default
+																// selected
+																// item.
+		}
+		return encargadoSeleccionado;
+	}
+
+	public void setEncargadoSeleccionado(long encargadoSeleccionado) {
+		System.out.println("encargado ced: "+encargadoCed);
+		this.encargadoSeleccionado = Integer.parseInt(encargadoCed);
+	}
 
 	public int getId() {
 		return id;
@@ -114,31 +133,30 @@ public class GrupoBean {
 	// }
 	public String buscarGrupo() {
 		System.out.println("id de grupo que me llega" + id);
-		this.id = getId();
+		// this.id = getId();
 		Grupo gr = new Grupo();
-		try{
-		gr = statelessFacade.buscarGrupo(id);
-		System.out.println("grupo encontrado: " + gr.getDescripcion());
-		if (gr.getId()!=0) {
-			this.descripcion = gr.getDescripcion();
-			this.encargadoCed = gr.getEnc().getApellido() + ", "
-					+ gr.getEnc().getNombre();
-			evento = 4;//encontrado
-			System.out.println(encargadoCed);
-			return "grupoEncontrado";
-		} else {
-			System.out.println("grupo nulo!!");
+		try {
+			gr = statelessFacade.buscarGrupo(id);
+			System.out.println("grupo encontrado: " + gr.getDescripcion());
+			if (gr.getId() != 0) {
+				this.descripcion = gr.getDescripcion();
+				this.encargadoCed = gr.getEnc().getApellido() + ", "
+						+ gr.getEnc().getNombre();
+				this.evento = 4;// encontrado
+				System.out.println(encargadoCed);
+				return "grupoEncontrado";
+			} else {
+				System.out.println("grupo nulo!!");
+				this.evento = 3;// noexiste
+				return "grupoNoEncontrado";
+			}
+
+		} catch (Exception e) {
 			this.evento = 3;// noexiste
 			return "grupoNoEncontrado";
+
 		}
 
-		}catch(Exception e){
-			this.evento = 3;// noexiste
-			return "grupoNoEncontrado";
-			
-		}
-		
-		
 	}
 
 	public String eliminarGrupo() {
@@ -177,7 +195,8 @@ public class GrupoBean {
 			evento = 1;
 			return "grupoModificado";
 		} else
-			return "grupoNoModificado";
+			evento = 6;
+		return "grupoNoModificado";
 	}
 
 }

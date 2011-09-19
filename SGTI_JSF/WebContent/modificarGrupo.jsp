@@ -28,9 +28,8 @@
 			</tr>
 		</table>
 	</h:form>
-	<h:form >
-	
-		<table border="1">
+	<h:form rendered="#{GrupoBean.evento==4}">
+		<table border="1" >
 		<tr>
 				<th>Id Grupo</th>
 				<td>
@@ -46,7 +45,7 @@
 			<tr>
 				<th>Encargado</th>
 				<td>
-					<h:selectOneMenu id="comboEncargadosHabilitados" value="#{GrupoBean.encargadoCed}"> 					 					
+					<h:selectOneMenu id="comboEncargadosHabilitados" value="#{GrupoBean.encargadoSeleccionado}"> 					 					
 						<f:selectItems value="#{GrupoBean.encargadosHabilitados}"/>
 								
 					</h:selectOneMenu>					
@@ -64,7 +63,21 @@
 			</tr>
 		</table>
 	</h:form>
-	<h:form rendered="#{GrupoBean.evento==2}">
+	<h:form rendered="#{GrupoBean.evento==3}">
+		<table border="1">
+			<tr>
+				<th> Grupo no encontrado!!!</th>
+			</tr>
+		</table>
+	</h:form>
+	<h:form rendered="#{GrupoBean.evento==6}">
+		<table border="1">
+			<tr>
+				<th> Error al modificar el grupo!!!</th>
+			</tr>
+		</table>
+	</h:form>
+	<h:form rendered="#{GrupoBean.evento==5}">
 		<table border="1">
 			<tr>
 				<th> Error al modificar el grupo!!!</th>
