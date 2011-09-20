@@ -25,22 +25,25 @@ import conexion.ConexionEJB;
 public class TareaBean {
 
 	private long id;
+	private long idMuestra;//el id que mostramos cuando abre la tarea
 	private Cliente cliente;
 	private int prioridad;
+	private String prioridadStr;
 	private boolean esExterna;
 	private String descripcion;
 	private String observacion;
 	private Calendar fechaApertura;
-	private Calendar fechaComprometida;
-	// private Calendar fechaComprometida;
+	private Date fechaComprometida;
+	
 	private Tiene tiene;
 	private Tipo tipoTarea;
 	private Estado estado;
-	private String tipoId;
-	private Calendar fechaCierre;
+	//private String tipoId;
+	private Date fechaCierre;
 	@SuppressWarnings("rawtypes")
 	private ArrayList comboGrupos = new ArrayList();
 	private ArrayList comboTipos = new ArrayList();
+	private String varId;
 	
 	private List<Tarea> listadoTareasFinalizadasNoCerradas;
 	private List<Tarea> listadoTareasAbiertas;
@@ -88,6 +91,15 @@ public class TareaBean {
 		this.esExterna = esExterna;
 	}
 
+	public long getIdMuestra() {
+						
+		return idMuestra;
+	}
+
+	public void setIdMuestra(long idMuestra) {
+		this.idMuestra = idMuestra;
+	}
+
 	public String getDescripcion() {
 		return descripcion;
 	}
@@ -113,11 +125,11 @@ public class TareaBean {
 		this.observacion = observacion;
 	}
 
-	public Calendar getFechaComprometida() {
+	public Date getFechaComprometida() {
 		return fechaComprometida;
 	}
 
-	public void setFechaComprometida(Calendar fechaComprometida) {
+	public void setFechaComprometida(Date fechaComprometida) {
 		this.fechaComprometida = fechaComprometida;
 	}
 
@@ -154,11 +166,11 @@ public class TareaBean {
 		this.tipoTarea = tipoTarea;
 	}
 
-	public Calendar getFechaCierre() {
+	public Date getFechaCierre() {
 		return fechaCierre;
 	}
 
-	public void setFechaCierre(Calendar fechaCierre) {
+	public void setFechaCierre(Date fechaCierre) {
 		this.fechaCierre = fechaCierre;
 	}
 
@@ -186,17 +198,27 @@ public class TareaBean {
 		this.grupoId = grupoId;
 	}
 
-	public String getTipoId() {
-		return tipoId;
+//	public String getTipoId() {
+//		return tipoId;
+//	}
+//
+//	public void setTipo(String tipoId) {
+//		this.tipoId = tipoId;
+//	}
+	
+
+	public String getVarId() {
+		return varId;
 	}
 
-	public void setTipo(String tipoId) {
-		this.tipoId = tipoId;
+	public void setVarId(String varId) {
+		this.varId = varId;
 	}
 	
 	public ClienteSession getCliSession() {
 		return cliSession;
 	}
+
 
 	public void setCliSession(ClienteSession cliSession) {
 		this.cliSession = cliSession;
@@ -219,8 +241,14 @@ public class TareaBean {
 		this.evento = evento;
 	}
 	
+	public String getPrioridadStr() {
+		return prioridadStr;
+	}
 
-	
+	public void setPrioridadStr(String prioridadStr) {
+		this.prioridadStr = prioridadStr;
+	}
+
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public ArrayList getComboGrupos() {
 		
@@ -247,7 +275,7 @@ public class TareaBean {
 		
 		for (int i = 0; i < tipos.size(); i++) {
 			Tipo t = new Tipo();
-			t = (Tipo) tipos.get(i);
+			t = tipos.get(i);
 
 			comboTipos.add(new SelectItem(t.getId(), t.getDescripcion()));
 		}		
@@ -274,7 +302,7 @@ public class TareaBean {
 		c = cliSession.getClienteSession();// asignar a c el cliente que está en
 											// la sesion
 		
-		tip = statelessFacade.buscarTipo(Integer.valueOf(tipoId));// encontrar el tipo pasado para asignarlo a la tarea
+		tip = statelessFacade.buscarTipo(Integer.valueOf(varId));// encontrar el tipo pasado para asignarlo a la tarea
 		
 		
 		tiene.setEstado(statelessFacade.buscarEstado(1));
@@ -282,9 +310,10 @@ public class TareaBean {
 
 		if (fechaComprometida != null) { // comprueba si no ingresó una fecha
 			Calendar cal = Calendar.getInstance(); 
-			cal.setTime(fechaComprometida.getTime());
-			t.setFechaComprometida(fechaComprometida);
+			cal.setTime(fechaComprometida);
+			t.setFechaComprometida(cal);
 		}
+	
 
 		g = statelessFacade.buscarGrupo(Integer.valueOf(grupoId));
 
@@ -297,8 +326,9 @@ public class TareaBean {
 		t.setTipo(tip);
 		t.agregarTiene(tiene);
 
-		if (statelessFacade.abrirTarea(t, tiene, g)) {
+		if (statelessFacade.abrirTarea(t, tiene, g)!=0) {
 			System.out.println("TAREA DADA DE ALTA");
+			idMuestra=statelessFacade.abrirTarea(t, tiene, g);
 			evento = 1;// exito
 			return "TareaAbierta";
 		} else {
@@ -316,16 +346,28 @@ public class TareaBean {
 		if (t != null) {
 			cliente=t.getCliente();
 			prioridad=t.getPrioridad();
+			if(prioridad==1){
+				prioridadStr="Alta";
+			}else if(prioridad==2){
+				prioridadStr="Media";
+			}else if(prioridad==3){
+				prioridadStr="Baja";
+			}
 			esExterna=t.getEsExterna();
 			descripcion=t.getDescripcion();
 			observacion=t.getObservacion();
 			fechaApertura=t.getFechaApertura();
-			fechaComprometida=t.getFechaComprometida();
+			if(t.getFechaComprometida()!=null){
+				fechaComprometida=t.getFechaComprometida().getTime();
+			}
+			if(t.getFechaCierre()!=null){
+				fechaCierre=t.getFechaCierre().getTime();
+			}
+			
 			tipoTarea=t.getTipo();
 			tiene=statelessFacade.tieneDeTarea(t);
 			System.out.println(tiene.getEstado().getDescripcion());
 			//estado=;
-			fechaCierre=t.getFechaCierre();
 			evento = 4;// encontrado
 			return "TareaEncontrada";
 		} else {

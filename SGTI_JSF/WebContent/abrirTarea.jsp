@@ -5,23 +5,11 @@
 <f:subview id="header">
 	<%@include file="header.jsp"%>		
 </f:subview>
-<h:form>
-	<h1>Buscar Cliente</h1>			
-		<table>
-			<tr>
-				<td><h:outputText> Cedula o RUT del Cliente </h:outputText></td>
-				<td><h:inputText id="cedrut" value="#{ClienteBean.cedRut}" required="true" maxlength="15"  >
-					<f:converter converterId="javax.faces.Integer"/></h:inputText>
-				</td>
-					<h:message for="cedrut" style="color:red"></h:message>
-				<td><h:commandButton  value="Aceptar" action="#{ClienteBean.buscarCliente}"></h:commandButton></td>
-			</tr>
-		</table>
-</h:form>
 	<h:form rendered="#{TareaBean.evento==1}">
 		<table border="1">
 			<tr>
-				<th bgcolor="green"> Tarea Abierta con exito!!!</th>
+				<th> Tarea Abierta con el ID Numero: <h:outputText value="#{TareaBean.idMuestra}"></h:outputText></th>
+				
 			</tr>
 		</table>
 	</h:form>
@@ -42,8 +30,21 @@
 <h:form>	
 		<h1>Abrir Tarea</h1>			
 				<table border="1">
+				<tr>
+					<td><h:outputText> Cedula o RUT del Cliente: </h:outputText>
+					</td>
+					<td><h:inputText id="cedrut" value="#{ClienteBean.cedRut}" required="true" maxlength="15"  >
+						<f:converter converterId="javax.faces.Integer"/></h:inputText>
+					</td>
+						<h:message for="cedrut" style="color:red"></h:message>
+					<td>
+						<h:commandButton  value="Buscar" action="#{ClienteBean.buscarCliente}"></h:commandButton>
+					</td>
+				</tr>
+				</table>					
+				<table border="1">
 					<tr>
-						<th>Cliente: </th><td><h:outputText value="#{ClienteSession.clienteSession.nombre_RazonSocial}" ></h:outputText></td>
+						<th>Nombre: </th><td><h:outputText value="#{ClienteSession.clienteSession.nombre_RazonSocial}" ></h:outputText></td>
 					</tr>
 					<tr>
 						<th>Prioridad: </th>
@@ -65,7 +66,7 @@
 					<tr>
 						<th>Tipo: </th>
 						<td>
-							<h:selectOneMenu id="comboTipos" value="#{TareaBean.tipoId}"> 					 					
+							<h:selectOneMenu id="comboTipos" value="#{TareaBean.varId}"> 					 					
 								<f:selectItems value="#{TareaBean.comboTipos}"/>						
 							</h:selectOneMenu>					
 						</td>
@@ -84,20 +85,17 @@
 						</td>
 					</tr>
 					<tr>
-						<th>Observacion: </th>
-						<td><h:inputTextarea rows="5" cols="25" value="#{TareaBean.observacion}"/>						
-						</td>
-					</tr>					
-					<tr>
-						<th>Fecha Comprometida(año/mes/dia)</th>
-						<td><h:inputText id="fechaComprometida"  value="#{TareaBean.fechaComprometida}">
-							<f:convertDateTime pattern="yyyy/MM/dd"/>
-							</h:inputText> <h:message for="fechaComprometida" style="color:red"></h:message>
-						</td>
+					<th>Fecha Comprometida (año/mes/dia):</th>
+	
+					<td><h:inputText id="fchaComprometida" value="#{TareaBean.fechaComprometida}">
+							<f:convertDateTime  pattern="yyyy/MM/dd" />
+						</h:inputText>
+						<h:message for="fchaComprometida" style="color:red"></h:message>
+					</td>
 						
 					</tr>
 					<tr>
-						<td><h:commandButton value="Aceptar" action="#{TareaBean.abrirTarea}"></h:commandButton></td>
+						<td colspan="2" align="right"><h:commandButton value="Aceptar" action="#{TareaBean.abrirTarea}"></h:commandButton></td>
 					</tr>					
 				</table>		
 </h:form>

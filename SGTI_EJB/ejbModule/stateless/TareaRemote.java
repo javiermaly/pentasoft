@@ -17,7 +17,7 @@ import beans.Usuario;
 
 @Remote
 public interface TareaRemote {
-	public boolean agregarTarea(Tarea t, Tiene tiene, Grupo g);
+	public long agregarTarea(Tarea t, Tiene tiene, Grupo g);
 	public List<Tarea> traerTodasTareas( );
 	public Tarea encontrarTarea(long id);
 	

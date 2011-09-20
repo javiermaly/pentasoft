@@ -19,9 +19,9 @@ public class FacadeMain implements FacadeRemote {
     ClienteRemote statelessMCli = singleton.conectarMC(); 
 	
     
-	public boolean abrirTarea(Tarea t, Tiene tiene, Grupo g) {// la que realiza el administrativo
-		statelessMTar.agregarTarea(t, tiene, g);
-		return true;
+	public long abrirTarea(Tarea t, Tiene tiene, Grupo g) {// la que realiza el administrativo
+		
+		return statelessMTar.agregarTarea(t, tiene, g);
 	}
 
 	public boolean tomarTarea(Tarea t, Realiza r, Tipo ti) {// cuando un técnico trabaja sobre la tarea

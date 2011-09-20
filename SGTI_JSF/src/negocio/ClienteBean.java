@@ -15,8 +15,8 @@ public class ClienteBean {
 	private String telefono;
 	private Date fechaFinGarantia;
 	private ClienteSession cliSession;
-private List<Cliente> listClientes;
-List<ClienteSession> listClienteSession = null;
+	private List<Cliente> listClientes;
+	List<ClienteSession> listClienteSession = null;
 	private boolean empresa;
 	private int evento=0;//1=exito 2=error 3=noexiste 4=encontrado
 

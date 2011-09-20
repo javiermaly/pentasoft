@@ -25,23 +25,26 @@ public class ManagerT implements TareaRemote {
 	@PersistenceContext(unitName = "SGTI_JPA")
 	private EntityManager em;
 
-	public boolean agregarTarea(Tarea t, Tiene tiene, Grupo gr) {
+	public long agregarTarea(Tarea t, Tiene tiene, Grupo gr) {
+		long id=0;
 		try {
 
 			// em.persist(tipo);
 			em.persist(tiene);
 			em.persist(t);
+			id=t.getId();
 			// em.persist(gr);
 			gr = em.merge(gr);
 			gr = encontrarGrupo(gr.getId());
 			gr.asignaTarea(t);
 			em.merge(gr);
-
-			return true;
+			
+			System.out.println("----->>> el valor del id de la tarea en el jpa" +id);
+			return id;
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			return false;
+			return id;
 		}
 	}
 

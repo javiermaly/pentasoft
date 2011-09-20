@@ -38,7 +38,7 @@
 
 			<tr>
 				<th>Prioridad:</th>
-				<th><h:outputText value="#{TareaBean.prioridad}"></h:outputText>
+				<th><h:outputText value="#{TareaBean.prioridadStr}"></h:outputText>
 				</th>
 			</tr>
 			<tr>
