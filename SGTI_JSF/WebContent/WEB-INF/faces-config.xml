@@ -134,6 +134,17 @@
 </navigation-rule>
 
 <navigation-rule>
+		<from-view-id>/loginOK.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>asignarTarea</from-outcome>
+			<to-view-id>/asignarTarea.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>ErrorAsignarTarea</from-outcome>
+			<to-view-id>/error.jsp</to-view-id>
+		</navigation-case>
+</navigation-rule>
+<navigation-rule>
 		<from-view-id>/altaUsuario.jsp</from-view-id>
 		<navigation-case>
 			<from-outcome>UsuarioIngresado</from-outcome>

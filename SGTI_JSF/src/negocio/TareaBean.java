@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Map;
 
 import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
+
 import javax.faces.model.SelectItem;
 import javax.servlet.http.HttpServletRequest;
 
@@ -513,39 +515,26 @@ public class TareaBean {
 		return retorno;
 	
 	}
-	
-	public String asignarTarea(){		
+	//prueba Asignar TArea
+	public String pasarParametros(){
+		//ActionEvent event
 		String retorno;
 		FacesContext context = FacesContext.getCurrentInstance();
-		HttpServletRequest myRequest = (HttpServletRequest) context.getExternalContext().getRequest();
-		System.out.println("id de la tarea recibido: "+myRequest.getParameter("idTareaAsingar"));
-		try{
-		id = Long.parseLong(myRequest.getParameter("idTareaAsignar"));
+		HttpServletRequest myRequest = (HttpServletRequest)context.getExternalContext().getRequest();
+		System.out.println("id de la tarea recibido: "+myRequest.getParameter("idTareaAsignar"));
+//		String idTarea =(String) event.getComponent().getAttributes().get("idTareaAsignar");
+// FacesUtil.getActionAttribute(event, "nombreAtributo1");
 		
-		Tarea tarea=statelessFacade.buscarTarea(id);
-		System.out.println("tarea: "+tarea.getDescripcion());
-		System.out.println(usuSession.getUsuarioSession().getApellido());
-		System.out.println(usuSession.perfil);
-		Usuario usu=statelessFacade.encontrarUsuario(usuSession.usuarioSession.getCedula());
-		if(statelessFacade.cerrarTarea(tarea, usu)){
-			retorno="tareaCerrada";
+		if(myRequest.getParameter("idTareaAsignar")!=null){
+			id = Long.parseLong(myRequest.getParameter("idTareaAsignar"));
 			
-			//habria que poner la tarea colgada de la session en null
+			retorno="asignarTarea";
+		}else{
+			retorno="ErrorAsignarTarea";
 		}
-		else{
-			retorno="tareaNoCerrada";
-		}
-		
-		//System.out.println("usuario: "+usu.getApellido());
-		System.out.println("entre a cerrar tarea");
-		System.out.println("id de la tarea recibido: "+getId());
-		}
-		catch(Exception e){
-			System.out.println("error en parametro recibido");
-			System.out.println(usuSession.getUsuarioSession().getApellido());
-			retorno="tareaNoCerrada";
-		}
-		
 		return retorno;
 	}
+	
+	
 }
+
