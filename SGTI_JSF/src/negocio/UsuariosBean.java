@@ -21,7 +21,7 @@ import beans.Usuario;
 public class UsuariosBean {
 	public Usuario usuarioRequest;
 	public UsuarioBean usuSession;
-	private long cedula;
+	private long cedula;	
 	private String nombre;
 	private String apellido;
 	private String usuario;
@@ -41,6 +41,7 @@ public class UsuariosBean {
 	ConexionEJB con = new ConexionEJB();
 	FacadeRemote statelessFacade = con.conectar();
 
+	
 	
 	public Usuario getUsuarioRequest() {
 		return usuarioRequest;
@@ -355,6 +356,7 @@ public class UsuariosBean {
 			this.usuario=u.getUsuario();
 			this.pwd=u.getPwd();
 			this.telefono=u.getTelefono();
+			this.cedula=u.getCedula();
 			
 			if (u instanceof Administrativo) {
 				System.out.println("es administrativo");

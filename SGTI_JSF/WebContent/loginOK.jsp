@@ -174,24 +174,24 @@
 					<h:outputText value="#{tarea.tipo.descripcion}">
 					</h:outputText>
 				</h:column>
-<%-- 				<h:column> --%>
-<%-- 					<f:facet name="header"> --%>
-<%-- 						<h:outputText value="ACCIÓN"></h:outputText> --%>
-<%-- 					</f:facet> --%>
-<%-- 					<h:commandLink value="Asingar" target="#" action="">  --%>
-<%-- 						<f:param id="idAsignar" name="idAsignar" value="#{tarea.id}" />  --%>
-<%-- 					</h:commandLink>				 --%>
-<%-- 				</h:column> --%>
-<%-- 				<h:column> --%>
-<%-- 					<f:facet name="header"> --%>
-<%-- 						<h:outputText value="ACCIÓN"></h:outputText> --%>
-<%-- 					</f:facet> --%>
-<%-- 					<h:commandLink value="Derviar" target="#" action="">  --%>
-<%-- 						<f:param id="idDerviar" name="idDerviar" value="#{tarea.id}" />  --%>
-<%-- 					</h:commandLink> --%>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="ACCIÓN"></h:outputText>
+					</f:facet>
+					<h:commandLink value="Asignar" target="asignarTarea.jsf" action="#{TareaBean.asignarTarea}"> 
+						<f:param id="idTareaAsingar" name="idTareaAsignar" value="#{tarea.id}" /> 
+					</h:commandLink>			
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="ACCIÓN"></h:outputText>
+					</f:facet>
+					<h:commandLink value="Derivar" target="derivarTarea.jsf" action="#{TareaBean.derivarTarea}"> 
+						<f:param id="idTareaReAbrir" name="idTareaReAbrir" value="#{tarea.id}" /> 
+					</h:commandLink>
 
 				
-<%-- 				</h:column> --%>
+				</h:column>
 
 			</h:dataTable>
 		</center>

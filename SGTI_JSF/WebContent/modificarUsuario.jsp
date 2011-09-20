@@ -43,10 +43,10 @@
 			</tr>
 			<tr>
 				<th>Cedula: </th>
-				<td><h:inputText id="cedula" value="#{UsuariosBean.cedula}" required="true">
-						<f:validateLength  maximum="8"></f:validateLength>
-						<f:converter converterId="javax.faces.Long"/></h:inputText></td>
-						<h:message for="cedula" style="color:red"></h:message>				
+				<td><h:inputText id="cedula" value="#{UsuariosBean.cedula}" readonly="true" >
+				<h:inputHidden value="#{UsuariosBean.cedula}"></h:inputHidden> </h:inputText>
+				
+				</td>										
 			</tr>
 			<tr>
 				<th>Nombre:</th>
