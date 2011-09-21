@@ -24,6 +24,7 @@ public interface FacadeRemote {
         public Tiene tieneDeTarea(Tarea t);
         public List<Tarea> tareasFinalizadasNoCerradas();
         public List<Tarea> tareasAbiertasGrupo(Encargado e);//tareas abiertas para el encargado de un determinado grupo
+        public List<Tarea> tareasAsignadasATecnico(Tecnico t);
         
         //CLIENTES
         public Cliente buscarCliente(long cedRut);
@@ -52,7 +53,8 @@ public interface FacadeRemote {
         public List<Usuario> listarUsuarios();
         public List<Encargado> listarEncargadosHabilitados();
         public List<Tecnico> listarTecnicos();
-        public List<Tecnico> listarTecnicosGrupo(Usuario u);
+        public List<Tecnico> listarTecnicosGrupo(Encargado u);
+        public List<Encargado> listarEncargadosSinGrupo();
         
         //TIPO
         public Tipo buscarTipo(int id);

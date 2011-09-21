@@ -13,7 +13,7 @@
 			<tr>
 				<th>Id:</th>				
 				<td>
-					<h:selectOneMenu id="comboTecnicos" value="#{TareaBean.tecnicoCed}"> 					 					
+					<h:selectOneMenu id="comboTecnicos" value="#{TareaBean.comboTecnicos}"> 					 					
 						<f:selectItems value="#{TareaBean.comboTecnicos}"/>								
 					</h:selectOneMenu>					
 				</td>

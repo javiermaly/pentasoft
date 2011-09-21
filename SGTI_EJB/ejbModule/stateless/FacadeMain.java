@@ -367,7 +367,7 @@ public class FacadeMain implements FacadeRemote {
 		
 	}
 	
-	public List<Tecnico> listarTecnicosGrupo(Usuario u){
+	public List<Tecnico> listarTecnicosGrupo(Encargado u){
 		return statelessMUsu.listarTecnicosGrupo(u);
 	}
 
@@ -399,6 +399,16 @@ public class FacadeMain implements FacadeRemote {
 		 return listTareasAbiertasGrupo;
 	 }
 	
+	 public List<Encargado> listarEncargadosSinGrupo(){
+		 List<Encargado> listarEncargadosSinGrupo=null;
+		 listarEncargadosSinGrupo=statelessMUsu.listarEncargadosSinGrupo();
+		 return listarEncargadosSinGrupo;
+	 }
+	 public List<Tarea> tareasAsignadasATecnico(Tecnico t){
+		 List<Tarea> tareasAsignadasATecnico=null;
+		 tareasAsignadasATecnico=statelessMTar.tareasAsignadasATecnico(t);
+		 return tareasAsignadasATecnico;
+	 }
 	
 	
 }

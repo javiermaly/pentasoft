@@ -55,8 +55,10 @@ public class ManagerU implements UsuarioRemote {
 	}
 	
 	
-	public List<Tecnico> listarTecnicosGrupo(Usuario u) {//listar los tecnicos pertenecientes al grupo del encargado
+	public List<Tecnico> listarTecnicosGrupo(Encargado u) {//listar los tecnicos pertenecientes al grupo del encargado
+		System.out.println("entro a ejecutar la query tecnicosDelGrupoDelEncargado");
 		List<Tecnico> todos = em.createNamedQuery("tecnicosDelGrupoDelEncargado").setParameter(1, em.getReference(Usuario.class, u.getCedula())).getResultList();
+		
 		return todos;
 	}
 	public Usuario encontrarUsuario(long ced) {
@@ -98,6 +100,10 @@ public class ManagerU implements UsuarioRemote {
 		System.out.println("managerU listarEncargadoHabilitados");
 		List<Encargado> todos = em.createNamedQuery("todosEncargadosHabilitados").getResultList();
 		return todos;
+	}
+	public List<Encargado> listarEncargadosSinGrupo() {
+		List<Encargado> todosEncargados = em.createNamedQuery("encSinGrupo").getResultList();
+		return todosEncargados;
 	}
 
 }

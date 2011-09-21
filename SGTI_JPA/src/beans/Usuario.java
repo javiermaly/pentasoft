@@ -10,6 +10,7 @@ import javax.persistence.*;
 		@NamedQuery(name="todosUsuarios", query="select u from Usuario u"),
 		@NamedQuery(name="usuarioPorCedula", query="select u from Usuario u where u.cedula = :cedula"),
 	})
+		
 
 @Entity
 

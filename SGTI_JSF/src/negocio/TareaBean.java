@@ -51,6 +51,8 @@ public class TareaBean {
 
 	private List<Tarea> listadoTareasFinalizadasNoCerradas;
 	private List<Tarea> listadoTareasAbiertas;
+	
+	private List<Tarea> listadoTareasAsignadasATecnico;
 
 	private String grupoId;
 	private int evento = 0;
@@ -284,7 +286,8 @@ public class TareaBean {
 	}
 
 	public ArrayList getComboTecnicos() {
-		Usuario u = statelessFacade.encontrarUsuario(usuSession.usuarioSession.getCedula());
+		System.out.println("el encargado del grupo es: " +usuSession.usuarioSession.getCedula());
+		Encargado u =(Encargado) statelessFacade.encontrarUsuario(usuSession.usuarioSession.getCedula());
 		List<Tecnico> tecnicos = statelessFacade.listarTecnicosGrupo(u);
 		
 		for (int i = 0; i < tecnicos.size(); i++) {
@@ -300,6 +303,36 @@ public class TareaBean {
 
 	public void setComboTecnicos(ArrayList comboTecnicos) {
 		this.comboTecnicos = comboTecnicos;
+	}
+	
+	
+	
+
+	public String getTecnicoCed() {
+		return tecnicoCed;
+	}
+
+	public void setTecnicoCed(String tecnicoCed) {
+		this.tecnicoCed = tecnicoCed;
+	}
+
+	public List<Tarea> getListadoTareasAsignadasATecnico() {
+		
+		Tecnico t =(Tecnico) statelessFacade.encontrarUsuario(usuSession.usuarioSession.getCedula());
+		
+		System.out.println("encontre el tecnico "+t.getCedula());
+		listadoTareasAsignadasATecnico=statelessFacade.tareasAsignadasATecnico(t);
+		
+		for(Tarea tar:listadoTareasAsignadasATecnico){
+        	System.out.println(tar.getDescripcion());
+        	
+        }
+		return listadoTareasAsignadasATecnico;
+	}
+
+	public void setListadoTareasAsignadasATecnico(
+			List<Tarea> listadoTareasAsignadasATecnico) {
+		this.listadoTareasAsignadasATecnico = listadoTareasAsignadasATecnico;
 	}
 
 	// ABRIR/CREAR LA TAREA

@@ -14,6 +14,7 @@ import beans.Estado;
 import beans.Grupo;
 import beans.Realiza;
 import beans.Tarea;
+import beans.Tecnico;
 import beans.Tiene;
 import beans.Tipo;
 import beans.Usuario;
@@ -501,6 +502,17 @@ public class ManagerT implements TareaRemote {
 		List<Tarea> listTareasAbiertasGrupos = em.createNamedQuery("listTareasAbiertasGrupos").setParameter(1, em.getReference(Encargado.class, e.getCedula())).getResultList();
 		
 		return listTareasAbiertasGrupos;
+	}
+	
+	public List<Tarea> tareasAsignadasATecnico(Tecnico t) {
+		System.out.println(t.getNombre());
+		
+		List<Tarea> tareas = em.createNamedQuery("tareasAsignadasATecnico").setParameter(1, em.getReference(Tecnico.class, t.getCedula())).getResultList();
+		for(Tarea tar:tareas){
+        	System.out.println(tar.getDescripcion());
+        	
+        }
+		return tareas;
 	}
 
 }
