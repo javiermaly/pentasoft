@@ -85,8 +85,8 @@
                   <li><a href="buscarTarea.jsf">Buscar Tarea</a></li>
                   <li><a href="abrirTarea.jsf">Abrir Tarea</a></li>
                   <li><a href="#">Modificar Tarea</a></li>
-                  <li><a href="#">Reabrir Tarea</a></li>
-                  <li><a href="#">Cerrar Tarea</a></li>
+                  <li><a href="reAbrirTarea.jsf">Reabrir Tarea</a></li>
+                  <li><a href="cerrarTarea.jsf">Cerrar Tarea</a></li>
                </ul>
             </li>
              <li><span>Listados</span>

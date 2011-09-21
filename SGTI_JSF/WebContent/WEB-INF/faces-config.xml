@@ -79,6 +79,29 @@
 		</navigation-case>
 </navigation-rule>
 
+<navigation-rule>
+		<from-view-id>/reAbrirTarea.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>tareaReAbierta</from-outcome>
+			<to-view-id>/reAbrirTarea.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>tareaNoReAbierta</from-outcome>
+			<to-view-id>/reAbrirTarea.jsp</to-view-id>
+		</navigation-case>
+</navigation-rule>
+
+<navigation-rule>
+		<from-view-id>/cerrarTarea.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>tareaCerrada</from-outcome>
+			<to-view-id>/cerrarTarea.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>tareaNoCerrada</from-outcome>
+			<to-view-id>/cerrarTarea.jsp</to-view-id>
+		</navigation-case>
+</navigation-rule>
  <navigation-rule>
 		<from-view-id>/bajaGrupo.jsp</from-view-id>
 		<navigation-case>

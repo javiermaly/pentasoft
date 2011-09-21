@@ -8,7 +8,7 @@
 		<%@include file="header.jsp"%>
 	</f:subview>
 	<h:form rendered="#{TareaBean.id !=null}">
-		<h1>Cerrar Tarea</h1>
+		<h1>Buscar Tarea</h1>
 		<table>
 			<tr>
 				<td><h:outputText> Identificador de la tarea:  </h:outputText>
@@ -32,10 +32,8 @@
 			<tr>
 				<th>Id:</th>
 				<th><h:inputText id="id" value="#{TareaBean.id}"
-						required="true">
-						<f:validateLength minimum="1" maximum="15"></f:validateLength>
-						<f:converter converterId="javax.faces.Long" />
-					</h:inputText></th>
+						readonly="true" /> <h:inputHidden value="#{TareaBean.id}"></h:inputHidden>
+	</th>
 			</tr>
 			<tr>
 				<th>Cliente:</th>
@@ -96,16 +94,30 @@
 					</h:outputText></th>
 			</tr>
 			<tr>
-				<td colspan="2" align="right"><h:commandButton value="Aceptar"
-						action="#{TareaBean.cerrarTarea}"></h:commandButton>
+				<td colspan="2" align="left"><h:commandButton value="Aceptar"
+						action="#{TareaBean.reabrirTarea}"></h:commandButton>
 				</td>
+			</tr>
+		</table>
+	</h:form>
+	<h:form rendered="#{TareaBean.evento==6}">
+		<table border="1">
+			<tr>
+				<th>No se pudo cambiar el estado a la tarea!!!</th>
+			</tr>
+		</table>
+	</h:form>
+	<h:form rendered="#{TareaBean.evento==5}">
+		<table border="1">
+			<tr>
+				<th>La tarea se cerró correctamente!!!</th>
 			</tr>
 		</table>
 	</h:form>
 	<h:form rendered="#{TareaBean.evento==3}">
 		<table border="1">
 			<tr>
-				<th>La tarea ingresada no existe!!!</th>
+				<th>La tarea ingresada no existe en el sistema!!!</th>
 			</tr>
 		</table>
 	</h:form>
