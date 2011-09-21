@@ -158,9 +158,11 @@ public List<ClienteSession> getListClienteSession() {
 		System.out.println(c.getNombre_RazonSocial());
 		if (statelessFacade.altaCliente(c)) {
 			evento=1;
+			cliSession.setClienteSession(null);
 			return "altaClienteOK";
 		} else
 			evento=2;
+		cliSession.setClienteSession(null);
 			return "falloAltaCliente";
 	}
 
@@ -186,17 +188,20 @@ public List<ClienteSession> getListClienteSession() {
 			cliSession.setClienteSession(c);
 			if(!((statelessFacade.modificarCliente(c))==null)){
 				evento=1;//exito
+				cliSession.setClienteSession(null);
 				return "clienteModificado";
 				
 			}
 			else
 				evento=2;//error
+			cliSession.setClienteSession(null);
 				return "errorModificarCliente";
 				
 
 		}
 		else 
 			evento=3;//noexiste
+		cliSession.setClienteSession(null);
 			return "clienteNoExiste";
 
 	}

@@ -11,17 +11,20 @@
 		<h1>Eliminar Grupo</h1>
 		<table>
 			<tr>
-				<td><h:outputText> Id del grupo a eliminar </h:outputText></td>
+				<td><h:outputText> Id del grupo a eliminar </h:outputText>
+				</td>
 				<td><h:inputText id="id" value="#{GrupoBean.id}"
 						required="true">
 						<f:validateLength minimum="1" maximum="4"></f:validateLength>
 						<f:converter converterId="javax.faces.Long" />
-					</h:inputText></td>
+					</h:inputText>
+				</td>
 
 				<h:message for="id" style="color:red"></h:message>
 
 				<td><h:commandButton value="Buscar"
-						action="#{GrupoBean.buscarGrupo}"></h:commandButton></td>
+						action="#{GrupoBean.buscarGrupo}"></h:commandButton>
+				</td>
 			</tr>
 		</table>
 	</h:form>
@@ -29,12 +32,9 @@
 	<h:form rendered="#{GrupoBean.evento==4}">
 		<table border="1">
 			<tr>
-				<th>Id: </th>
+				<th>Id:</th>
 				<td><h:inputText id="id" value="#{GrupoBean.id}"
-						required="true">
-						<f:validateLength minimum="1" maximum="4"></f:validateLength>
-						<f:converter converterId="javax.faces.Long" />
-					</h:inputText>
+						readonly="true" /> <h:inputHidden value="#{GrupoBean.id}"></h:inputHidden>
 				</td>
 			</tr>
 			<tr>
@@ -49,7 +49,8 @@
 			</tr>
 			<tr>
 				<td><h:commandButton value="Eliminar"
-						action="#{GrupoBean.eliminarGrupo}"></h:commandButton></td>
+						action="#{GrupoBean.eliminarGrupo}"></h:commandButton>
+				</td>
 			</tr>
 		</table>
 	</h:form>

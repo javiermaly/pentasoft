@@ -32,7 +32,7 @@
 			</tr>
 			<tr>
 				<th>Cedula / RUT</th>
-				<td><h:inputText value="#{ClienteBean.cliSession.clienteSession.cedRut}" required="true" readonly="true"></h:inputText>
+				<td><h:inputText value="#{ClienteBean.cedRut}" required="true" readonly="true"></h:inputText>
 				</td>
 					<h:message for="cedRut" style="color:red"></h:message>
 			</tr>

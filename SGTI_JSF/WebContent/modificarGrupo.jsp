@@ -33,7 +33,8 @@
 		<tr>
 				<th>Id Grupo</th>
 				<td>
-				<h:inputText id="id" value="#{GrupoBean.id}" ></h:inputText>
+				<h:inputText id="id" value="#{GrupoBean.id}"
+						readonly="true" /> <h:inputHidden value="#{GrupoBean.id}"></h:inputHidden>
 				</td>
 			</tr>
 			<tr>
