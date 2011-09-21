@@ -95,7 +95,7 @@
 			</tr>
 			<tr>
 				<td colspan="2" align="left"><h:commandButton value="Aceptar"
-						action="#{TareaBean.reabrirTarea}"></h:commandButton>
+						action="#{TareaBean.cerrarTarea}"></h:commandButton>
 				</td>
 			</tr>
 		</table>

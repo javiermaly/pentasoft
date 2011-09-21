@@ -51,7 +51,9 @@ public interface FacadeRemote {
         public Usuario encontrarUsuario(long ced);
         public List<Usuario> listarUsuarios();
         public List<Encargado> listarEncargadosHabilitados();
-       
+        public List<Tecnico> listarTecnicos();
+        public List<Tecnico> listarTecnicosGrupo(Usuario u);
+        
         //TIPO
         public Tipo buscarTipo(int id);
         public List<Tipo> listTipos();

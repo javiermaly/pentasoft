@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import beans.Encargado;
+import beans.Tecnico;
 import beans.Usuario;
 
 @Stateless
@@ -47,7 +48,17 @@ public class ManagerU implements UsuarioRemote {
 				.getResultList();
 		return todos;
 	}
-
+	
+	public List<Tecnico> listarTecnicos() {
+		List<Tecnico> todos = em.createNamedQuery("todosTecnicos").getResultList();
+		return todos;
+	}
+	
+	
+	public List<Tecnico> listarTecnicosGrupo(Usuario u) {//listar los tecnicos pertenecientes al grupo del encargado
+		List<Tecnico> todos = em.createNamedQuery("tecnicosDelGrupoDelEncargado").setParameter(1, em.getReference(Usuario.class, u.getCedula())).getResultList();
+		return todos;
+	}
 	public Usuario encontrarUsuario(long ced) {
 		Usuario u = em.find(Usuario.class, ced);
 		return u;

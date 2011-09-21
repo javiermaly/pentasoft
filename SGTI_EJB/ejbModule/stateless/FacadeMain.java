@@ -360,6 +360,16 @@ public class FacadeMain implements FacadeRemote {
 		return statelessMUsu.listarUsuarios();
 		
 	}
+	
+	@Override
+	public List<Tecnico> listarTecnicos() {
+		return statelessMUsu.listarTecnicos();
+		
+	}
+	
+	public List<Tecnico> listarTecnicosGrupo(Usuario u){
+		return statelessMUsu.listarTecnicosGrupo(u);
+	}
 
 	@Override
 	public List<Grupo> listGrupos() {

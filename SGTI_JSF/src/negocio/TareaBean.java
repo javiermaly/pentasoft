@@ -17,6 +17,7 @@ import beans.Encargado;
 import beans.Estado;
 import beans.Grupo;
 import beans.Tarea;
+import beans.Tecnico;
 import beans.Tiene;
 import beans.Tipo;
 import beans.Usuario;
@@ -36,7 +37,7 @@ public class TareaBean {
 	private String observacion;
 	private Calendar fechaApertura;
 	private Date fechaComprometida;
-
+	private String tecnicoCed;
 	private Tiene tiene;
 	private Tipo tipoTarea;
 	private Estado estado;
@@ -45,6 +46,7 @@ public class TareaBean {
 	@SuppressWarnings("rawtypes")
 	private ArrayList comboGrupos = new ArrayList();
 	private ArrayList comboTipos = new ArrayList();
+	private ArrayList comboTecnicos = new ArrayList();
 	private String varId;
 
 	private List<Tarea> listadoTareasFinalizadasNoCerradas;
@@ -281,6 +283,25 @@ public class TareaBean {
 		this.comboTipos = comboTipos;
 	}
 
+	public ArrayList getComboTecnicos() {
+		Usuario u = statelessFacade.encontrarUsuario(usuSession.usuarioSession.getCedula());
+		List<Tecnico> tecnicos = statelessFacade.listarTecnicosGrupo(u);
+		
+		for (int i = 0; i < tecnicos.size(); i++) {
+			Tecnico t = new Tecnico();
+			t = tecnicos.get(i);
+
+			comboTecnicos.add(new SelectItem(t.getCedula(), t.getApellido()));
+		}
+
+		
+		return comboTecnicos;
+	}
+
+	public void setComboTecnicos(ArrayList comboTecnicos) {
+		this.comboTecnicos = comboTecnicos;
+	}
+
 	// ABRIR/CREAR LA TAREA
 	public String abrirTarea() {
 
@@ -411,10 +432,8 @@ public class TareaBean {
 	public String reabrirTareaDesdeListado() {
 		String retorno;
 		FacesContext context = FacesContext.getCurrentInstance();
-		HttpServletRequest myRequest = (HttpServletRequest) context
-				.getExternalContext().getRequest();
-		System.out.println("id de la tarea recibido: "
-				+ myRequest.getParameter("idTareaReAbrir"));
+		HttpServletRequest myRequest = (HttpServletRequest) context.getExternalContext().getRequest();
+		System.out.println("id de la tarea recibido: "+ myRequest.getParameter("idTareaReAbrir"));
 		try {
 			id = Long.parseLong(myRequest.getParameter("idTareaReAbrir"));
 
@@ -422,8 +441,7 @@ public class TareaBean {
 			System.out.println("tarea: " + tarea.getDescripcion());
 			System.out.println(usuSession.getUsuarioSession().getApellido());
 			System.out.println(usuSession.perfil);
-			Usuario usu = statelessFacade
-					.encontrarUsuario(usuSession.usuarioSession.getCedula());
+			Usuario usu = statelessFacade.encontrarUsuario(usuSession.usuarioSession.getCedula());
 			if (statelessFacade.reabrirTarea(tarea, usu)) {
 				retorno = "tareaReAbierta";
 				// habria que poner la tarea colgada de la session en null
@@ -450,8 +468,7 @@ public class TareaBean {
 			Tarea tarea = statelessFacade.buscarTarea(getId());
 			tarea.setObservacion(getObservacion());
 		
-			Usuario usu = statelessFacade
-					.encontrarUsuario(usuSession.usuarioSession.getCedula());
+			Usuario usu = statelessFacade.encontrarUsuario(usuSession.usuarioSession.getCedula());
 
 			if (statelessFacade.reabrirTarea(tarea, usu)) {
 				evento = 5;
@@ -485,8 +502,7 @@ public class TareaBean {
 			System.out.println("tarea: " + tarea.getDescripcion());
 			System.out.println(usuSession.getUsuarioSession().getApellido());
 			System.out.println(usuSession.perfil);
-			Usuario usu = statelessFacade
-					.encontrarUsuario(usuSession.usuarioSession.getCedula());
+			Usuario usu = statelessFacade.encontrarUsuario(usuSession.usuarioSession.getCedula());
 
 			if (statelessFacade.cerrarTarea(tarea, usu)) {
 				retorno = "tareaCerrada";
@@ -512,10 +528,8 @@ public class TareaBean {
 		// ActionEvent event
 		String retorno;
 		FacesContext context = FacesContext.getCurrentInstance();
-		HttpServletRequest myRequest = (HttpServletRequest) context
-				.getExternalContext().getRequest();
-		System.out.println("id de la tarea recibido: "
-				+ myRequest.getParameter("idTareaAsignar"));
+		HttpServletRequest myRequest = (HttpServletRequest)context.getExternalContext().getRequest();
+		System.out.println("id de la tarea recibido: "+ myRequest.getParameter("idTareaAsignar"));
 		// String idTarea =(String)
 		// event.getComponent().getAttributes().get("idTareaAsignar");
 		// FacesUtil.getActionAttribute(event, "nombreAtributo1");
