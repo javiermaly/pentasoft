@@ -101,5 +101,6 @@
 </h:form>
 
 </f:view>
+</div>
 </body>
 </html>

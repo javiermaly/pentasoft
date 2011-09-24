@@ -42,8 +42,7 @@
 <managed-bean>
 		<managed-bean-name>GrupoBean</managed-bean-name>
 		<managed-bean-class>negocio.GrupoBean</managed-bean-class>
-		<managed-bean-scope>request
-	</managed-bean-scope>			
+		<managed-bean-scope>request</managed-bean-scope>			
 </managed-bean>
 
 <managed-bean>
@@ -103,18 +102,6 @@
 			<to-view-id>/cerrarTarea.jsp</to-view-id>
 		</navigation-case>
 </navigation-rule>
-
-<navigation-rule>
-		<from-view-id>/tomarTarea.jsp</from-view-id>
-		<navigation-case>
-			<from-outcome>tareaTomada</from-outcome>
-			<to-view-id>/tomarTarea.jsp</to-view-id>
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>tareaNoTomada</from-outcome>
-			<to-view-id>/tomarTarea.jsp</to-view-id>
-		</navigation-case>
-</navigation-rule>
  <navigation-rule>
 		<from-view-id>/bajaGrupo.jsp</from-view-id>
 		<navigation-case>
@@ -172,14 +159,31 @@
 <navigation-rule>
 		<from-view-id>/loginOK.jsp</from-view-id>
 		<navigation-case>
-			<from-outcome>asignarTarea</from-outcome>
+			<from-outcome>irAsignarTarea</from-outcome>
 			<to-view-id>/asignarTarea.jsp</to-view-id>
 		</navigation-case>
 		<navigation-case>
-			<from-outcome>ErrorAsignarTarea</from-outcome>
+			<from-outcome>errorIrAsignarTarea</from-outcome>
+			<to-view-id>/error.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>irDerivarTarea</from-outcome>
+			<to-view-id>/derivarTarea.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>errorIrDerivarTarea</from-outcome>
+			<to-view-id>/error.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>irTomarTarea</from-outcome>
+			<to-view-id>/tomarTarea.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>errorIrTomarTarea</from-outcome>
 			<to-view-id>/error.jsp</to-view-id>
 		</navigation-case>
 </navigation-rule>
+
 <navigation-rule>
 		<from-view-id>/altaUsuario.jsp</from-view-id>
 		<navigation-case>
@@ -239,6 +243,39 @@
 		</navigation-case>
 </navigation-rule>
 
+<navigation-rule>
+		<from-view-id>/asignarTarea.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>tareaAsignada</from-outcome>
+			<to-view-id>/asignarTarea.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>errorTareaAsignada</from-outcome>
+			<to-view-id>/asignarTarea.jsp</to-view-id>
+		</navigation-case>		
+</navigation-rule>
+<navigation-rule>
+		<from-view-id>/tomarTarea.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>tareaTomada</from-outcome>
+			<to-view-id>/tomarTarea.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>errorTareaTomada</from-outcome>
+			<to-view-id>/tomarTarea.jsp</to-view-id>
+		</navigation-case>			
+</navigation-rule>
+<navigation-rule>
+		<from-view-id>/derivarTarea.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>tareaDerivada</from-outcome>
+			<to-view-id>/derivarTarea.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>errorTareaDerivada</from-outcome>
+			<to-view-id>/derivarTarea.jsp</to-view-id>
+		</navigation-case>		
+</navigation-rule>
 
 
 <navigation-rule>

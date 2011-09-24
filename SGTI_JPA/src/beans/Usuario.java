@@ -10,6 +10,13 @@ import javax.persistence.*;
 		@NamedQuery(name="todosUsuarios", query="select u from Usuario u"),
 		@NamedQuery(name="usuarioPorCedula", query="select u from Usuario u where u.cedula = :cedula"),
 	})
+
+@NamedNativeQueries(
+		{
+		@NamedNativeQuery(name="tecnicosDelGrupoDelEncargado",
+				query ="SELECT *, 1 as clazz_ FROM Usuario U where U.cedula=any(select cedula from Tecnico T join Grupo_Tecnico GT join Grupo G where GT.Grupo_id = G.id and GT.colTecnicos_cedula=T.cedula and ((G.enc_cedula=?1)));",
+				resultClass=Usuario.class) 	 	 			
+		})
 		
 
 @Entity
@@ -18,6 +25,7 @@ public class Usuario implements Serializable {
 
 	   
 	@Id
+	@JoinColumn(name="cedula")
 	private long cedula;
 	private String nombre;
 	private String apellido;

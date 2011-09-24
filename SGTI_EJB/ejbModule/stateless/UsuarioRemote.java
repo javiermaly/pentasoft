@@ -15,11 +15,9 @@ public interface UsuarioRemote  {
 	public boolean eliminarUsuario(long ced);	
 	public List<Usuario> listarUsuarios();
 	public List<Tecnico> listarTecnicos();	
-	public List<Tecnico> listarTecnicosGrupo(Encargado u);
+	public List<Usuario> listarTecnicosGrupo(Encargado e);	
 	public Usuario encontrarUsuario(long ced);
 	public boolean actualizarUsuario(Usuario u);
 	public Usuario login(long ced, String pwd);
 	public List<Encargado> listarEncargadosHabilitados();
-	public List<Encargado> listarEncargadosSinGrupo();
-	public List<Encargado> listarEncargadosJoaquin(long valorCi);
 }

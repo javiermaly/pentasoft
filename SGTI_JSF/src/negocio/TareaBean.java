@@ -50,9 +50,9 @@ public class TareaBean {
 	private String varId;
 
 	private List<Tarea> listadoTareasFinalizadasNoCerradas;
-	private List<Tarea> listadoTareasAbiertas;
-	
-	private List<Tarea> listadoTareasAsignadasATecnico;
+	private List<Tarea> listadoTareasAbiertas;//para el home del Encargado
+	private List<Tarea> listadoTareasAsignadas;//
+	private List<Tarea> listTareasEnProcesoTecnico;
 
 	private String grupoId;
 	private int evento = 0;
@@ -63,6 +63,18 @@ public class TareaBean {
 
 	ConexionEJB con = new ConexionEJB();
 	FacadeRemote statelessFacade = con.conectar();
+
+	
+	public List<Tarea> getListTareasEnProcesoTecnico() {
+		Tecnico t = (Tecnico) usuSession.getUsuarioSession();
+		System.out.println("Esta es la cedula del ENCARGADO  " + t.getCedula());
+		listTareasEnProcesoTecnico = statelessFacade.listTareasEnProcesoTecnico(t);
+		return listTareasEnProcesoTecnico;
+	}
+
+	public void setListTareasEnProcesoTecnico(List<Tarea> listTareasEnProcesoTecnico) {
+		this.listTareasEnProcesoTecnico = listTareasEnProcesoTecnico;
+	}
 
 	public List<Tarea> getListadoTareasFinalizadasNoCerradas() {
 		listadoTareasFinalizadasNoCerradas = statelessFacade
@@ -85,6 +97,18 @@ public class TareaBean {
 	public void setListadoTareasAbiertas(List<Tarea> listadoTareasAbiertas) {
 		this.listadoTareasAbiertas = listadoTareasAbiertas;
 	}
+	
+	public List<Tarea> getListadoTareasAsignadas() {
+		Tecnico t = (Tecnico) usuSession.getUsuarioSession();
+		System.out.println("Esta es la cedula del Tecnico o encargado  " + t.getCedula());
+		listadoTareasAsignadas = statelessFacade.listTareasAsignadaTecnico(t);
+		return listadoTareasAsignadas;
+	}
+
+	public void setListadoTareasAsignadas(List<Tarea> listadoTareasAsignadas) {
+		this.listadoTareasAsignadas = listadoTareasAsignadas;
+	}
+	
 
 	public boolean isEsExterna() {
 		return esExterna;
@@ -199,13 +223,6 @@ public class TareaBean {
 		this.grupoId = grupoId;
 	}
 
-	// public String getTipoId() {
-	// return tipoId;
-	// }
-	//
-	// public void setTipo(String tipoId) {
-	// this.tipoId = tipoId;
-	// }
 
 	public String getVarId() {
 		return varId;
@@ -245,6 +262,14 @@ public class TareaBean {
 
 	public void setPrioridadStr(String prioridadStr) {
 		this.prioridadStr = prioridadStr;
+	}	
+
+	public String getTecnicoCed() {
+		return tecnicoCed;
+	}
+
+	public void setTecnicoCed(String tecnicoCed) {
+		this.tecnicoCed = tecnicoCed;
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
@@ -285,16 +310,18 @@ public class TareaBean {
 		this.comboTipos = comboTipos;
 	}
 
+	// combo para Tecnicos
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public ArrayList getComboTecnicos() {
-		System.out.println("el encargado del grupo es: " +usuSession.usuarioSession.getCedula());
-		Encargado u =(Encargado) statelessFacade.encontrarUsuario(usuSession.usuarioSession.getCedula());
-		List<Tecnico> tecnicos = statelessFacade.listarTecnicosGrupo(u);
-		
+		Encargado e = (Encargado) statelessFacade.encontrarUsuario(usuSession.usuarioSession.getCedula());
+		System.out.println("cedula del encargado que le paso "+e.getCedula());
+		List<Usuario> tecnicos = statelessFacade.listarTecnicosGrupo(e);
+		System.out.println("tecnicos "+tecnicos.toString());
 		for (int i = 0; i < tecnicos.size(); i++) {
-			Tecnico t = new Tecnico();
-			t = tecnicos.get(i);
+			Usuario u = new Usuario();
+			u = tecnicos.get(i);
 
-			comboTecnicos.add(new SelectItem(t.getCedula(), t.getApellido()));
+			comboTecnicos.add(new SelectItem(u.getCedula(), u.getApellido()));
 		}
 
 		
@@ -303,36 +330,6 @@ public class TareaBean {
 
 	public void setComboTecnicos(ArrayList comboTecnicos) {
 		this.comboTecnicos = comboTecnicos;
-	}
-	
-	
-	
-
-	public String getTecnicoCed() {
-		return tecnicoCed;
-	}
-
-	public void setTecnicoCed(String tecnicoCed) {
-		this.tecnicoCed = tecnicoCed;
-	}
-
-	public List<Tarea> getListadoTareasAsignadasATecnico() {
-		
-		Tecnico t =(Tecnico) statelessFacade.encontrarUsuario(usuSession.usuarioSession.getCedula());
-		
-		System.out.println("encontre el tecnico "+t.getCedula());
-		listadoTareasAsignadasATecnico=statelessFacade.tareasAsignadasATecnico(t);
-		
-		for(Tarea tar:listadoTareasAsignadasATecnico){
-        	System.out.println(tar.getDescripcion());
-        	
-        }
-		return listadoTareasAsignadasATecnico;
-	}
-
-	public void setListadoTareasAsignadasATecnico(
-			List<Tarea> listadoTareasAsignadasATecnico) {
-		this.listadoTareasAsignadasATecnico = listadoTareasAsignadasATecnico;
 	}
 
 	// ABRIR/CREAR LA TAREA
@@ -344,17 +341,10 @@ public class TareaBean {
 		Grupo g = new Grupo();
 		Cliente c = new Cliente();
 
-		c = cliSession.getClienteSession();// asignar a c el cliente que está en
-											// la sesion
+		c = cliSession.getClienteSession();// asignar a c el cliente que está en la sesion
 
-		tip = statelessFacade.buscarTipo(Integer.valueOf(varId));// encontrar el
-																	// tipo
-																	// pasado
-																	// para
-																	// asignarlo
-																	// a la
-																	// tarea
-
+		tip = statelessFacade.buscarTipo(Integer.valueOf(varId));// encontrar el tipo
+																	
 		tiene.setEstado(statelessFacade.buscarEstado(1));
 		tiene.setFechaInicio(Calendar.getInstance());
 
@@ -375,9 +365,9 @@ public class TareaBean {
 		t.setTipo(tip);
 		t.agregarTiene(tiene);
 
-		if (statelessFacade.abrirTarea(t, tiene, g) != 0) {
+		idMuestra = statelessFacade.abrirTarea(t, tiene, g);
+		if (idMuestra != 0) {
 			System.out.println("TAREA DADA DE ALTA");
-			idMuestra = statelessFacade.abrirTarea(t, tiene, g);
 			evento = 1;// exito
 			return "TareaAbierta";
 		} else {
@@ -556,57 +546,172 @@ public class TareaBean {
 
 	}
 
-	public String tomarTarea() {
-		String retorno;
-
-		try {
-			Tarea tarea = statelessFacade.buscarTarea(getId());
-			tarea.setObservacion(getObservacion());
-			System.out.println("tarea: " + tarea.getDescripcion());
-			System.out.println(usuSession.getUsuarioSession().getApellido());
-			System.out.println(usuSession.perfil);
-			Usuario usu = statelessFacade.encontrarUsuario(usuSession.usuarioSession.getCedula());
-
-			if (statelessFacade.tomarTarea(tarea, usu)) {
-				evento=5;
-				retorno = "tareaTomada";
-			
-			} else {
-				 evento=6;
-				retorno = "tareaNoTomada";
-				
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-			evento=6;
-			System.out.println("error en parametro recibido");
-			System.out.println("usuario de la sesion: "+usuSession.getUsuarioSession().getApellido());
-			retorno = "tareaNoTomada";
-		}
-
-		return retorno;
-
-	}
 	// prueba Asignar TArea
-	public String pasarParametros() {
-		// ActionEvent event
+	public String pasarPamAsignarTarea() {
+		
 		String retorno;
 		FacesContext context = FacesContext.getCurrentInstance();
 		HttpServletRequest myRequest = (HttpServletRequest)context.getExternalContext().getRequest();
 		System.out.println("id de la tarea recibido: "+ myRequest.getParameter("idTareaAsignar"));
-		// String idTarea =(String)
-		// event.getComponent().getAttributes().get("idTareaAsignar");
-		// FacesUtil.getActionAttribute(event, "nombreAtributo1");
-
-		if (myRequest.getParameter("idTareaAsignar") != null) {
+	
+		if (myRequest.getParameter("idTareaAsignar") != "") {
 			id = Long.parseLong(myRequest.getParameter("idTareaAsignar"));
-
-			retorno = "asignarTarea";
+			Tarea t = statelessFacade.buscarTarea(id);
+			prioridad=t.getPrioridad();
+			if (prioridad == 1) {
+				prioridadStr = "Alta";
+			} else if (prioridad == 2) {
+				prioridadStr = "Media";
+			} else if (prioridad == 3) {
+				prioridadStr = "Baja";
+			}
+			cliente=t.getCliente();
+			esExterna=t.getEsExterna();
+			descripcion=t.getDescripcion();
+			observacion=t.getObservacion();
+			fechaApertura=t.getFechaApertura();
+			if(t.getFechaComprometida()!=null){
+				fechaComprometida=t.getFechaComprometida().getTime();
+			}
+			tipoTarea=t.getTipo();		
+			
+			
+			retorno = "irAsignarTarea";
 		} else {
-			retorno = "ErrorAsignarTarea";
+			retorno = "errorIrAsignarTarea";
 		}
 		return retorno;
 	}
 
+	public String asignarTarea(){
+		Tarea tarea= statelessFacade.buscarTarea(id);
+		System.out.println("tarea id "+tarea.getId());
+		Tecnico tec= (Tecnico) statelessFacade.encontrarUsuario(Long.valueOf(tecnicoCed));
+		System.out.println("tecnico ced "+tec.getCedula());
+		Usuario usu= statelessFacade.encontrarUsuario(usuSession.usuarioSession.getCedula());
+		System.out.println("usu ced"+usu.getCedula());
+		
+				
+		if(statelessFacade.asignarTareaTecnico(tarea, tec, usu)){
+			evento=1;
+			return "tareaAsignada";
+		}else{
+			evento=2;
+			return "errorTareaAsignada";
+		}		
+		
+	}
+	
+	// prueba Derivar TArea
+	public String pasarPamDerivarTarea() {
+		
+		String retorno;
+		FacesContext context = FacesContext.getCurrentInstance();
+		HttpServletRequest myRequest = (HttpServletRequest)context.getExternalContext().getRequest();
+		System.out.println("id de la tarea recibido: "+ myRequest.getParameter("idTareaDerivar"));
+	
+		if (myRequest.getParameter("idTareaDerivar") != "") {
+			id = Long.parseLong(myRequest.getParameter("idTareaDerivar"));
+			Tarea t = statelessFacade.buscarTarea(id);
+			prioridad=t.getPrioridad();
+			if (prioridad == 1) {
+				prioridadStr = "Alta";
+			} else if (prioridad == 2) {
+				prioridadStr = "Media";
+			} else if (prioridad == 3) {
+				prioridadStr = "Baja";
+			}
+			cliente=t.getCliente();
+			esExterna=t.getEsExterna();
+			descripcion=t.getDescripcion();
+			observacion=t.getObservacion();
+			fechaApertura=t.getFechaApertura();
+			if(t.getFechaComprometida()!=null){
+				fechaComprometida=t.getFechaComprometida().getTime();
+			}
+			tipoTarea=t.getTipo();	
+			
+			
+			retorno = "irDerivarTarea";
+		} else {
+			retorno = "errorIrDerivarTarea";
+		}
+		return retorno;
+	}
+
+	public String derivarTarea(){
+		Tarea tarea= statelessFacade.buscarTarea(id);
+		System.out.println("tarea id "+tarea.getId());
+		Grupo gr = statelessFacade.buscarGrupo(Integer.valueOf(grupoId));
+		System.out.println("grupo id "+gr.getId());
+		Usuario usu= statelessFacade.encontrarUsuario(usuSession.usuarioSession.getCedula());
+		System.out.println("usu ced"+usu.getCedula());		
+				
+		if(statelessFacade.derivarTarea(tarea, gr, usu)){
+			evento=1;
+			return "tareaAsignada";
+		}else{
+			evento=2;
+			return "errorTareaAsignada";
+		}		
+		
+	}
+	
+	
+	// prueba Asignar TArea
+	public String pasarPamTomarTarea() {
+		
+		String retorno;
+		FacesContext context = FacesContext.getCurrentInstance();
+		HttpServletRequest myRequest = (HttpServletRequest)context.getExternalContext().getRequest();
+		System.out.println("id de la tarea recibido: "+ myRequest.getParameter("idTareaTomar"));
+	
+		if (myRequest.getParameter("idTareaTomar") != "") {
+			id = Long.parseLong(myRequest.getParameter("idTareaTomar"));
+			Tarea t = statelessFacade.buscarTarea(id);
+			prioridad=t.getPrioridad();
+			if (prioridad == 1) {
+				prioridadStr = "Alta";
+			} else if (prioridad == 2) {
+				prioridadStr = "Media";
+			} else if (prioridad == 3) {
+				prioridadStr = "Baja";
+			}
+			cliente=t.getCliente();
+			esExterna=t.getEsExterna();
+			descripcion=t.getDescripcion();
+			observacion=t.getObservacion();
+			fechaApertura=t.getFechaApertura();
+			if(t.getFechaComprometida()!=null){
+				fechaComprometida=t.getFechaComprometida().getTime();
+			}
+			tipoTarea=t.getTipo();		
+			
+			
+			retorno = "irTomarTarea";
+		} else {
+			retorno = "errorIrTomarTarea";
+		}
+		return retorno;
+	}
+
+	public String tomarTarea(){
+		Tarea tarea= statelessFacade.buscarTarea(id);
+		System.out.println("tarea id "+tarea.getId());
+		
+		Usuario usu= statelessFacade.encontrarUsuario(usuSession.usuarioSession.getCedula());
+		System.out.println("usu ced"+usu.getCedula());
+			
+				
+		if(statelessFacade.tomarTarea(tarea, usu)){
+			evento=1;
+			return "tareaTomada";
+		}else{
+			evento=2;
+			return "errorTareaTomada";
+		}		
+		
+	}
+	
+	
 }

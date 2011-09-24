@@ -44,11 +44,10 @@
 				</td>
 			</tr>
 			<tr>
-				<th>Encargado<h:messages />
-				</th>
+				<th>Encargado</th>
 				<td>
 					<h:selectOneMenu id="comboEncargadosHabilitados" value="#{GrupoBean.encargadoCed}"> 					 					
-						<f:selectItems value="#{GrupoBean.encargadosSinGrupo}"/>
+						<f:selectItems value="#{GrupoBean.encargadosHabilitados}"/>
 								
 					</h:selectOneMenu>					
 				</td>

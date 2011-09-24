@@ -24,7 +24,7 @@ public class FacadeMain implements FacadeRemote {
 		return statelessMTar.agregarTarea(t, tiene, g);
 	}
 
-//	public boolean tomarTarea(Tarea t, Realiza r) {// cuando un técnico trabaja sobre la tarea
+//	public boolean tomarTarea(Tarea t, Realiza r, Tipo ti) {// cuando un técnico trabaja sobre la tarea
 //		statelessMTar.altaTareaRealiza(t, r);
 //		return true;
 //	}
@@ -367,8 +367,8 @@ public class FacadeMain implements FacadeRemote {
 		
 	}
 	
-	public List<Tecnico> listarTecnicosGrupo(Encargado u){
-		return statelessMUsu.listarTecnicosGrupo(u);
+	public List<Usuario> listarTecnicosGrupo(Encargado e){
+		return statelessMUsu.listarTecnicosGrupo(e);
 	}
 
 	@Override
@@ -399,22 +399,16 @@ public class FacadeMain implements FacadeRemote {
 		 return listTareasAbiertasGrupo;
 	 }
 	
-	 public List<Encargado> listarEncargadosSinGrupo(){
-		 List<Encargado> listarEncargadosSinGrupo=null;
-		 listarEncargadosSinGrupo=statelessMUsu.listarEncargadosSinGrupo();
-		 return listarEncargadosSinGrupo;
-	 }
-	 public List<Tarea> tareasAsignadasATecnico(Tecnico t){
-		 List<Tarea> tareasAsignadasATecnico=null;
-		 tareasAsignadasATecnico=statelessMTar.tareasAsignadasATecnico(t);
-		 return tareasAsignadasATecnico;
+	 public List<Tarea> listTareasAsignadaTecnico(Tecnico t){
+		List<Tarea> listTareasAsignadaTecnico=null;
+		listTareasAsignadaTecnico=statelessMTar.listTareasAsignadaTecnico(t);
+		return listTareasAsignadaTecnico;
 	 }
 	 
-	 public List<Encargado> listarEncargadosJoaquin(long valorCi){
-		 List<Encargado> listarEncargadosJoaquin=null;
-		 listarEncargadosJoaquin=statelessMUsu.listarEncargadosJoaquin(valorCi);
-		 return listarEncargadosJoaquin;
+	 public List<Tarea> listTareasEnProcesoTecnico(Tecnico t){
+		 List<Tarea> listTareasEnProcesoTecnico=null;
+		 listTareasEnProcesoTecnico=statelessMTar.listTareasEnProcesoTecnico(t);
+			return listTareasEnProcesoTecnico;
 	 }
-	
 	
 }

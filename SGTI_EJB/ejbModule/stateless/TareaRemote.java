@@ -48,8 +48,8 @@ public interface TareaRemote {
 	public List<Tarea> tareasFinalizadasNoCerradas();
 	public List<Tarea> listTareasAbiertasGrupos(Encargado e);//lista de tareas con estado abierta para un encargado en un determinado grupo
 	public List<Grupo> listadoGrupos();
-	public List<Tarea> tareasAsignadasATecnico(Tecnico t);
-
+	public List<Tarea> listTareasAsignadaTecnico(Tecnico t);
+	public List<Tarea> listTareasEnProcesoTecnico(Tecnico t);
 	
     //buscar el tipo de tarea
     public Tipo encontrarTipo(int id);

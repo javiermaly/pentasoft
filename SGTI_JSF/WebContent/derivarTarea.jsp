@@ -2,19 +2,17 @@
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 
 <f:view>
-
-
 <f:subview id="header">
 	<%@include file="header.jsp"%>
 </f:subview>
 <h:form >
-<h1>Asignar Tarea</h1>
+<h1>Derivar Tarea</h1>
 		<table border="1">		
 			<tr>
-				<th>Asignar la Tarea al Técnico: </th>				
+				<th>Derivar la Tarea al Grupo: </th>				
 				<td>
-					<h:selectOneMenu id="comboTecnicos" value="#{TareaBean.tecnicoCed}"> 					 					
-						<f:selectItems value="#{TareaBean.comboTecnicos}"/>								
+					<h:selectOneMenu id="comboGrupos" value="#{TareaBean.grupoId}"> 					 					
+						<f:selectItems value="#{TareaBean.comboGrupos}"/>								
 					</h:selectOneMenu>					
 				</td>
 			</tr>
@@ -94,6 +92,6 @@
 
 </f:view>
 
-</div>
+
 </body>
 </html>

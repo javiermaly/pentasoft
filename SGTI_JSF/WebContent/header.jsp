@@ -8,15 +8,23 @@
 <html>
 <head>
 <title></title>
-
-	<style type="text/css" ></style>
-	
 	<link rel="stylesheet" type="text/css" href="estilo.css" media="screen" />
-
+</head>
+<body>
+<div class="wrap">
 <f:subview id="header">
+	<div class="header">
+    		<div class="logo"><img src="./images/logo.png" alt="" title="" border="0"></div>
+			<div class="usuarioLog">Usuario: PEDRO / ENCARGADO <br />
+				<img style="margin-top: 5px;" src="./images/logout.png" alt="" title="" border="0">
+			</div>
+			
+	</div>
+	<div class="clear"></div>
 
 	<h:form rendered="#{UsuarioBean.perfil==1}">	
 		<h1>ADMINISTRADOR</h1>
+		
 			<div id="menu">
             <ul id="nav">
  
@@ -108,11 +116,11 @@
 
 				<li><span>Tareas</span>
 					<ul>
-						<li><a href="buscarTarea.jsf">Buscar Tarea</a></li>
+						<li><a href="#">Buscar Tarea</a></li>
 						<li><a href="#">Asignar Tarea</a></li>
-						<li><a href="tomarTarea.jsf">Tomar Tarea</a></li>
+						<li><a href="#">Tomar Tarea</a></li>
 						<li><a href="#">Derivar Tarea</a></li>
-						<li><a href="finalizarTarea.jsf">Finalizar Tarea</a></li>						
+						<li><a href="#">Finalizar Tarea</a></li>						
 					</ul>
 				</li>
 				<li><span>Clientes</span>
@@ -122,7 +130,7 @@
 				</li>
 				<li><span>Usuarios</span>
 					<ul>
-						<li><a href="buscarUsuario.jsf">Buscar Usuario</a></li>
+						<li><a href="#">Buscar Tecnico</a></li>
 					</ul>
 				</li>
 			</ul>
@@ -138,14 +146,16 @@
 				<li><span>Tareas</span>
 					<ul>
 						<li><a href="buscarTarea.jsf">Buscar Tarea</a></li>
-						<li><a href="tomarTarea.jsf">Tomar Tarea</a></li>
-						<li><a href="derivarTarea.jsf">Derivar Tarea</a></li>
-						<li><a href="finalizarTarea.jsf">Finalizar Tarea</a></li>
+						<li><a href="#">Tomar Tarea</a></li>
+						<li><a href="#">Derivar Tarea</a></li>
+						<li><a href="#">Finalizar Tarea</a></li>
 					</ul>
 				</li>
 			</ul>
-		</div>	
+		</div>
+		
+	
 	</h:form>
+
 </f:subview>
-</head>
-<body>
+
