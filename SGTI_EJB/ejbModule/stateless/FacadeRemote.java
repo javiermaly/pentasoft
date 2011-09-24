@@ -10,12 +10,13 @@ import beans.*;
 public interface FacadeRemote {
         //TAREAS
 		public long abrirTarea(Tarea t, Tiene tiene, Grupo g);//queda dada de alta y asignada a un grupo con una prioridad determinada
-       // public boolean tomarTarea(Tarea t, Realiza r, Tipo ti);//cuando el tecnico trabaja sobre la tarea
+       // public boolean tomarTarea(Tarea t, Realiza r);//cuando el tecnico trabaja sobre la tarea
+        public boolean tomarTarea(Tarea tar, Usuario usu);//cuando el técnico o encargado empiezan a trabajar sobre la tarea
         public Tarea buscarTarea(long id);
         public Tarea modificarTarea(Tarea t);
         public boolean bajaTarea(Tarea t); //Solo si estado=ABIERTA
         public boolean asignarTareaGrupo(Tarea tar, Grupo gr);//solo Administrativo, administrador
-        public boolean tomarTarea(Tarea tar, Usuario usu);//cuando el técnico o encargado empiezan a trabajar sobre la tarea
+       
         public boolean finalizarTarea(Tarea tar, Usuario usu);//cuando el técnico o encargado finalizan la tarea
         public boolean asignarTareaTecnico(Tarea tar, Tecnico tec, Usuario usu);//Solo lo puede hacer el encargado y a los tecnicos de su grupo
         public boolean derivarTarea(Tarea tar, Grupo gr, Usuario usu); //solo encargado y administrador
@@ -54,6 +55,7 @@ public interface FacadeRemote {
         public List<Usuario> listarUsuarios();
         public List<Encargado> listarEncargadosHabilitados();
         public List<Tecnico> listarTecnicos();
+        public List<Encargado> listarEncargadosSinGrupo();
         public List<Usuario> listarTecnicosGrupo(Encargado e);
         
         //TIPO

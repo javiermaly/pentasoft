@@ -34,24 +34,24 @@
 				</td>
 			</tr>
 			<tr>
-				<th>Cédula / RUT: </th>
+				<th>Cï¿½dula / RUT: </th>
 				<td><h:inputText id="cedrut" value="#{ClienteBean.cedRut}" required="true">
 					<f:validateLength minimum="8" maximum="15"></f:validateLength>
 					<f:converter converterId="javax.faces.Long"/></h:inputText>
 				</td><h:message for="cedrut" style="color:red"></h:message>
 			</tr>
 			<tr>
-				<th>Nombre Completo / Razón Social:</th>
+				<th>Nombre Completo / Razï¿½n Social:</th>
 				<td><h:inputText value="#{ClienteSession.clienteSession.nombre_RazonSocial}"></h:inputText>
 				</td>
 			</tr>
 			<tr>
-				<th>Dirección:</th>
+				<th>Direcciï¿½n:</th>
 				<td><h:inputText value="#{ClienteSession.clienteSession.direccion}"></h:inputText>
 				</td>
 			</tr>
 			<tr>
-				<th>Teléfono</th>
+				<th>Telï¿½fono</th>
 					<td><h:inputText id="telefono" value="#{ClienteSession.clienteSession.telefono}">
 							<f:converter converterId="javax.faces.Integer"/>							
 						</h:inputText>

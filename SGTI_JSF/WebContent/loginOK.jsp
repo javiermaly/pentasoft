@@ -82,7 +82,7 @@
 				</h:column>
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="ACCIÓN"></h:outputText>
+						<h:outputText value="ACCIï¿½N"></h:outputText>
 					</f:facet>
 					<h:commandLink value="Cerrar" target="loginOK.jsf" action="#{TareaBean.cerrarTareaDesdeListado}"> 
 						<f:param id="idTareaBoton" name="idTareaBoton" value="#{tarea.id}" /> 
@@ -90,7 +90,7 @@
 				</h:column>
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="ACCIÓN"></h:outputText>
+						<h:outputText value="ACCIï¿½N"></h:outputText>
 					</f:facet>
 					<h:commandLink value="Re-Abrir" target="loginOK.jsf" action="#{TareaBean.reabrirTareaDesdeListado}"> 
 						<f:param id="idTareaReAbrir" name="idTareaReAbrir" value="#{tarea.id}" /> 
@@ -106,7 +106,7 @@
 	<h:form id="listadoEncargado" rendered="#{UsuarioBean.perfil==3}">
 
 		<center>
-			<h1>Listado de Tareas de su Grupo para Asignar a los Técnicos</h1>
+			<h1>Listado de Tareas de su Grupo para Asignar a los Tï¿½cnicos</h1>
 
 			<h:dataTable value="#{TareaBean.listadoTareasAbiertas}"	var="tarea" border="1">
 				<h:column>
@@ -170,7 +170,7 @@
 				</h:column>
 				<h:column>
 					<f:facet name="header" >
-						<h:outputText value="ACCIÓN" ></h:outputText>
+						<h:outputText value="ACCIï¿½N" ></h:outputText>
 					</f:facet>
 					<h:commandLink value="Asignar" action="#{TareaBean.pasarPamAsignarTarea}">
 						<f:param  id="idTareaAsignar" name="idTareaAsignar" value="#{tarea.id}"></f:param>
@@ -244,7 +244,7 @@
 				</h:column>
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="ACCIÓN"></h:outputText>
+						<h:outputText value="ACCIï¿½N"></h:outputText>
 					</f:facet>
 					<h:commandLink value="Tomar" action="#{TareaBean.pasarPamTomarTarea}"> 
 						<f:param  id="idTareaTomar" name="idTareaTomar" value="#{tarea.id}" /> 
@@ -253,6 +253,8 @@
 
 			</h:dataTable>
 		</center>
+	
+
 		
 		
 		<center>
@@ -320,7 +322,7 @@
 				</h:column>
 				<h:column>
 					<f:facet name="header" >
-						<h:outputText value="ACCIÓN" ></h:outputText>
+						<h:outputText value="ACCIï¿½N" ></h:outputText>
 					</f:facet>
 					<h:commandLink value="Finalizar" action="#{TareaBean.pasarPamFinalizarTarea}">
 						<f:param  id="idTareaFinalizar" name="idTareaFinalizar" value="#{tarea.id}"></f:param>
@@ -328,7 +330,7 @@
 				</h:column>
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="ACCIÓN"></h:outputText>
+						<h:outputText value="ACCIï¿½N"></h:outputText>
 					</f:facet>
 					<h:commandLink value="Derivar" action="#{TareaBean.pasarPamDerivarTarea}"> 
 						<f:param  id="idTareaDerivar" name="idTareaDerivar" value="#{tarea.id}" /> 

@@ -264,14 +264,6 @@ public class TareaBean {
 		this.prioridadStr = prioridadStr;
 	}	
 
-	public String getTecnicoCed() {
-		return tecnicoCed;
-	}
-
-	public void setTecnicoCed(String tecnicoCed) {
-		this.tecnicoCed = tecnicoCed;
-	}
-
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public ArrayList getComboGrupos() {
 

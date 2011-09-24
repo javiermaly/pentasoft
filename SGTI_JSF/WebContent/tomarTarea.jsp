@@ -34,7 +34,7 @@
 				</td>
 			</tr>
 			<tr>
-				<th>Descripción:</th>
+				<th>Descripciï¿½n:</th>
 				<td><h:outputText value="#{TareaBean.descripcion}"></h:outputText>
 				</td>
 			</tr>

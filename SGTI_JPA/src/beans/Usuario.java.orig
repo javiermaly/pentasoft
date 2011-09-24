@@ -4,33 +4,40 @@ import java.io.Serializable;
 import java.lang.String;
 import javax.persistence.*;
 
-/**
- * Entity implementation class for Entity: Usuario
- *
- */
+
+@Inheritance(strategy=InheritanceType.JOINED)
+@NamedQueries(value = { 
+		@NamedQuery(name="todosUsuarios", query="select u from Usuario u"),
+		@NamedQuery(name="usuarioPorCedula", query="select u from Usuario u where u.cedula = :cedula"),
+	})
+
+@NamedNativeQueries(
+		{
+		@NamedNativeQuery(name="tecnicosDelGrupoDelEncargado",
+				query ="SELECT *, 1 as clazz_ FROM Usuario U where U.cedula=any(select cedula from Tecnico T join Grupo_Tecnico GT join Grupo G where GT.Grupo_id = G.id and GT.colTecnicos_cedula=T.cedula and ((G.enc_cedula=?1)));",
+				resultClass=Usuario.class) 	 	 			
+		})
+		
+
 @Entity
 
 public class Usuario implements Serializable {
 
 	   
 	@Id
-<<<<<<< local
+	@JoinColumn(name="cedula")
 	private long cedula;
-=======
-	private Long cedula;
->>>>>>> other
 	private String nombre;
-<<<<<<< local
 	private String apellido;
-=======
-	private String apellido;//hice esta modificación desde mi PC
->>>>>>> other
 	private String usuario;
 	private String pwd;
 	private String telefono;
 	private String direccion;
 	private String celular;
+	private boolean habilitado;
 	private static final long serialVersionUID = 1L;
+	@Transient
+	private String perfil;
 
 	public Usuario() {
 		super();
@@ -42,47 +49,20 @@ public class Usuario implements Serializable {
 	public void setCedula(long cedula) {
 		this.cedula = cedula;
 	}   
-<<<<<<< local
-=======
-	
- 
->>>>>>> other
 	public String getNombre() {
-<<<<<<< local
 		return this.nombre;
-=======
-		return nombre;
->>>>>>> other
 	}
-<<<<<<< local
 
-=======
->>>>>>> other
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
-<<<<<<< local
 	}   
-=======
-	}
->>>>>>> other
 	public String getApellido() {
-<<<<<<< local
 		return this.apellido;
-=======
-		return apellido;
->>>>>>> other
 	}
-<<<<<<< local
 
-=======
->>>>>>> other
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
-<<<<<<< local
 	}   
-=======
-	}
->>>>>>> other
 	public String getUsuario() {
 		return this.usuario;
 	}
@@ -118,5 +98,18 @@ public class Usuario implements Serializable {
 	public void setCelular(String celular) {
 		this.celular = celular;
 	}
+	public boolean isHabilitado() {
+		return habilitado;
+	}
+	public void setHabilitado(boolean habilitado) {
+		this.habilitado = habilitado;
+	}
+	public String getPerfil() {
+		return perfil;
+	}
+	public void setPerfil(String perfil) {
+		this.perfil = perfil;
+	}
+	
    
 }

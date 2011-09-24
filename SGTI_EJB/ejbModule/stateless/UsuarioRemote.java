@@ -20,4 +20,6 @@ public interface UsuarioRemote  {
 	public boolean actualizarUsuario(Usuario u);
 	public Usuario login(long ced, String pwd);
 	public List<Encargado> listarEncargadosHabilitados();
+	public List<Encargado> listarEncargadosSinGrupo();
+
 }

@@ -137,7 +137,6 @@ public class ManagerT implements TareaRemote {
 													// tarea en #3 En proceso
 		boolean retorno = false;
 		t = em.merge(t);
-//		t=em.find(Tarea.class, t.getId());
 		Realiza r = realizaDeTarea(t);
 		Estado estado = encontrarEstado(3);
 
@@ -437,12 +436,11 @@ public class ManagerT implements TareaRemote {
 	// PUEDE AVANZAR AL SIGUIENTE ESTADO PROPUESTO
 	public boolean validarEstadoSiguiente(Estado estadoActual, Estado estadoSgte) {
 		boolean retorno = false;
-
 		System.out.println("estado actual: " + estadoActual.getDescripcion());
 		System.out.println("estado sgte: " + estadoSgte.getDescripcion());
-
 		List<Estado> listSgteEst = dameEstadosSgtes(estadoActual);
-
+		
+		
 		for (Estado esta : listSgteEst) {
 			if (esta.getId() == estadoSgte.getId()) {
 				System.out
@@ -456,11 +454,8 @@ public class ManagerT implements TareaRemote {
 						+ esta.getDescripcion() + "- estado sigte: "
 						+ estadoSgte.getDescripcion());
 			}
-
 		}
-
 		return retorno;
-
 	}
 
 	public boolean avanzarTareaEstado(Tarea tar, Estado sigEst) {
@@ -504,7 +499,7 @@ public class ManagerT implements TareaRemote {
 		
 		return listTareasAbiertasGrupos;
 	}
-
+	
 	public List<Tarea> listTareasAsignadaTecnico(Tecnico t) {
 		
 		List<Tarea> listTareasAsignadaTecnico = em.createNamedQuery("listTareasAsignadaTecnico").setParameter(1, em.getReference(Tecnico.class, t.getCedula())).getResultList();

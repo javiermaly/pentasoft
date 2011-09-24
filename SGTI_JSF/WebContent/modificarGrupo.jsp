@@ -38,7 +38,7 @@
 				</td>
 			</tr>
 			<tr>
-				<th>Descripción</th>
+				<th>Descripciï¿½n</th>
 				<td>
 				<h:inputText id="descripcion" value="#{GrupoBean.descripcion}" ></h:inputText>
 				</td>
@@ -47,7 +47,7 @@
 				<th>Encargado</th>
 				<td>
 					<h:selectOneMenu id="comboEncargadosHabilitados" value="#{GrupoBean.encargadoCed}"> 					 					
-						<f:selectItems value="#{GrupoBean.encargadosHabilitados}"/>
+						<f:selectItems value="#{GrupoBean.encargadosSinGrupo}"/>
 								
 					</h:selectOneMenu>					
 				</td>

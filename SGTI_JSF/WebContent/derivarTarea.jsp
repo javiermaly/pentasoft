@@ -40,7 +40,7 @@
 				</td>
 			</tr>
 			<tr>
-				<th>Descripción:</th>
+				<th>Descripciï¿½n:</th>
 				<td><h:outputText value="#{TareaBean.descripcion}"></h:outputText>
 				</td>
 			</tr>
@@ -78,7 +78,7 @@
 	<h:form rendered="#{TareaBean.evento==1}">
 		<table border="1">
 			<tr>
-				<th>La tarea se asignó correctamente!</th>
+				<th>La tarea se asignï¿½ correctamente!</th>
 			</tr>
 		</table>
 	</h:form>

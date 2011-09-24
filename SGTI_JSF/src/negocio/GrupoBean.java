@@ -24,23 +24,29 @@ public class GrupoBean {
 	@SuppressWarnings("rawtypes")
 	private ArrayList encargadosHabilitados = new ArrayList();
 
-//	public String getEncargadoSeleccionado() {
-//		Grupo gr = statelessFacade.buscarGrupo(id);
-//		if (gr != null) {
-//			System.out.println(gr.getDescripcion());
-//			encargadoSeleccionado = gr.getEnc().getCedula()+""; // This will be
-//																// the
-//																// default
-//																// selected
-//																// item.
-//		}
-//		return encargadoSeleccionado;
-//	}
+	@SuppressWarnings("rawtypes")
+	private ArrayList encargadosSinGrupo = new ArrayList();
 
-//	public void setEncargadoSeleccionado(String encargado) {
-//		System.out.println("encargado ced: "+encargado);
-//		this.encargadoSeleccionado = encargado;
-//	}
+	@SuppressWarnings("rawtypes")
+	private ArrayList encargadosSinGrupoMasEncargadoActual = new ArrayList();
+
+	// public String getEncargadoSeleccionado() {
+	// Grupo gr = statelessFacade.buscarGrupo(id);
+	// if (gr != null) {
+	// System.out.println(gr.getDescripcion());
+	// encargadoSeleccionado = gr.getEnc().getCedula()+""; // This will be
+	// // the
+	// // default
+	// // selected
+	// // item.
+	// }
+	// return encargadoSeleccionado;
+	// }
+
+	// public void setEncargadoSeleccionado(String encargado) {
+	// System.out.println("encargado ced: "+encargado);
+	// this.encargadoSeleccionado = encargado;
+	// }
 
 	public int getId() {
 		return id;
@@ -59,16 +65,16 @@ public class GrupoBean {
 	}
 
 	public String getEncargadoCed() {
-		Grupo gr = statelessFacade.buscarGrupo(id);
-		if (gr != null) {
-			System.out.println(gr.getDescripcion());
-			encargadoCed = gr.getEnc().getCedula()+""; // This will be
-																// the
-																// default
-																// selected
-																// item.
-		}
-		
+//		Grupo gr = statelessFacade.buscarGrupo(id);
+//		if (gr != null) {
+//			System.out.println(gr.getDescripcion());
+//			encargadoCed = gr.getEnc().getCedula() + ""; // This will be
+//															// the
+//															// default
+//															// selected
+//															// item.
+//		}
+
 		return encargadoCed;
 	}
 
@@ -92,7 +98,7 @@ public class GrupoBean {
 	public void setListGrupos(List<Grupo> listGrupos) {
 		this.listGrupos = listGrupos;
 	}
-
+	
 	@SuppressWarnings("rawtypes")
 	public void setEncargadosHabilitados(ArrayList encargadosHabilitados) {
 		this.encargadosHabilitados = encargadosHabilitados;
@@ -112,6 +118,56 @@ public class GrupoBean {
 					.getApellido()));
 		}
 		return encargadosHabilitados;
+	}
+
+	@SuppressWarnings("unchecked")
+	public ArrayList getEncargadosSinGrupo() {
+		System.out.println("Entro al metodo getEncargadosSinGrupo");
+		
+		List<Encargado> encargados = statelessFacade.listarEncargadosJoaquin(Long.parseLong(encargadoCed));
+		encargadosSinGrupo.clear();
+		for (int i = 0; i < encargados.size(); i++) {
+			Encargado enc = new Encargado();
+			enc = (Encargado) encargados.get(i);
+
+			encargadosSinGrupo.add(new SelectItem(enc.getCedula(), enc
+					.getApellido()));
+			System.out.println(enc.getCedula() + enc.getApellido());
+		}
+		return encargadosSinGrupo;
+	}
+
+	public void setEncargadosSinGrupo(ArrayList encargadosSinGrupo) {
+
+		this.encargadosSinGrupo = encargadosSinGrupo;
+	}
+
+	@SuppressWarnings("unchecked")
+	public ArrayList getEncargadosSinGrupoMasEncargadoActual() {
+	//	encargadosSinGrupoMasEncargadoActual.clear();
+		List<Encargado> encargados = statelessFacade.listarEncargadosSinGrupo();
+		
+		Grupo g = statelessFacade.buscarGrupo(id);
+		Encargado enc=g.getEnc();
+		
+		System.out.println("getEncargadosSinGrupoMasEncargadoActual " +enc.getCedula() );
+		
+		encargadosSinGrupoMasEncargadoActual.add(new SelectItem(enc.getCedula(),enc.getApellido()));
+		
+		for (int i = 0; i < encargados.size(); i++) {
+			Encargado enca = new Encargado();
+			enca = (Encargado) encargados.get(i);
+
+			encargadosSinGrupoMasEncargadoActual.add(new SelectItem(enca
+					.getCedula(), enca.getApellido()));
+			System.out.println(enca.getCedula() + enca.getApellido());
+		}
+		return encargadosSinGrupoMasEncargadoActual;
+	}
+
+	public void setEncargadosSinGrupoMasEncargadoActual(
+			ArrayList encargadosSinGrupoMasEncargadoActual) {
+		this.encargadosSinGrupoMasEncargadoActual = encargadosSinGrupoMasEncargadoActual;
 	}
 
 	public String altaGrupo() {

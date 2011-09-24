@@ -38,11 +38,11 @@
 				</td>
 			</tr>
 			<tr>
-				<th>Nombre o Razón Social: </th>
+				<th>Nombre o Razï¿½n Social: </th>
 				<th><h:outputText value="#{ClienteSession.clienteSession.nombre_RazonSocial}"></h:outputText></th>
 			</tr>
 			<tr>
-				<th>Dirección:</th>
+				<th>Direcciï¿½n:</th>
 				<td><h:outputText value="#{ClienteSession.clienteSession.direccion}"></h:outputText>
 				</td>
 			</tr>
