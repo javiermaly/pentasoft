@@ -24,10 +24,10 @@ public class FacadeMain implements FacadeRemote {
 		return statelessMTar.agregarTarea(t, tiene, g);
 	}
 
-	public boolean tomarTarea(Tarea t, Realiza r, Tipo ti) {// cuando un técnico trabaja sobre la tarea
-		statelessMTar.altaTareaRealiza(t, r);
-		return true;
-	}
+//	public boolean tomarTarea(Tarea t, Realiza r) {// cuando un técnico trabaja sobre la tarea
+//		statelessMTar.altaTareaRealiza(t, r);
+//		return true;
+//	}
 
 	public Tarea buscarTarea(long id) { // buscar una tarea
 		Tarea t = statelessMTar.encontrarTarea(id);
@@ -408,6 +408,12 @@ public class FacadeMain implements FacadeRemote {
 		 List<Tarea> tareasAsignadasATecnico=null;
 		 tareasAsignadasATecnico=statelessMTar.tareasAsignadasATecnico(t);
 		 return tareasAsignadasATecnico;
+	 }
+	 
+	 public List<Encargado> listarEncargadosJoaquin(long valorCi){
+		 List<Encargado> listarEncargadosJoaquin=null;
+		 listarEncargadosJoaquin=statelessMUsu.listarEncargadosJoaquin(valorCi);
+		 return listarEncargadosJoaquin;
 	 }
 	
 	

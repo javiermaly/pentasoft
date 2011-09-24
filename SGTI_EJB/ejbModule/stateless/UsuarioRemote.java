@@ -21,4 +21,5 @@ public interface UsuarioRemote  {
 	public Usuario login(long ced, String pwd);
 	public List<Encargado> listarEncargadosHabilitados();
 	public List<Encargado> listarEncargadosSinGrupo();
+	public List<Encargado> listarEncargadosJoaquin(long valorCi);
 }

@@ -556,6 +556,38 @@ public class TareaBean {
 
 	}
 
+	public String tomarTarea() {
+		String retorno;
+
+		try {
+			Tarea tarea = statelessFacade.buscarTarea(getId());
+			tarea.setObservacion(getObservacion());
+			System.out.println("tarea: " + tarea.getDescripcion());
+			System.out.println(usuSession.getUsuarioSession().getApellido());
+			System.out.println(usuSession.perfil);
+			Usuario usu = statelessFacade.encontrarUsuario(usuSession.usuarioSession.getCedula());
+
+			if (statelessFacade.tomarTarea(tarea, usu)) {
+				evento=5;
+				retorno = "tareaTomada";
+			
+			} else {
+				 evento=6;
+				retorno = "tareaNoTomada";
+				
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			evento=6;
+			System.out.println("error en parametro recibido");
+			System.out.println("usuario de la sesion: "+usuSession.getUsuarioSession().getApellido());
+			retorno = "tareaNoTomada";
+		}
+
+		return retorno;
+
+	}
 	// prueba Asignar TArea
 	public String pasarParametros() {
 		// ActionEvent event

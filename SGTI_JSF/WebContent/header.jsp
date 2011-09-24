@@ -108,11 +108,11 @@
 
 				<li><span>Tareas</span>
 					<ul>
-						<li><a href="#">Buscar Tarea</a></li>
+						<li><a href="buscarTarea.jsf">Buscar Tarea</a></li>
 						<li><a href="#">Asignar Tarea</a></li>
-						<li><a href="#">Tomar Tarea</a></li>
+						<li><a href="tomarTarea.jsf">Tomar Tarea</a></li>
 						<li><a href="#">Derivar Tarea</a></li>
-						<li><a href="#">Finalizar Tarea</a></li>						
+						<li><a href="finalizarTarea.jsf">Finalizar Tarea</a></li>						
 					</ul>
 				</li>
 				<li><span>Clientes</span>
@@ -122,7 +122,7 @@
 				</li>
 				<li><span>Usuarios</span>
 					<ul>
-						<li><a href="#">Buscar Tecnico</a></li>
+						<li><a href="buscarUsuario.jsf">Buscar Usuario</a></li>
 					</ul>
 				</li>
 			</ul>
@@ -138,9 +138,9 @@
 				<li><span>Tareas</span>
 					<ul>
 						<li><a href="buscarTarea.jsf">Buscar Tarea</a></li>
-						<li><a href="#">Tomar Tarea</a></li>
-						<li><a href="#">Derivar Tarea</a></li>
-						<li><a href="#">Finalizar Tarea</a></li>
+						<li><a href="tomarTarea.jsf">Tomar Tarea</a></li>
+						<li><a href="derivarTarea.jsf">Derivar Tarea</a></li>
+						<li><a href="finalizarTarea.jsf">Finalizar Tarea</a></li>
 					</ul>
 				</li>
 			</ul>

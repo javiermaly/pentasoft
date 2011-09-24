@@ -14,6 +14,8 @@ public class GrupoBean {
 	private int id = 0;
 	private String descripcion;
 	private String encargadoCed;
+	private Encargado encargadoActual;
+	private SelectItem selItem;
 	private List<Grupo> listGrupos;
 	// private String encargadoSeleccionado;
 	private int evento = 0;
@@ -65,15 +67,15 @@ public class GrupoBean {
 	}
 
 	public String getEncargadoCed() {
-		Grupo gr = statelessFacade.buscarGrupo(id);
-		if (gr != null) {
-			System.out.println(gr.getDescripcion());
-			encargadoCed = gr.getEnc().getCedula() + ""; // This will be
-															// the
-															// default
-															// selected
-															// item.
-		}
+//		Grupo gr = statelessFacade.buscarGrupo(id);
+//		if (gr != null) {
+//			System.out.println(gr.getDescripcion());
+//			encargadoCed = gr.getEnc().getCedula() + ""; // This will be
+//															// the
+//															// default
+//															// selected
+//															// item.
+//		}
 
 		return encargadoCed;
 	}
@@ -97,6 +99,16 @@ public class GrupoBean {
 
 	public void setListGrupos(List<Grupo> listGrupos) {
 		this.listGrupos = listGrupos;
+	}
+	
+
+	public Encargado getEncargadoActual() {
+		
+		return encargadoActual;
+	}
+
+	public void setEncargadoActual(Encargado encargadoActual) {
+		this.encargadoActual = encargadoActual;
 	}
 
 	@SuppressWarnings("rawtypes")
@@ -122,7 +134,9 @@ public class GrupoBean {
 
 	@SuppressWarnings("unchecked")
 	public ArrayList getEncargadosSinGrupo() {
-		List<Encargado> encargados = statelessFacade.listarEncargadosSinGrupo();
+		System.out.println("Entro al metodo getEncargadosSinGrupo");
+		
+		List<Encargado> encargados = statelessFacade.listarEncargadosJoaquin(Long.parseLong(encargadoCed));
 		encargadosSinGrupo.clear();
 		for (int i = 0; i < encargados.size(); i++) {
 			Encargado enc = new Encargado();
@@ -195,6 +209,40 @@ public class GrupoBean {
 	// return "";
 	//
 	// }
+//	public String buscarGrupo() {
+//		System.out.println("id de grupo que me llega" + id);
+//		// this.id = getId();
+//		Grupo gr = new Grupo();
+//		//encargadoActual=new Encargado();
+//		try {
+//			gr = statelessFacade.buscarGrupo(id);
+//			System.out.println("grupo encontrado: " + gr.getDescripcion());
+//			if (gr.getId() != 0) {
+//				this.descripcion = gr.getDescripcion();
+//				this.encargadoCed = gr.getEnc().getCedula()+"";
+//				
+////				this.encargadoActual.setDireccion(encargadoCed);
+////				this.encargadoActual.setApellido("pepito");
+//				//this.encargadoActual=gr.getEnc();
+//				System.out.println(encargadoCed);
+//				this.evento = 4;// encontrado
+//				
+//				return "grupoEncontrado";
+//			} else {
+//				System.out.println("grupo nulo!!");
+//				this.evento = 3;// noexiste
+//				return "grupoNoEncontrado";
+//			}
+//
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			this.evento = 3;// noexiste
+//			return "grupoNoEncontrado";
+//
+//		}
+//
+//	}
+
 	public String buscarGrupo() {
 		System.out.println("id de grupo que me llega" + id);
 		// this.id = getId();
@@ -221,7 +269,6 @@ public class GrupoBean {
 		}
 
 	}
-
 	public String eliminarGrupo() {
 		Grupo g = new Grupo();
 		System.out.println(id);
@@ -238,6 +285,30 @@ public class GrupoBean {
 			return "grupoNoEliminado";
 		}
 	}
+
+//	public String modificarGrupo() {
+////		System.out.println("Modificar grupo, cedula del encargado que recibo: "
+////				+ selItem.getValue());
+//
+//		Encargado encargado = (Encargado) statelessFacade.encontrarUsuario(Long
+//				.valueOf(encargadoCed));
+//
+//		System.out.println(encargado.getApellido());
+//
+//		System.out.println("id del grupo a modificar: " + id);
+//		Grupo g = statelessFacade.buscarGrupo(id);
+//		System.out.println("modifico el grupo: " + g.getDescripcion());
+//		g.setDescripcion(getDescripcion());
+//		g.setEnc(encargado);
+//
+//		if (statelessFacade.modificarGrupo(g) != null) {
+//			evento = 1;
+//			return "grupoModificado";
+//		} else
+//			evento = 6;
+//		return "grupoNoModificado";
+//	}
+
 
 	public String modificarGrupo() {
 		System.out.println("modificar grupo, cedula del encargado que recibo: "
@@ -260,6 +331,14 @@ public class GrupoBean {
 		} else
 			evento = 6;
 		return "grupoNoModificado";
+	}
+	
+	public void setSelItem(SelectItem selItem) {
+		this.selItem = selItem;
+	}
+
+	public SelectItem getSelItem() {
+		return selItem;
 	}
 
 }

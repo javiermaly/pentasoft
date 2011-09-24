@@ -96,17 +96,17 @@ public class ManagerT implements TareaRemote {
 
 	}
 
-	public boolean altaTareaRealiza(Tarea t, Realiza r) {
-
-		try {
-			em.merge(t);
-			em.persist(r);
-			return true;
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
-		}
-	}
+//	public boolean altaTareaRealiza(Tarea t, Realiza r) {
+//
+//		try {
+//			em.merge(t);
+//			em.persist(r);
+//			return true;
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			return false;
+//		}
+//	}
 
 	// asigna el la tarea a un usuario, en el realiza queda vacia la
 	// fecha de inicio, cuando el usuario toma la tarea se completa la fecha
@@ -436,12 +436,11 @@ public class ManagerT implements TareaRemote {
 	// PUEDE AVANZAR AL SIGUIENTE ESTADO PROPUESTO
 	public boolean validarEstadoSiguiente(Estado estadoActual, Estado estadoSgte) {
 		boolean retorno = false;
-
 		System.out.println("estado actual: " + estadoActual.getDescripcion());
 		System.out.println("estado sgte: " + estadoSgte.getDescripcion());
-
 		List<Estado> listSgteEst = dameEstadosSgtes(estadoActual);
-
+		
+		
 		for (Estado esta : listSgteEst) {
 			if (esta.getId() == estadoSgte.getId()) {
 				System.out
@@ -455,11 +454,8 @@ public class ManagerT implements TareaRemote {
 						+ esta.getDescripcion() + "- estado sigte: "
 						+ estadoSgte.getDescripcion());
 			}
-
 		}
-
 		return retorno;
-
 	}
 
 	public boolean avanzarTareaEstado(Tarea tar, Estado sigEst) {

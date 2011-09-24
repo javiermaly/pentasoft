@@ -42,7 +42,8 @@
 <managed-bean>
 		<managed-bean-name>GrupoBean</managed-bean-name>
 		<managed-bean-class>negocio.GrupoBean</managed-bean-class>
-		<managed-bean-scope>request</managed-bean-scope>			
+		<managed-bean-scope>request
+	</managed-bean-scope>			
 </managed-bean>
 
 <managed-bean>
@@ -100,6 +101,18 @@
 		<navigation-case>
 			<from-outcome>tareaNoCerrada</from-outcome>
 			<to-view-id>/cerrarTarea.jsp</to-view-id>
+		</navigation-case>
+</navigation-rule>
+
+<navigation-rule>
+		<from-view-id>/tomarTarea.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>tareaTomada</from-outcome>
+			<to-view-id>/tomarTarea.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>tareaNoTomada</from-outcome>
+			<to-view-id>/tomarTarea.jsp</to-view-id>
 		</navigation-case>
 </navigation-rule>
  <navigation-rule>

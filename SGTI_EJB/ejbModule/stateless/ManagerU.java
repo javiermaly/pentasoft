@@ -106,4 +106,9 @@ public class ManagerU implements UsuarioRemote {
 		return todosEncargados;
 	}
 
+	public List<Encargado> listarEncargadosJoaquin(long valorCi) {
+		List<Encargado> todosEncargados = em.createNamedQuery("encargadosJoaquin").setParameter("cedEncargado", valorCi).getResultList();
+		return todosEncargados;
+	}
+
 }

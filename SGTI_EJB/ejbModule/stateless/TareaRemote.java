@@ -25,7 +25,7 @@ public interface TareaRemote {
 	public List<Tarea> tareasPorUsuario(Usuario u);
 	public Tarea actualizarTarea(Tarea t);
 	public boolean eliminarTarea(Tarea t);
-	public boolean altaTareaRealiza(Tarea t, Realiza r);
+	//public boolean altaTareaRealiza(Tarea t, Realiza r);
 	public boolean asignaTareaUsuario(Tarea t, Usuario u);
 	public boolean altaGrupo(Grupo gr);
 	public Grupo encontrarGrupo(int id);
