@@ -45,7 +45,9 @@ public class TareaBean {
 	private Date fechaCierre;
 	@SuppressWarnings("rawtypes")
 	private ArrayList comboGrupos = new ArrayList();
+	@SuppressWarnings("rawtypes")
 	private ArrayList comboTipos = new ArrayList();
+	@SuppressWarnings("rawtypes")
 	private ArrayList comboTecnicos = new ArrayList();
 	private String varId;
 
@@ -53,6 +55,8 @@ public class TareaBean {
 	private List<Tarea> listadoTareasAbiertas;//para el home del Encargado
 	private List<Tarea> listadoTareasAsignadas;//
 	private List<Tarea> listTareasEnProcesoTecnico;
+	
+	private List<Tarea> reporteTareasFinalizadasTecnico;
 
 	private String grupoId;
 	private int evento = 0;
@@ -65,50 +69,15 @@ public class TareaBean {
 	FacadeRemote statelessFacade = con.conectar();
 
 	
-	public List<Tarea> getListTareasEnProcesoTecnico() {
-		Tecnico t = (Tecnico) usuSession.getUsuarioSession();
-		System.out.println("Esta es la cedula del ENCARGADO  " + t.getCedula());
-		listTareasEnProcesoTecnico = statelessFacade.listTareasEnProcesoTecnico(t);
-		return listTareasEnProcesoTecnico;
-	}
-
-	public void setListTareasEnProcesoTecnico(List<Tarea> listTareasEnProcesoTecnico) {
-		this.listTareasEnProcesoTecnico = listTareasEnProcesoTecnico;
-	}
-
-	public List<Tarea> getListadoTareasFinalizadasNoCerradas() {
-		listadoTareasFinalizadasNoCerradas = statelessFacade
-				.tareasFinalizadasNoCerradas();
-		return listadoTareasFinalizadasNoCerradas;
-	}
-
-	public void setListadoTareasFinalizadasNoCerradas(
-			List<Tarea> listadoTareasFinalizadasNoCerradas) {
-		this.listadoTareasFinalizadasNoCerradas = listadoTareasFinalizadasNoCerradas;
-	}
-
-	public List<Tarea> getListadoTareasAbiertas() {
-		Encargado e = (Encargado) usuSession.getUsuarioSession();
-		System.out.println("Esta es la cedula del ENCARGADO  " + e.getCedula());
-		listadoTareasAbiertas = statelessFacade.tareasAbiertasGrupo(e);
-		return listadoTareasAbiertas;
-	}
-
-	public void setListadoTareasAbiertas(List<Tarea> listadoTareasAbiertas) {
-		this.listadoTareasAbiertas = listadoTareasAbiertas;
-	}
 	
-	public List<Tarea> getListadoTareasAsignadas() {
-		Tecnico t = (Tecnico) usuSession.getUsuarioSession();
-		System.out.println("Esta es la cedula del Tecnico o encargado  " + t.getCedula());
-		listadoTareasAsignadas = statelessFacade.listTareasAsignadaTecnico(t);
-		return listadoTareasAsignadas;
+	
+	public String getTecnicoCed() {
+		return tecnicoCed;
 	}
 
-	public void setListadoTareasAsignadas(List<Tarea> listadoTareasAsignadas) {
-		this.listadoTareasAsignadas = listadoTareasAsignadas;
+	public void setTecnicoCed(String tecnicoCed) {
+		this.tecnicoCed = tecnicoCed;
 	}
-	
 
 	public boolean isEsExterna() {
 		return esExterna;
@@ -264,6 +233,7 @@ public class TareaBean {
 		this.prioridadStr = prioridadStr;
 	}	
 
+	//COMBOS
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public ArrayList getComboGrupos() {
 
@@ -287,7 +257,7 @@ public class TareaBean {
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public ArrayList getComboTipos() {
 		List<Tipo> tipos = statelessFacade.listTipos();
-
+		comboTipos.clear();
 		for (int i = 0; i < tipos.size(); i++) {
 			Tipo t = new Tipo();
 			t = tipos.get(i);
@@ -323,7 +293,98 @@ public class TareaBean {
 	public void setComboTecnicos(ArrayList comboTecnicos) {
 		this.comboTecnicos = comboTecnicos;
 	}
+	
+	
+	//LISTADOS
+	
+	
+	public List<Tarea> getListTareasEnProcesoTecnico() {
+		Tecnico t = (Tecnico) usuSession.getUsuarioSession();
+		System.out.println("Esta es la cedula del ENCARGADO  " + t.getCedula());
+		listTareasEnProcesoTecnico = statelessFacade.listTareasEnProcesoTecnico(t);
+		return listTareasEnProcesoTecnico;
+	}
 
+	public void setListTareasEnProcesoTecnico(List<Tarea> listTareasEnProcesoTecnico) {
+		this.listTareasEnProcesoTecnico = listTareasEnProcesoTecnico;
+	}
+
+	public List<Tarea> getListadoTareasFinalizadasNoCerradas() {
+		listadoTareasFinalizadasNoCerradas = statelessFacade
+				.tareasFinalizadasNoCerradas();
+		return listadoTareasFinalizadasNoCerradas;
+	}
+
+	public void setListadoTareasFinalizadasNoCerradas(
+			List<Tarea> listadoTareasFinalizadasNoCerradas) {
+		this.listadoTareasFinalizadasNoCerradas = listadoTareasFinalizadasNoCerradas;
+	}
+
+	public List<Tarea> getListadoTareasAbiertas() {
+		Encargado e = (Encargado) usuSession.getUsuarioSession();
+		System.out.println("Esta es la cedula del ENCARGADO  " + e.getCedula());
+		listadoTareasAbiertas = statelessFacade.tareasAbiertasGrupo(e);
+		return listadoTareasAbiertas;
+	}
+
+	public void setListadoTareasAbiertas(List<Tarea> listadoTareasAbiertas) {
+		this.listadoTareasAbiertas = listadoTareasAbiertas;
+	}
+	
+	public List<Tarea> getListadoTareasAsignadas() {
+		Tecnico t = (Tecnico) usuSession.getUsuarioSession();
+		System.out.println("Esta es la cedula del Tecnico o encargado  " + t.getCedula());
+		listadoTareasAsignadas = statelessFacade.listTareasAsignadaTecnico(t);
+		return listadoTareasAsignadas;
+	}
+
+	public void setListadoTareasAsignadas(List<Tarea> listadoTareasAsignadas) {
+		this.listadoTareasAsignadas = listadoTareasAsignadas;
+	}
+	
+	
+	
+
+
+	// BUSCAR Tareas
+	public String buscarTarea() {
+		Tarea t = new Tarea();
+		t = statelessFacade.buscarTarea(id);
+		if (t != null) {
+			cliente = t.getCliente();
+			prioridad = t.getPrioridad();
+			if (prioridad == 1) {
+				prioridadStr = "Alta";
+			} else if (prioridad == 2) {
+				prioridadStr = "Media";
+			} else if (prioridad == 3) {
+				prioridadStr = "Baja";
+			}
+			esExterna = t.getEsExterna();
+			descripcion = t.getDescripcion();
+			observacion = t.getObservacion();
+			fechaApertura = t.getFechaApertura();
+			if (t.getFechaComprometida() != null) {
+				fechaComprometida = t.getFechaComprometida().getTime();
+			}
+			if (t.getFechaCierre() != null) {
+				fechaCierre = t.getFechaCierre().getTime();
+			}
+
+			tipoTarea = t.getTipo();
+			tiene = statelessFacade.tieneDeTarea(t);
+			System.out.println(tiene.getEstado().getDescripcion());
+			// estado=;
+			evento = 4;// encontrado
+			return "TareaEncontrada";
+		} else {
+
+			evento = 3;// noexiste
+			return "TareaNoEncontrada";
+		}
+	}
+	
+	
 	// ABRIR/CREAR LA TAREA
 	public String abrirTarea() {
 
@@ -369,176 +430,8 @@ public class TareaBean {
 		}
 
 	}
-
-	// buscador para Tareas
-	public String buscarTarea() {
-		Tarea t = new Tarea();
-		t = statelessFacade.buscarTarea(id);
-		if (t != null) {
-			cliente = t.getCliente();
-			prioridad = t.getPrioridad();
-			if (prioridad == 1) {
-				prioridadStr = "Alta";
-			} else if (prioridad == 2) {
-				prioridadStr = "Media";
-			} else if (prioridad == 3) {
-				prioridadStr = "Baja";
-			}
-			esExterna = t.getEsExterna();
-			descripcion = t.getDescripcion();
-			observacion = t.getObservacion();
-			fechaApertura = t.getFechaApertura();
-			if (t.getFechaComprometida() != null) {
-				fechaComprometida = t.getFechaComprometida().getTime();
-			}
-			if (t.getFechaCierre() != null) {
-				fechaCierre = t.getFechaCierre().getTime();
-			}
-
-			tipoTarea = t.getTipo();
-			tiene = statelessFacade.tieneDeTarea(t);
-			System.out.println(tiene.getEstado().getDescripcion());
-			// estado=;
-			evento = 4;// encontrado
-			return "TareaEncontrada";
-		} else {
-
-			evento = 3;// noexiste
-			return "TareaNoEncontrada";
-		}
-	}
-
-	public String cerrarTareaDesdeListado() {
-		String retorno;
-		FacesContext context = FacesContext.getCurrentInstance();
-		HttpServletRequest myRequest = (HttpServletRequest) context
-				.getExternalContext().getRequest();
-		System.out.println("id de la tarea recibido: "
-				+ myRequest.getParameter("idTareaBoton"));
-		try {
-			id = Long.parseLong(myRequest.getParameter("idTareaBoton"));
-
-			Tarea tarea = statelessFacade.buscarTarea(id);
-			System.out.println("tarea: " + tarea.getDescripcion());
-			System.out.println(usuSession.getUsuarioSession().getApellido());
-			System.out.println(usuSession.perfil);
-			Usuario usu = statelessFacade
-					.encontrarUsuario(usuSession.usuarioSession.getCedula());
-			if (statelessFacade.cerrarTarea(tarea, usu)) {
-				retorno = "tareaCerrada";
-
-				// habria que poner la tarea colgada de la session en null
-			} else {
-				retorno = "tareaNoCerrada";
-			}
-
-			// System.out.println("usuario: "+usu.getApellido());
-			System.out.println("entre a cerrar tarea");
-			System.out.println("id de la tarea recibido: " + getId());
-		} catch (Exception e) {
-			System.out.println("error en parametro recibido");
-			System.out.println(usuSession.getUsuarioSession().getApellido());
-			retorno = "tareaNoCerrada";
-		}
-
-		return retorno;
-	}
-
-	public String reabrirTareaDesdeListado() {
-		String retorno;
-		FacesContext context = FacesContext.getCurrentInstance();
-		HttpServletRequest myRequest = (HttpServletRequest) context.getExternalContext().getRequest();
-		System.out.println("id de la tarea recibido: "+ myRequest.getParameter("idTareaReAbrir"));
-		try {
-			id = Long.parseLong(myRequest.getParameter("idTareaReAbrir"));
-
-			Tarea tarea = statelessFacade.buscarTarea(id);
-			System.out.println("tarea: " + tarea.getDescripcion());
-			System.out.println(usuSession.getUsuarioSession().getApellido());
-			System.out.println(usuSession.perfil);
-			Usuario usu = statelessFacade.encontrarUsuario(usuSession.usuarioSession.getCedula());
-			if (statelessFacade.reabrirTarea(tarea, usu)) {
-				retorno = "tareaReAbierta";
-				// habria que poner la tarea colgada de la session en null
-			} else {
-				retorno = "tareaNoReAbierta";
-			}
-
-			// System.out.println("usuario: "+usu.getApellido());
-			System.out.println("entre a cerrar tarea");
-			System.out.println("id de la tarea recibido: " + getId());
-		} catch (Exception e) {
-			System.out.println("error en parametro recibido");
-			System.out.println(usuSession.getUsuarioSession().getApellido());
-			retorno = "tareaNoCerrada";
-		}
-
-		return retorno;
-
-	}
-
-	public String reabrirTarea() {
-		try {
-			System.out.println("reabrir tarea id: " + getId() + id);
-			Tarea tarea = statelessFacade.buscarTarea(getId());
-			tarea.setObservacion(getObservacion());
-		
-			Usuario usu = statelessFacade.encontrarUsuario(usuSession.usuarioSession.getCedula());
-
-			if (statelessFacade.reabrirTarea(tarea, usu)) {
-				evento = 5;
-				System.out.println(evento);
-				return "tareaReAbierta";
-
-			} else {
-				System.out.println(evento);
-				evento = 6;
-				return "tareaNoReAbierta";
-				
-			}
-
-		} catch (Exception e) {
-			evento=6;
-			System.out.println(evento);
-			System.out.println("error en parametro recibido");
-			System.out.println(usuSession.getUsuarioSession().getApellido());
-			return "tareaNoReAbierta";
-		}
-
-		
-	}
-
-	public String cerrarTarea() {
-		String retorno;
-
-		try {
-			Tarea tarea = statelessFacade.buscarTarea(getId());
-			tarea.setObservacion(getObservacion());
-			System.out.println("tarea: " + tarea.getDescripcion());
-			System.out.println(usuSession.getUsuarioSession().getApellido());
-			System.out.println(usuSession.perfil);
-			Usuario usu = statelessFacade.encontrarUsuario(usuSession.usuarioSession.getCedula());
-
-			if (statelessFacade.cerrarTarea(tarea, usu)) {
-				retorno = "tareaCerrada";
-				// evento=4;//?
-			} else {
-				retorno = "tareaNoCerrada";
-				// evento=3;//?
-			}
-
-		} catch (Exception e) {
-			// evento=2;//?
-			System.out.println("error en parametro recibido");
-			System.out.println(usuSession.getUsuarioSession().getApellido());
-			retorno = "tareaNoCerrada";
-		}
-
-		return retorno;
-
-	}
-
-	// prueba Asignar TArea
+	
+	//ASIGNAR TArea
 	public String pasarPamAsignarTarea() {
 		
 		String retorno;
@@ -565,7 +458,8 @@ public class TareaBean {
 			if(t.getFechaComprometida()!=null){
 				fechaComprometida=t.getFechaComprometida().getTime();
 			}
-			tipoTarea=t.getTipo();		
+			tipoTarea=t.getTipo();	
+			tiene = statelessFacade.tieneDeTarea(t);
 			
 			
 			retorno = "irAsignarTarea";
@@ -583,6 +477,7 @@ public class TareaBean {
 		Usuario usu= statelessFacade.encontrarUsuario(usuSession.usuarioSession.getCedula());
 		System.out.println("usu ced"+usu.getCedula());
 		
+		tarea.setObservacion(observacion);
 				
 		if(statelessFacade.asignarTareaTecnico(tarea, tec, usu)){
 			evento=1;
@@ -594,7 +489,7 @@ public class TareaBean {
 		
 	}
 	
-	// prueba Derivar TArea
+	//DERIVAR TArea
 	public String pasarPamDerivarTarea() {
 		
 		String retorno;
@@ -622,7 +517,7 @@ public class TareaBean {
 				fechaComprometida=t.getFechaComprometida().getTime();
 			}
 			tipoTarea=t.getTipo();	
-			
+			tiene = statelessFacade.tieneDeTarea(t);
 			
 			retorno = "irDerivarTarea";
 		} else {
@@ -638,19 +533,20 @@ public class TareaBean {
 		System.out.println("grupo id "+gr.getId());
 		Usuario usu= statelessFacade.encontrarUsuario(usuSession.usuarioSession.getCedula());
 		System.out.println("usu ced"+usu.getCedula());		
-				
+
+		tarea.setObservacion(observacion);
+		
 		if(statelessFacade.derivarTarea(tarea, gr, usu)){
 			evento=1;
-			return "tareaAsignada";
+			return "tareaDerivada";
 		}else{
 			evento=2;
-			return "errorTareaAsignada";
+			return "errorTareaDerivada";
 		}		
 		
 	}
-	
-	
-	// prueba Asignar TArea
+		
+	//TOMAR Tarea
 	public String pasarPamTomarTarea() {
 		
 		String retorno;
@@ -678,7 +574,7 @@ public class TareaBean {
 				fechaComprometida=t.getFechaComprometida().getTime();
 			}
 			tipoTarea=t.getTipo();		
-			
+			tiene = statelessFacade.tieneDeTarea(t);
 			
 			retorno = "irTomarTarea";
 		} else {
@@ -689,6 +585,7 @@ public class TareaBean {
 
 	public String tomarTarea(){
 		Tarea tarea= statelessFacade.buscarTarea(id);
+		tarea.setObservacion(observacion);
 		System.out.println("tarea id "+tarea.getId());
 		
 		Usuario usu= statelessFacade.encontrarUsuario(usuSession.usuarioSession.getCedula());
@@ -705,5 +602,177 @@ public class TareaBean {
 		
 	}
 	
+	//FINALIZAR Tarea
+	public String pasarPamFinalizarTarea() {
+		
+		String retorno;
+		FacesContext context = FacesContext.getCurrentInstance();
+		HttpServletRequest myRequest = (HttpServletRequest)context.getExternalContext().getRequest();
+		System.out.println("id de la tarea recibido: "+ myRequest.getParameter("idTareaFinalizar"));
+	
+		if (myRequest.getParameter("idTareaFinalizar") != "") {
+			id = Long.parseLong(myRequest.getParameter("idTareaFinalizar"));
+			Tarea t = statelessFacade.buscarTarea(id);
+			prioridad=t.getPrioridad();
+			if (prioridad == 1) {
+				prioridadStr = "Alta";
+			} else if (prioridad == 2) {
+				prioridadStr = "Media";
+			} else if (prioridad == 3) {
+				prioridadStr = "Baja";
+			}
+			cliente=t.getCliente();
+			esExterna=t.getEsExterna();
+			descripcion=t.getDescripcion();
+			observacion=t.getObservacion();
+			fechaApertura=t.getFechaApertura();
+			if(t.getFechaComprometida()!=null){
+				fechaComprometida=t.getFechaComprometida().getTime();
+			}
+			tipoTarea=t.getTipo();		
+			tiene = statelessFacade.tieneDeTarea(t);
+			
+			retorno = "irFinalizarTarea";
+		} else {
+			retorno = "errorIrFinalizarTarea";
+		}
+		return retorno;
+	}
+
+	public String finalizarTarea(){
+		Tarea tarea= statelessFacade.buscarTarea(id);
+		System.out.println("tarea id "+tarea.getId());
+		
+		Usuario usu= statelessFacade.encontrarUsuario(usuSession.usuarioSession.getCedula());
+		System.out.println("usu ced"+usu.getCedula());
+			
+		tarea.setObservacion(observacion);
+		
+		if(statelessFacade.finalizarTarea(tarea, usu)){
+			evento=1;
+			return "tareaFinalizada";
+		}else{
+			evento=2;
+			return "errorTareaFinalizada";
+		}		
+		
+	}
+	
+	//Cerrar Tarea
+	public String pasarPamCerrarTarea() {
+		
+		String retorno;
+		FacesContext context = FacesContext.getCurrentInstance();
+		HttpServletRequest myRequest = (HttpServletRequest)context.getExternalContext().getRequest();
+		System.out.println("id de la tarea recibido: "+ myRequest.getParameter("idTareaCerrar"));
+	
+		if (myRequest.getParameter("idTareaCerrar") != "") {
+			id = Long.parseLong(myRequest.getParameter("idTareaCerrar"));
+			Tarea t = statelessFacade.buscarTarea(id);
+			prioridad=t.getPrioridad();
+			if (prioridad == 1) {
+				prioridadStr = "Alta";
+			} else if (prioridad == 2) {
+				prioridadStr = "Media";
+			} else if (prioridad == 3) {
+				prioridadStr = "Baja";
+			}
+			cliente=t.getCliente();
+			esExterna=t.getEsExterna();
+			descripcion=t.getDescripcion();
+			observacion=t.getObservacion();
+			fechaApertura=t.getFechaApertura();
+			if (t.getFechaComprometida() != null) {
+				fechaComprometida = t.getFechaComprometida().getTime();
+			}
+			tipoTarea=t.getTipo();
+			tiene = statelessFacade.tieneDeTarea(t);
+			
+			
+			retorno = "irCerrarTarea";
+		} else {
+			retorno = "errorIrCerrarTarea";
+		}
+		return retorno;
+	}	
+		
+	public String cerrarTarea() {
+			String retorno;
+			Tarea tarea = statelessFacade.buscarTarea(getId());
+			tarea.setObservacion(getObservacion());
+			Usuario usu = statelessFacade.encontrarUsuario(usuSession.usuarioSession.getCedula());
+
+			if (statelessFacade.cerrarTarea(tarea, usu)) {
+				retorno = "tareaCerrada";
+				evento=1;
+			} else {
+				retorno = "tareaNoCerrada";
+				 evento=2;
+			}
+
+		return retorno;
+
+	}
+	
+	
+	
+	//ReAbrir Tarea
+	public String pasarPamReabrirTarea() {
+		
+		String retorno;
+		FacesContext context = FacesContext.getCurrentInstance();
+		HttpServletRequest myRequest = (HttpServletRequest)context.getExternalContext().getRequest();
+		System.out.println("id de la tarea recibido: "+ myRequest.getParameter("idTareaReAbrir"));
+	
+		if (myRequest.getParameter("idTareaReAbrir") != "") {
+			id = Long.parseLong(myRequest.getParameter("idTareaReAbrir"));
+			Tarea t = statelessFacade.buscarTarea(id);
+			prioridad=t.getPrioridad();
+			if (prioridad == 1) {
+				prioridadStr = "Alta";
+			} else if (prioridad == 2) {
+				prioridadStr = "Media";
+			} else if (prioridad == 3) {
+				prioridadStr = "Baja";
+			}
+			cliente=t.getCliente();
+			esExterna=t.getEsExterna();
+			descripcion=t.getDescripcion();
+			observacion=t.getObservacion();
+			fechaApertura=t.getFechaApertura();
+			if(t.getFechaComprometida()!=null){
+				fechaComprometida=t.getFechaComprometida().getTime();
+			}
+			tipoTarea=t.getTipo();		
+			
+			
+			retorno = "irReAbrirTarea";
+		} else {
+			retorno = "errorIrReAbrirTarea";
+		}
+		return retorno;
+	}	
+	//RE-ABRIR Tarea
+	public String reabrirTarea() {
+		
+			System.out.println("reabrir tarea id: " + getId() + id);
+			Tarea tarea = statelessFacade.buscarTarea(getId());
+			tarea.setObservacion(getObservacion());
+		
+			Usuario usu = statelessFacade.encontrarUsuario(usuSession.usuarioSession.getCedula());
+
+			if (statelessFacade.reabrirTarea(tarea, usu)) {
+				evento = 1;				
+				return "tareaReAbierta";
+
+			} else {				
+				evento = 2;
+				return "tareaNoReAbierta";
+				
+			}
+			
+	}
+
+
 	
 }

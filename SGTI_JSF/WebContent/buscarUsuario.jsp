@@ -29,6 +29,11 @@
 				<th><h:outputText value="#{UsuariosBean.nombre}"></h:outputText></th>
 			</tr>
 			<tr>
+				<th>Apellido:</th>
+				<td><h:inputText value="#{UsuariosBean.apellido}"></h:inputText>
+				</td>
+			</tr>
+			<tr>
 				<th>Celular: </th>
 				<th><h:outputText value="#{UsuariosBean.celular}"></h:outputText></th>
 			</tr>
@@ -36,6 +41,27 @@
 				<th>Perfil: </th>
 				<th><h:outputText value="#{UsuariosBean.perfil}"></h:outputText></th>
 			</tr>
+			<tr>
+				<th>Direccion:</th>
+				<td><h:inputText value="#{UsuariosBean.direccion}"></h:inputText>
+				</td>
+			</tr>
+			<tr>
+				<th>Telefono:</th>
+				<td><h:inputText id="telefono" value="#{UsuariosBean.telefono}">
+					<f:converter converterId="javax.faces.Integer"/>
+					</h:inputText>
+					<h:message for="telefono" style="color:red"></h:message>					
+				</td>			
+			</tr>
+			<tr>
+				<th>Celular:</th>
+				<td><h:inputText id="celular" value="#{UsuariosBean.celular}">
+					<f:converter converterId="javax.faces.Integer"/>
+					</h:inputText>
+					<h:message for="celular" style="color:red"></h:message>					
+				</td>			
+			</tr>		
 			
 		</table>
 	</h:form>

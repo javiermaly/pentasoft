@@ -8,7 +8,7 @@
 		<%@include file="header.jsp"%>
 	</f:subview>
 	<h:form rendered="#{TareaBean.id !=null}">
-		<h1>Buscar Tarea</h1>
+		<h1>Re-Abrir Tarea</h1>
 		<table>
 			<tr>
 				<td><h:outputText> Identificador de la tarea:  </h:outputText>
@@ -27,71 +27,65 @@
 		</table>
 	</h:form>
 
-	<h:form rendered="#{TareaBean.evento==4}">
+	<h:form rendered="#{TareaBean.cliente.nombre_RazonSocial!=null}">
 		<table border="1">
 			<tr>
 				<th>Id:</th>
-				<th><h:inputText id="id" value="#{TareaBean.id}"
+				<td><h:inputText id="id" value="#{TareaBean.id}"
 						readonly="true" /> <h:inputHidden value="#{TareaBean.id}"></h:inputHidden>
-	</th>
+				</td>
 			</tr>
 			<tr>
 				<th>Cliente:</th>
-				<th><h:outputText
-						value="#{TareaBean.cliente.nombre_RazonSocial}"></h:outputText></th>
+				<td><h:outputText
+						value="#{TareaBean.cliente.nombre_RazonSocial}"></h:outputText>
+				</td>
 			</tr>
-
 			<tr>
 				<th>Prioridad:</th>
-				<th><h:outputText value="#{TareaBean.prioridad}"></h:outputText>
-				</th>
+				<td><h:outputText value="#{TareaBean.prioridad}"></h:outputText>
+				</td>
 			</tr>
 			<tr>
 				<th>Externa:</th>
-				<th><h:selectBooleanCheckbox disabled="true"
-						value="#{TareaBean.esExterna}"></h:selectBooleanCheckbox>
-				</th>
+				<td><h:selectBooleanCheckbox disabled="true" value="#{TareaBean.esExterna}"></h:selectBooleanCheckbox>
+				</td>
 			</tr>
 			<tr>
 				<th>Descripción:</th>
-				<th><h:outputText value="#{TareaBean.descripcion}"></h:outputText>
-				</th>
+				<td><h:inputTextarea id="descripcion" rows="5" cols="25" required="true" value="#{TareaBean.descripcion}"></h:inputTextarea>
+					<h:message for="descripcion" style="color:red"></h:message>
+				</td>
 			</tr>
 			<tr>
 				<th>Observaciones:</th>
-				<th><h:inputTextarea rows="5" cols="25" required="true"
-						value="#{TareaBean.observacion}"></h:inputTextarea></th>
+				<td><h:inputTextarea rows="5" cols="25" disabled="true" value="#{TareaBean.observacion}"></h:inputTextarea></td>
 			</tr>
 			<tr>
 				<th>Fecha Apertura:</th>
-				<th><h:outputText value="#{TareaBean.fechaApertura.time}">
+				<td><h:outputText value="#{TareaBean.fechaApertura.time}">
 						<f:convertDateTime type="both" dateStyle="short"
 							pattern="yyyy/MM/dd" />
-					</h:outputText></th>
+					</h:outputText>
+				</td>
 			</tr>
 			<tr>
 				<th>Fecha Comprometida:</th>
-				<th><h:outputText value="#{TareaBean.fechaComprometida.time}">
+				<td><h:outputText value="#{TareaBean.fechaComprometida.time}">
 						<f:convertDateTime type="both" dateStyle="short"
 							pattern="yyyy/MM/dd" />
-					</h:outputText></th>
+					</h:outputText>
+				</td>
 			</tr>
 			<tr>
 				<th>Tipo:</th>
-				<th><h:outputText value="#{TareaBean.tipoTarea.descripcion}"></h:outputText>
-				</th>
+				<td><h:outputText value="#{TareaBean.tipoTarea.descripcion}"></h:outputText>
+				</td>
 			</tr>
 			<tr>
 				<th>Estado:</th>
-				<th><h:outputText value="#{TareaBean.tiene.estado.descripcion}"></h:outputText>
-				</th>
-			</tr>
-			<tr>
-				<th>Fecha Cierre:</th>
-				<th><h:outputText value="#{TareaBean.fechaCierre.time}">
-						<f:convertDateTime type="both" dateStyle="short"
-							pattern="yyyy/MM/dd" />
-					</h:outputText></th>
+				<td><h:outputText value="#{TareaBean.tiene.estado.descripcion}"></h:outputText>
+				</td>
 			</tr>
 			<tr>
 				<td colspan="2" align="left"><h:commandButton value="Aceptar"
@@ -100,14 +94,14 @@
 			</tr>
 		</table>
 	</h:form>
-	<h:form rendered="#{TareaBean.evento==6}">
+	<h:form rendered="#{TareaBean.evento==2}">
 		<table border="1">
 			<tr>
 				<th>No se pudo cambiar el estado a la tarea!!!</th>
 			</tr>
 		</table>
 	</h:form>
-	<h:form rendered="#{TareaBean.evento==5}">
+	<h:form rendered="#{TareaBean.evento==1}">
 		<table border="1">
 			<tr>
 				<th>La tarea se reabrió correctamente!!!</th>

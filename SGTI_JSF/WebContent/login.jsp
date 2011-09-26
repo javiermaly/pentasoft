@@ -8,37 +8,48 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	
-	<title>Login Page</title>
+	<title>Login</title>
 	
 	<link rel="shortcut icon" href="/favicon.ico">
-	<link rel="stylesheet" type="text/css" href="style.css" />
+	<link rel="stylesheet" type="text/css" href="estilo.css" />
 </head>
 
 <body>
+<body>
+<div class="wrap">	
+
 <f:view>
+
+<div class="header">
+    		<div class="logo"><img src="./images/logo.png" alt="" title="" border="0"></div>
+						
+</div>
+<div class="clear"></div>
 	<h:form>
 		<fieldset>
-		
-			<legend>Log in</legend>
+			
+			<h1>SISTEMA DE GESTION DE TAREAS INFORMATICAS</h1>
+			<div class="clear"></div>			
+			<h2>INGRESAR</h2>
+			<div class="clear"></div>
 			
 			<label for="login">Cedula</label>
-			<h:inputText id="cedula" value="#{LoginBean.cedula}" required="true"></h:inputText>
+			<h:inputText styleClass="login" id="cedula" value="#{LoginBean.cedula}" required="true">
+				<f:converter converterId="javax.faces.Long"/></h:inputText>
+				<h:message for="cedula" style="color:red"></h:message>				
 			<div class="clear"></div>
 			
 			<label for="password">Password</label>
-			<h:inputText  id="pwd" value="#{LoginBean.pwd}" required="true"></h:inputText>
-			<div class="clear"></div>
-			
-			<label for="remember_me" style="padding: 0;">Remember me?</label>
-			<input type="checkbox" id="remember_me" style="position: relative; top: 3px; margin: 0; " name="remember_me"/>
-			<div class="clear"></div>
+			<h:inputSecret styleClass="login"  id="pwd" value="#{LoginBean.pwd}" required="true"></h:inputSecret>
+			<div class="clear"></div>			
 			
 			<br/>
-			<h:commandButton style="margin: -20px 0 0 287px;" value="Aceptar" action="#{LoginBean.login}"></h:commandButton>
+			<h:commandButton styleClass="boton" value="Aceptar" action="#{LoginBean.login}"></h:commandButton>
+			
 			
 		</fieldset>
 	</h:form>
 	</f:view>
+</div>	
 </body>
-
 </html>

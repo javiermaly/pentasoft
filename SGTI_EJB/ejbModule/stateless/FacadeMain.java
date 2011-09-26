@@ -3,10 +3,14 @@ package stateless;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.jws.WebMethod;
+import javax.jws.WebService;
 
 import singleton.Singleton;
 
 import beans.*;
+
+@WebService
 
 @Stateless
 public class FacadeMain implements FacadeRemote {
@@ -141,7 +145,7 @@ public class FacadeMain implements FacadeRemote {
 	
 	
 //CLIENTES
-	
+	@WebMethod
 	public Cliente buscarCliente(long cedRut){
 		System.out.println("EJB facade buscarClienre: "+cedRut);
 		return statelessMCli.encontrarCliente(cedRut);
@@ -404,10 +408,10 @@ public class FacadeMain implements FacadeRemote {
 		 listarEncargadosSinGrupo=statelessMUsu.listarEncargadosSinGrupo();
 		 return listarEncargadosSinGrupo;
 	 }
-	 public List<Tarea> tareasAsignadasATecnico(Tecnico t){
-		 List<Tarea> tareasAsignadasATecnico=null;
-		 tareasAsignadasATecnico=statelessMTar.tareasAsignadasATecnico(t);
-		 return tareasAsignadasATecnico;
+	 public List<Tarea> listTareasAsignadaTecnico(Tecnico t){
+		 List<Tarea> listTareasAsignadaTecnico=null;
+		 listTareasAsignadaTecnico=statelessMTar.listTareasAsignadaTecnico(t);
+		 return listTareasAsignadaTecnico;
 	 }
 	 
 	 public List<Tarea> listTareasEnProcesoTecnico(Tecnico t){

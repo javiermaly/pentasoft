@@ -124,7 +124,7 @@ public class GrupoBean {
 	public ArrayList getEncargadosSinGrupo() {
 		System.out.println("Entro al metodo getEncargadosSinGrupo");
 		
-		List<Encargado> encargados = statelessFacade.listarEncargadosJoaquin(Long.parseLong(encargadoCed));
+		List<Encargado> encargados = statelessFacade.listarEncargadosHabilitados();
 		encargadosSinGrupo.clear();
 		for (int i = 0; i < encargados.size(); i++) {
 			Encargado enc = new Encargado();

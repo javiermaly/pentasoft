@@ -24,7 +24,6 @@ public class UsuariosBean {
 	private long cedula;	
 	private String nombre;
 	private String apellido;
-	private String usuario;
 	private String pwd;
 	private String telefono;
 	private String direccion;
@@ -100,14 +99,6 @@ public class UsuariosBean {
 
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
-	}
-
-	public String getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
 	}
 
 	public String getPwd() {
@@ -226,8 +217,7 @@ public class UsuariosBean {
 				admin.setDireccion(direccion);
 				admin.setHabilitado(true);
 				admin.setPwd(pwd);
-				admin.setUsuario(usuario);//--------------->hacer control que no deje vacio usu y pass
-			
+							
 				if(statelessFacade.altaAdministrador(admin)){
 					evento=1;
 					return estado="UsuarioIngresado";
@@ -247,8 +237,7 @@ public class UsuariosBean {
 				admin.setDireccion(direccion);
 				admin.setHabilitado(true);
 				admin.setPwd(pwd);
-				admin.setUsuario(usuario);//--------------->hacer control que no deje vacio usu y pass
-			
+							
 				if(statelessFacade.altaAdministrativo(admin)){
 					evento=1;
 					return estado="UsuarioIngresado";
@@ -266,10 +255,13 @@ public class UsuariosBean {
 				e.setDireccion(direccion);
 				e.setHabilitado(true);
 				e.setPwd(pwd);
-				e.setUsuario(usuario);//--------------->hacer control que no deje vacio usu y pass
 				e.setEsExterno(esExterno);
 				
 				if(statelessFacade.altaEncargado(e)){
+					//agregar el tecnico al coltecnicos en grupo
+					Grupo g = (Grupo)statelessFacade.buscarGrupo(Integer.valueOf(grupoId));
+					g.getColTecnicos().add(e);
+					statelessFacade.modificarGrupo(g);
 					evento=1;
 					return estado="UsuarioIngresado";
 				}else{
@@ -286,7 +278,6 @@ public class UsuariosBean {
 				t.setDireccion(direccion);
 				t.setHabilitado(true);
 				t.setPwd(pwd);
-				t.setUsuario(usuario);//--------------->hacer control que no deje vacio usu y pass
 				t.setEsExterno(esExterno);
 								
 					if(statelessFacade.altaTecnico(t)){
@@ -353,7 +344,6 @@ public class UsuariosBean {
 			this.apellido=u.getApellido();
 			this.direccion=u.getDireccion();
 			this.habilitado=u.isHabilitado();
-			this.usuario=u.getUsuario();
 			this.pwd=u.getPwd();
 			this.telefono=u.getTelefono();
 			this.cedula=u.getCedula();
@@ -399,7 +389,6 @@ public class UsuariosBean {
 			ussu.setNombre(nombre);
 			ussu.setPwd(pwd);
 			ussu.setTelefono(telefono);
-			ussu.setUsuario(usuario);
 			ussu.setHabilitado(habilitado);
 			
 			

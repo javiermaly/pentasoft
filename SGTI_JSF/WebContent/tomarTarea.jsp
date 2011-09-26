@@ -34,33 +34,35 @@
 				</td>
 			</tr>
 			<tr>
-				<th>Descripci�n:</th>
-				<td><h:outputText value="#{TareaBean.descripcion}"></h:outputText>
+				<th>Descripcion:</th>
+				<td><h:inputTextarea rows="5" cols="25" value="#{TareaBean.descripcion}"  disabled="true"></h:inputTextarea>
 				</td>
 			</tr>
 			<tr>
 				<th>Observaciones:</th>
-				<td><h:inputTextarea rows="5" cols="25" disabled="true"
-						value="#{TareaBean.observacion}"></h:inputTextarea></td>
+				<td><h:inputTextarea rows="5" cols="25" value="#{TareaBean.observacion}" disabled="true"></h:inputTextarea></td>
 			</tr>
 			<tr>
 				<th>Fecha Apertura:</th>
 				<td><h:outputText value="#{TareaBean.fechaApertura.time}">
-						<f:convertDateTime type="both" dateStyle="short"
-							pattern="yyyy/MM/dd" />
+						<f:convertDateTime type="both" dateStyle="short" pattern="yyyy/MM/dd" />
 					</h:outputText></td>
 			</tr>
 			<tr>
 				<th>Fecha Comprometida:</th>
 				<td><h:outputText value="#{TareaBean.fechaComprometida.time}">
-						<f:convertDateTime type="both" dateStyle="short"
-							pattern="yyyy/MM/dd" />
+						<f:convertDateTime type="both" dateStyle="short" pattern="yyyy/MM/dd" />
 					</h:outputText></td>
 			</tr>
 			<tr>
 				<th>Tipo:</th>
 				<td><h:outputText value="#{TareaBean.tipoTarea.descripcion}"></h:outputText>
 				</td>
+			</tr>
+			<tr>
+				<th>Estado:</th>
+				<th><h:outputText value="#{TareaBean.tiene.estado.descripcion}"></h:outputText>
+				</th>
 			</tr>
 			<tr>
 				<td align="right"><h:commandButton value="Aceptar"

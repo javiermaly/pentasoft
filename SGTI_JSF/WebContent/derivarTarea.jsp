@@ -5,7 +5,7 @@
 <f:subview id="header">
 	<%@include file="header.jsp"%>
 </f:subview>
-<h:form >
+<h:form rendered="#{TareaBean.id!=0}">
 <h1>Derivar Tarea</h1>
 		<table border="1">		
 			<tr>
@@ -40,14 +40,13 @@
 				</td>
 			</tr>
 			<tr>
-				<th>Descripci�n:</th>
-				<td><h:outputText value="#{TareaBean.descripcion}"></h:outputText>
+				<th>Descripcion:</th>
+				<td><h:inputTextarea rows="5" cols="25" value="#{TareaBean.descripcion}" disabled="true"></h:inputTextarea>
 				</td>
 			</tr>
 			<tr>
 				<th>Observaciones:</th>
-				<td><h:inputTextarea rows="5" cols="25" disabled="true"
-						value="#{TareaBean.observacion}"></h:inputTextarea></td>
+				<td><h:inputTextarea rows="5" cols="25" value="#{TareaBean.observacion}"></h:inputTextarea></td>
 			</tr>
 			<tr>
 				<th>Fecha Apertura:</th>
@@ -69,8 +68,13 @@
 				</td>
 			</tr>
 			<tr>
+				<th>Estado:</th>
+				<th><h:outputText value="#{TareaBean.tiene.estado.descripcion}"></h:outputText>
+				</th>
+			</tr>
+			<tr>
 				<td colspan="2" align="right"><h:commandButton value="Aceptar"
-						action="#{TareaBean.asignarTarea}"></h:commandButton>
+						action="#{TareaBean.derivarTarea}"></h:commandButton>
 				</td>
 			</tr>
 		</table>
@@ -78,20 +82,20 @@
 	<h:form rendered="#{TareaBean.evento==1}">
 		<table border="1">
 			<tr>
-				<th>La tarea se asign� correctamente!</th>
+				<th>La tarea se Derivo correctamente!</th>
 			</tr>
 		</table>
 	</h:form>
 	<h:form rendered="#{TareaBean.evento==2}">
 		<table border="1">
 			<tr>
-				<th>Error: No se pudo asingar la tarea!</th>
+				<th>Error: No se pudo Derivar la tarea!</th>
 			</tr>
 		</table>
 	</h:form>
 
 </f:view>
 
-
+</div>
 </body>
 </html>

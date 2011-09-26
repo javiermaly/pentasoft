@@ -31,8 +31,8 @@
 		<h1>Abrir Tarea</h1>			
 				<table border="1">
 				<tr>
-					<td><h:outputText> Cedula o RUT del Cliente: </h:outputText>
-					</td>
+					<th><h:outputText> Cedula o RUT del Cliente: </h:outputText>
+					</th>
 					<td><h:inputText id="cedrut" value="#{ClienteBean.cedRut}" required="true" maxlength="15"  >
 						<f:converter converterId="javax.faces.Integer"/></h:inputText>
 					</td>
@@ -41,18 +41,21 @@
 						<h:commandButton  value="Buscar" action="#{ClienteBean.buscarCliente}"></h:commandButton>
 					</td>
 				</tr>
-				</table>					
+				</table>
+</h:form>
+<h:form rendered="#{ClienteSession.clienteSession.nombre_RazonSocial!=null}">				
 				<table border="1">
 					<tr>
 						<th>Nombre: </th><td><h:outputText value="#{ClienteSession.clienteSession.nombre_RazonSocial}" ></h:outputText></td>
 					</tr>
 					<tr>
 						<th>Prioridad: </th>
-						<td><h:selectOneRadio value="#{TareaBean.prioridad}">
+						<td><h:selectOneRadio id="prioridad" required="true" value="#{TareaBean.prioridad}">
 							<f:selectItem itemValue="1" itemLabel="Alta"/>
 							<f:selectItem itemValue="2" itemLabel="Media"/>
 							<f:selectItem itemValue="3" itemLabel="Baja"/>
 							</h:selectOneRadio>
+							<h:message for="prioridad" style="color:red"></h:message>
 						</td>
 					</tr>					
 					<tr>
@@ -85,7 +88,7 @@
 						</td>
 					</tr>
 					<tr>
-					<th>Fecha Comprometida (aï¿½o/mes/dia):</th>
+					<th>Fecha Comprometida (año/mes/dia):</th>
 	
 					<td><h:inputText id="fchaComprometida" value="#{TareaBean.fechaComprometida}">
 							<f:convertDateTime  pattern="yyyy/MM/dd" />

@@ -28,22 +28,17 @@
 	<h:form rendered="#{UsuarioBean.tipo =='Administrador' || UsuarioBean.tipo =='Administrativo'}">
 		<table border="1">
 			<tr>
-				<th>Usuario:</th>
-				<td><h:inputText value="#{UsuariosBean.usuario}"></h:inputText>
-				</td>
-			</tr>
-			<tr>
-				<th>Contraseña:</th>
-				<td><h:inputSecret value="#{UsuariosBean.pwd}"></h:inputSecret>
-				</td>
-			</tr>
-			<tr>
 				<th>Cedula: </th>
 				<td><h:inputText id="cedula" value="#{UsuariosBean.cedula}" required="true">
 						<f:validateLength  maximum="8"></f:validateLength>
 						<f:converter converterId="javax.faces.Long"/></h:inputText></td>
 						<h:message for="cedula" style="color:red"></h:message>				
 			</tr>
+			<tr>
+				<th>Contraseña:</th>
+				<td><h:inputSecret value="#{UsuariosBean.pwd}"></h:inputSecret>
+				</td>
+			</tr>			
 			<tr>
 				<th>Nombre:</th>
 				<td><h:inputText value="#{UsuariosBean.nombre}"></h:inputText>
@@ -83,22 +78,21 @@
 	<h:form rendered="#{UsuarioBean.tipo =='Encargado'}">
 		<table border="1">
 			<tr>
-				<th>Usuario:</th>
-				<td><h:inputText value="#{UsuariosBean.usuario}"></h:inputText>
+				<th>Cedula:</th>
+				<td><h:inputText id="cedula" value="#{UsuariosBean.cedula}"
+						required="true">
+						<f:validateLength maximum="8"></f:validateLength>
+						<f:converter converterId="javax.faces.Long" />
+					</h:inputText>
 				</td>
+				<h:message for="cedula" style="color:red"></h:message>
 			</tr>
 			<tr>
 				<th>Contraseña:</th>
 				<td><h:inputSecret value="#{UsuariosBean.pwd}"></h:inputSecret>
 				</td>
 			</tr>
-			<tr>
-				<th>Cedula: </th>
-				<td><h:inputText id="cedula" value="#{UsuariosBean.cedula}" required="true">
-						<f:validateLength  maximum="8"></f:validateLength>
-						<f:converter converterId="javax.faces.Long"/></h:inputText></td>
-						<h:message for="cedula" style="color:red"></h:message>				
-			</tr>
+			
 			<tr>
 				<th>Nombre:</th>
 				<td><h:inputText value="#{UsuariosBean.nombre}"></h:inputText>
@@ -139,6 +133,14 @@
 				</td>
 			</tr>
 			<tr>
+				<th>Grupo: </th>
+				<td>
+					<h:selectOneMenu id="comboGrupo" value="#{UsuariosBean.grupoId}"> 					 					
+						<f:selectItems value="#{UsuariosBean.comboGrupos}"/>						
+					</h:selectOneMenu>					
+				</td>
+			</tr>
+			<tr>
 				<td colspan="2" align="right"><h:commandButton value="Aceptar" action="#{UsuariosBean.altaUsuario}"></h:commandButton></td>
 			</tr>
 		</table>
@@ -146,22 +148,21 @@
 	<h:form rendered="#{UsuarioBean.tipo =='Tecnico'}">
 		<table border="1">
 			<tr>
-				<th>Usuario:</th>
-				<td><h:inputText value="#{UsuariosBean.usuario}"></h:inputText>
+				<th>Cedula:</th>
+				<td><h:inputText id="cedula" value="#{UsuariosBean.cedula}"
+						required="true">
+						<f:validateLength maximum="8"></f:validateLength>
+						<f:converter converterId="javax.faces.Long" />
+					</h:inputText>
 				</td>
+				<h:message for="cedula" style="color:red"></h:message>
 			</tr>
 			<tr>
 				<th>Contraseña:</th>
 				<td><h:inputSecret value="#{UsuariosBean.pwd}"></h:inputSecret>
 				</td>
 			</tr>
-			<tr>
-				<th>Cedula: </th>
-				<td><h:inputText id="cedula" value="#{UsuariosBean.cedula}" required="true">
-						<f:validateLength  maximum="8"></f:validateLength>
-						<f:converter converterId="javax.faces.Long"/></h:inputText></td>
-						<h:message for="cedula" style="color:red"></h:message>				
-			</tr>
+		
 			<tr>
 				<th>Nombre:</th>
 				<td><h:inputText value="#{UsuariosBean.nombre}"></h:inputText>

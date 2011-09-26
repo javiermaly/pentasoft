@@ -14,7 +14,7 @@
 				<td><h:outputText> Cedula o RUT del Cliente </h:outputText>
 				</td>
 				<td><h:inputText id="cedrut" value="#{ClienteBean.cedRut}" required="true">
-					<f:validateLength minimum="8" maximum="15"></f:validateLength>
+					<f:validateLength maximum="15"></f:validateLength>
 					<f:converter converterId="javax.faces.Long"/></h:inputText>
 				</td>					
 			

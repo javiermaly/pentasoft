@@ -31,22 +31,17 @@
 					</h:selectOneRadio>
 				</td>
 			</tr>
-		
-			<tr>
-				<th>Usuario:</th>
-				<td><h:inputText value="#{UsuariosBean.usuario}"></h:inputText></td>				
-			</tr>
-			<tr>
-				<th>Contraseña:</th>
-				<td><h:inputSecret value="#{UsuariosBean.pwd}" ></h:inputSecret>
-				</td>				
-			</tr>
 			<tr>
 				<th>Cedula: </th>
 				<td><h:inputText id="cedula" value="#{UsuariosBean.cedula}" readonly="true" />
 				<h:inputHidden value="#{UsuariosBean.cedula}"></h:inputHidden>				
 				</td>										
-			</tr>
+			</tr>			
+			<tr>
+				<th>Contraseña:</th>
+				<td><h:inputSecret value="#{UsuariosBean.pwd}" ></h:inputSecret>
+				</td>				
+			</tr>		
 			<tr>
 				<th>Nombre:</th>
 				<td><h:inputText value="#{UsuariosBean.nombre}"></h:inputText>
@@ -94,23 +89,17 @@
 				</td>
 			</tr>
 			<tr>
-				<th>Usuario:</th>
-				<td><h:inputText value="#{UsuariosBean.usuario}" ></h:inputText>
-				</td>
-				
-			</tr>
-			<tr>
-				<th>Contraseña:</th>
-				<td><h:inputSecret  value="#{UsuariosBean.pwd}" ></h:inputSecret>
-				</td>
-				
-			</tr>
-			<tr>
 				<th>Cedula: </th>
 				<td><h:inputText id="cedula" value="#{UsuariosBean.cedula}" readonly="true" >
 				<h:inputHidden value="#{UsuariosBean.cedula}"></h:inputHidden> </h:inputText>
 				
 				</td>										
+			</tr>			
+			<tr>
+				<th>Contraseña:</th>
+				<td><h:inputSecret  value="#{UsuariosBean.pwd}" ></h:inputSecret>
+				</td>
+				
 			</tr>
 			<tr>
 				<th>Nombre:</th>
@@ -167,23 +156,16 @@
 				</td>
 			</tr>
 			<tr>
-				<th>Usuario:</th>
-				<td><h:inputText  value="#{UsuariosBean.usuario}" ></h:inputText>
-				</td>
-				
+				<th>Cedula: </th>
+				<td><h:inputText id="cedula" value="#{UsuariosBean.cedula}" readonly="true" >
+				<h:inputHidden value="#{UsuariosBean.cedula}"></h:inputHidden> </h:inputText>				
+				</td>										
 			</tr>
 			<tr>
 				<th>Contraseña:</th>
 				<td><h:inputSecret  value="#{UsuariosBean.pwd}" ></h:inputSecret>
 				</td>
 				
-			</tr>
-			<tr>
-				<th>Cedula: </th>
-				<td><h:inputText id="cedula" value="#{UsuariosBean.cedula}" readonly="true" >
-				<h:inputHidden value="#{UsuariosBean.cedula}"></h:inputHidden> </h:inputText>
-				
-				</td>										
 			</tr>
 			<tr>
 				<th>Nombre:</th>

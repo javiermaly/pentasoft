@@ -24,7 +24,7 @@ public interface FacadeRemote {
         public boolean cerrarTarea(Tarea tar, Usuario usu);//solo los ADM
         public Tiene tieneDeTarea(Tarea t);
         public List<Tarea> tareasFinalizadasNoCerradas();
-        public List<Tarea> tareasAbiertasGrupo(Encargado e);//tareas abiertas para el encargado de un determinado grupo
+        public List<Tarea> tareasAbiertasGrupo(Encargado e);//tareas abiertas o derivadas para el encargado de un determinado grupo
         public List<Tarea> listTareasAsignadaTecnico(Tecnico t);//tareas asignadas a u tecnico
         public List<Tarea> listTareasEnProcesoTecnico(Tecnico t);//tareas que tomo un tecnico/encargado
         

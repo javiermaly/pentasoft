@@ -2,22 +2,12 @@
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 
 <f:view>
-
-
 <f:subview id="header">
 	<%@include file="header.jsp"%>
 </f:subview>
-<h:form rendered="#{TareaBean.id!='0'}">
-<h1>Asignar Tarea</h1>
+<h:form >
+<h1>Finalizar Tarea</h1>
 		<table border="1">		
-			<tr>
-				<th>Asignar la Tarea al Tecnico: </th>				
-				<td>
-					<h:selectOneMenu id="comboTecnicos" value="#{TareaBean.tecnicoCed}"> 					 					
-						<f:selectItems value="#{TareaBean.comboTecnicos}"/>								
-					</h:selectOneMenu>					
-				</td>
-			</tr>
 			<tr>
 				<th>Id:</th>
 				<td><h:inputText id="id" value="#{TareaBean.id}" readonly="true" /> 
@@ -43,18 +33,17 @@
 			</tr>
 			<tr>
 				<th>Descripcion:</th>
-				<td><h:inputTextarea rows="5" cols="25" value="#{TareaBean.descripcion}"></h:inputTextarea>
+				<td><h:inputTextarea rows="5" cols="25" disabled="true" value="#{TareaBean.descripcion}"></h:inputTextarea>
 				</td>
 			</tr>
 			<tr>
 				<th>Observaciones:</th>
-				<td><h:inputTextarea rows="5" cols="25" value="#{TareaBean.observacion}"></h:inputTextarea></td>
+				<td><h:inputTextarea rows="5" cols="25"  value="#{TareaBean.observacion}"></h:inputTextarea></td>
 			</tr>
 			<tr>
 				<th>Fecha Apertura:</th>
 				<td><h:outputText value="#{TareaBean.fechaApertura.time}">
-						<f:convertDateTime type="both" dateStyle="short"
-							pattern="yyyy/MM/dd" />
+						<f:convertDateTime type="both" dateStyle="short" pattern="yyyy/MM/dd" />
 					</h:outputText></td>
 			</tr>
 			<tr>
@@ -76,7 +65,7 @@
 			</tr>
 			<tr>
 				<td colspan="2" align="right"><h:commandButton value="Aceptar"
-						action="#{TareaBean.asignarTarea}"></h:commandButton>
+						action="#{TareaBean.finalizarTarea}"></h:commandButton>
 				</td>
 			</tr>
 		</table>
@@ -84,14 +73,14 @@
 	<h:form rendered="#{TareaBean.evento==1}">
 		<table border="1">
 			<tr>
-				<th>La tarea se asigno correctamente!</th>
+				<th>La tarea se Finalizo correctamente!</th>
 			</tr>
 		</table>
 	</h:form>
 	<h:form rendered="#{TareaBean.evento==2}">
 		<table border="1">
 			<tr>
-				<th>Error: No se pudo asingar la tarea!</th>
+				<th>Error: No se pudo Finalizar la tarea!</th>
 			</tr>
 		</table>
 	</h:form>

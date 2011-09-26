@@ -32,7 +32,7 @@ public class Grupo implements Serializable {
 	@OneToMany(fetch=FetchType.EAGER)
 	private List<Tecnico> colTecnicos= new ArrayList<Tecnico>();
 	
-	@OneToMany
+	@ManyToMany
 	private List<Tarea> colTareas;
 	
 	private static final long serialVersionUID = 1L;

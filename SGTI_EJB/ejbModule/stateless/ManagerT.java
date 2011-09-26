@@ -29,7 +29,6 @@ public class ManagerT implements TareaRemote {
 	public long agregarTarea(Tarea t, Tiene tiene, Grupo gr) {
 		long id=0;
 		try {
-
 			// em.persist(tipo);
 			em.persist(tiene);
 			em.persist(t);
@@ -72,10 +71,7 @@ public class ManagerT implements TareaRemote {
 	}
 
 	public boolean eliminarTarea(Tarea t) {
-		// control: solo se puede eliminar tareas con estado Abierta
-		// List<Tarea> TareaAbierta =
-		// em.createNamedQuery("todosTareasAbiertas").setParameter("id",
-		// t.getId()).setParameter("var", 1).getResultList();
+	
 		Tarea ta = encontrarTarea(t.getId());
 		System.out.println("HASTA ACAAAAAAAA " + t.getId());
 		if (ta != null) {
@@ -130,21 +126,18 @@ public class ManagerT implements TareaRemote {
 
 	}
 
-	public boolean tomarTarea(Tarea t, Usuario u) {// obtiene el realiza de esta
-													// tarea le ponemos fecha
-													// actual de incio, y
-													// avanzamos el estado de la
-													// tarea en #3 En proceso
+	public boolean tomarTarea(Tarea t, Usuario u) {// obtiene el realiza de esta tarea le ponemos fecha actual de incio, y avanzamos el estado de la tarea en #3 En proceso
 		boolean retorno = false;
 		t = em.merge(t);
 		Realiza r = realizaDeTarea(t);
 		Estado estado = encontrarEstado(3);
 
-		r.setFechaInicio(Calendar.getInstance());
-
-		r = em.merge(r);
+	
 
 		if (avanzarTareaEstado(t, estado)) {
+			r.setFechaInicio(Calendar.getInstance());
+
+			r = em.merge(r);
 			t = em.merge(t);
 			retorno = true;
 		}
@@ -152,21 +145,18 @@ public class ManagerT implements TareaRemote {
 		return retorno;
 	}
 
-	public boolean finalizarTarea(Tarea t, Usuario u) {// obtiene el realiza de
-														// esta tarea le ponemos
-														// fecha de fin, y
-														// avanzamos el estado
-														// de la tarea en #6
-														// Finalizada
+	public boolean finalizarTarea(Tarea t, Usuario u) {// obtiene el realiza de esta tarea le ponemos  fecha de fin, y avanzamos el estado de la tarea en #5Finalizada
 		boolean retorno = false;
 		t = em.merge(t);
 		Realiza r = realizaDeTareaFechaFin(t);
-		Estado estado = encontrarEstado(6); // finalizada
+		Estado estado = encontrarEstado(5); // #5finalizada
 
 		r.setFechaFin(Calendar.getInstance());
 		r = em.merge(r);
 
 		if (avanzarTareaEstado(t, estado)) {
+			r.setFechaFin(Calendar.getInstance());
+			r = em.merge(r);
 			t = em.merge(t);
 			retorno = true;
 		}
@@ -174,20 +164,14 @@ public class ManagerT implements TareaRemote {
 		return retorno;
 	}
 
-	public boolean derivarTarea(Tarea t, Grupo gr) {// finalizamos el realiza y
-													// asignamos esa tarea al
-													// grupo, quedando en estado
-													// derivada para que el
-													// encargado asigne la tarea
+	public boolean derivarTarea(Tarea t, Grupo gr) {// finalizamos el realiza y asignamos esa tarea al grupo, quedando en estado derivada para que encargado asigne la tarea
 		boolean retorno = false;
 		t = em.merge(t);
 		Estado estado = encontrarEstado(4); // #4 derivada
 
 		if (avanzarTareaEstado(t, estado)) {
 			Realiza r = realizaDeTareaFechaFin(t);
-			r.setFechaFin(Calendar.getInstance());// seteamos la fecha fin con
-													// la actual, cerrando ese
-													// realiza
+			r.setFechaFin(Calendar.getInstance());// seteamos la fecha fin con la actual, cerrando ese realiza
 			r = em.merge(r);
 			gr = em.merge(gr);
 			gr = encontrarGrupo(gr.getId());
@@ -208,12 +192,10 @@ public class ManagerT implements TareaRemote {
 		return retorno;
 	}
 
-	public boolean reabrirTarea(Tarea t) {// la tarea está con estado #6
-											// finalizada pasarla a #5 Reabierta
-											// y queda reabierta al mismo grupo
+	public boolean reabrirTarea(Tarea t) {// la tarea está con estado #5 finalizada pasarla a #6 Reabierta y queda reabierta al mismo grupo
 		boolean retorno = false;
 		t = em.merge(t);
-		Estado estado = encontrarEstado(5); // #5 ReAbierta
+		Estado estado = encontrarEstado(6); // #6 ReAbierta
 
 		if (avanzarTareaEstado(t, estado)) {
 			retorno = true;
@@ -443,16 +425,12 @@ public class ManagerT implements TareaRemote {
 		
 		for (Estado esta : listSgteEst) {
 			if (esta.getId() == estadoSgte.getId()) {
-				System.out
-						.println("entro a validar si el estadoSgte ta en la coleccion");
+				System.out.println("entro a validar si el estadoSgte ta en la coleccion");
 				retorno = true;
 				break;
 			} else {
-				System.out
-						.println("el estado actual no es igual al estado siguiente");
-				System.out.println("estado de la coleccion "
-						+ esta.getDescripcion() + "- estado sigte: "
-						+ estadoSgte.getDescripcion());
+				System.out.println("el estado actual no es igual al estado siguiente");
+				System.out.println("estado de la coleccion "+ esta.getDescripcion() + "- estado sigte: "+ estadoSgte.getDescripcion());
 			}
 		}
 		return retorno;
