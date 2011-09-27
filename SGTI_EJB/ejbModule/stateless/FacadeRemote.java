@@ -74,7 +74,9 @@ public interface FacadeRemote {
        // public boolean avanzarTareaEstado(Tarea tar, Estado est);
         public List<Tarea> listadoTareasPendientesPorGrupo(Encargado enc, Grupo gr);//Tareas sin asignar por grupo y encargado, ordenadas por prioridad, si hay mas de una con la misma prioridad se ordenan por id
         
-        
+        //REPORTES
+        public List<Tarea> reporteTareasFinalizadasTecnico(Usuario u);
+        public List<Tarea> reporteTareasPorGrupo(Grupo g);
         
         
         

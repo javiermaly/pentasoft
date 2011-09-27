@@ -20,7 +20,7 @@
 			</tr>
 		</table>
 	</h:form>
-	<h:form rendered="#{ClienteBean.nombreRazSocial == null }">
+	<h:form rendered="#{ClienteBean.cedRut != 0 }">
 		<table border="1">
 			<tr>
 				<th>Es empresa: </th>
@@ -56,7 +56,7 @@
 				</td>			
 			</tr>
 			<tr>
-				<th>Fecha de Fin de Garantia (año/mes/dia):</th>
+				<th>Fecha de Fin de Garantia (aï¿½o/mes/dia):</th>
 
 				<td><h:inputText id="fchaGarantia" value="#{ClienteBean.fechaFinGarantia}">
 						<f:convertDateTime  pattern="yyyy/MM/dd" />

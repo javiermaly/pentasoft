@@ -55,9 +55,9 @@
 						<li><a href="bajaCliente.jsf">Baja Cliente</a>
 						</li>
 						<li><a href="modificarCliente.jsf">Modificación Cliente</a></li>
-						<li><a href="listadoClientes.jsf">Listado de Clientes</a>
-						</li>
-					</ul></li>
+                    <li><a href="listadoClientes.jsf">Listado de Clientes</a></li>
+               </ul>
+            </li>
 
 				<li><span>Usuarios</span>
 					<ul>
@@ -86,7 +86,9 @@
 				<li><span>Listados</span>
 
 					<ul>
-						<li><a href="#">listado</a>
+                  <li><a href="reporteTareasPorUsuario.jsf">Tareas Finalizadas por un Tecnico</a></li>   
+                  <li><a href="reporteTareasPorGrupo.jsf">Tareas por Grupo</a></li>         
+               </ul>
 						</li>
 
 					</ul></li>
@@ -134,7 +136,9 @@
 				<li><span>Listados</span>
 
 					<ul>
-						<li><a href="#">listado</a>
+                  <li><a href="reporteTareasPorUsuario.jsf">Tareas Finalizadas por un Tecnico</a></li>            
+                  <li><a href="reporteTareasPorGrupo.jsf">Tareas por Grupo</a></li>
+               </ul>
 						</li>
 
 					</ul></li>
@@ -168,7 +172,13 @@
 					</ul></li>
 				<li><span>Usuarios</span>
 					<ul>
-						<li><a href="buscarUsuario.jsf">Buscar Usuario</a>
+						<li><a href="buscarUsuario.jsf">Buscar Usuario</a></li>
+					</ul>
+				</li>
+				 <li><span>Listados</span> 
+                <ul>
+                  <li><a href="reporteTareasPorUsuario.jsf">Tareas Finalizadas por un Tecnico</a></li>            
+                </ul>
 						</li>
 					</ul></li>
 			</ul>

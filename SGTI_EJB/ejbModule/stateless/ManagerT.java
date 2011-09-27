@@ -490,4 +490,16 @@ public class ManagerT implements TareaRemote {
 		return listTareasEnProcesoTecnico;
 	}
 	
+	public List<Tarea> reporteTareasFinalizadasTecnico(Usuario u){
+		
+		List<Tarea> reporteTareasFinalizadasTecnico = em.createNamedQuery("reporteTareasFinalizadasTecnico").setParameter(1, em.getReference(Usuario.class, u.getCedula())).getResultList();
+		return reporteTareasFinalizadasTecnico;
 	}
+	public List<Tarea> reporteTareasPorGrupo(Grupo g){
+		List<Tarea> reporteTareasPorGrupo = em.createNamedQuery("reporteTareasPorGrupo").setParameter(1, em.getReference(Grupo.class, g.getId())).getResultList();
+		return reporteTareasPorGrupo;
+		
+	}
+	
+}
+

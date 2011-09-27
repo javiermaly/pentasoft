@@ -45,6 +45,8 @@ public interface TareaRemote {
 	public boolean derivarTarea(Tarea t, Grupo gr);
 	public boolean reabrirTarea(Tarea t);
 	public boolean cerrarTarea(Tarea t);
+	
+	//listados
 	public List<Tarea> tareasFinalizadasNoCerradas();
 	public List<Tarea> listTareasAbiertasGrupos(Encargado e);//lista de tareas con estado abierta para un encargado en un determinado grupo
 	public List<Grupo> listadoGrupos();
@@ -54,6 +56,10 @@ public interface TareaRemote {
     //buscar el tipo de tarea
     public Tipo encontrarTipo(int id);
     public List<Tipo> listadoTipos();
+    
+    //reportes
+	public List<Tarea> reporteTareasFinalizadasTecnico(Usuario u);
+	public List<Tarea> reporteTareasPorGrupo(Grupo g);
 
 	
 }

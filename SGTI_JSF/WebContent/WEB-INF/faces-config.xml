@@ -76,7 +76,21 @@
 			<value>#{UsuarioBean}</value>
 		</managed-property>
 	</managed-bean>
-
+<managed-bean>
+		<managed-bean-name>ClienteSession</managed-bean-name>
+		<managed-bean-class>negocio.ClienteSession</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+</managed-bean>
+<managed-bean>
+		<managed-bean-name>GrupoBean</managed-bean-name>
+		<managed-bean-class>negocio.GrupoBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+</managed-bean>
+<managed-bean>
+		<managed-bean-name>ReportesBean</managed-bean-name>
+		<managed-bean-class>negocio.ReportesBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+</managed-bean>
 
 
 	<navigation-rule>

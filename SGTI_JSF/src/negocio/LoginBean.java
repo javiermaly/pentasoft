@@ -12,6 +12,7 @@ import beans.Usuario;
 import stateless.FacadeRemote;
 import conexion.ConexionEJB;
 
+
 public class LoginBean {
 	UsuarioBean usuSession;
 	private long cedula;
@@ -53,6 +54,12 @@ public class LoginBean {
 	}
 
 
+//	public int getPerfil() {
+//		return perfil;
+//	}
+//	public void setPerfil(int perfil) {
+//		this.perfil = perfil;
+//	}
 	public String login() {
 
 		if (!((statelessFacade.login(cedula, pwd)) == null)) {
