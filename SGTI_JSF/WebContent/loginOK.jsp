@@ -12,8 +12,7 @@
 	<center>
 			<h1>Listado de tareas</h1>
 
-			<h:dataTable value="#{TareaBean.listadoTareasFinalizadasNoCerradas}"
-				var="tarea" border="1">
+			<h:dataTable value="#{TareaBean.listadoTareasFinalizadasNoCerradas}" var="tarea" border="1">
 				<h:column>
 					<f:facet name="header">
 						<h:outputText id="idTarea" value="Id"></h:outputText>

@@ -6,33 +6,34 @@
 	<%@include file="header.jsp"%>
 </f:subview>
 <h:form>
-		<h1>Reporte de Tareas por Usuario</h1>
+		<h1>Reporte de Tareas Finalizadas</h1>
 		<p>Todas las Tareas que un Técnico pasó al estado Finalizada</p>
 		<table>
 			<tr>
 				<td><h:outputText>Cédula del Técnico </h:outputText>
 				</td>
-				<td><h:inputText id="cedula" value="#{UsuariosBean.cedula}"	required="true"><f:validateLength  maximum="8"></f:validateLength>
+				<td><h:inputText id="cedula" value="#{ReportesBean.cedula}"	required="true">
+						<f:validateLength  maximum="8"></f:validateLength>
 						<f:converter converterId="javax.faces.Long"/></h:inputText></td>
 						<h:message for="cedula" style="color:red"></h:message>						
-				<td><h:commandButton value="Aceptar" action="#{UsuariosBean.buscarUsuario}"></h:commandButton>
+				<td><h:commandButton value="Aceptar" action="#{ReportesBean.buscarUsuario}"></h:commandButton>
 				</td>
 			</tr>
 		</table>
 </h:form>
-<h:form rendered="#{UsuariosBean.evento==3}">
+<h:form rendered="#{ReportesBean.evento==3}">
 		<table border="1">
 			<tr>
 				<th> No existe un Tecnico con esa cedula!</th>
 			</tr>
 		</table>
 </h:form>
-<h:form rendered="#{UsuariosBean.evento==4}">
+<h:form rendered="#{ReportesBean.evento==4}">
 	
 	<center>
 			<h2>Lista de Tareas</h2>
 
-			<h:dataTable value="#{TareaBean.listadoTareasFinalizadasTecnico}"
+			<h:dataTable value="#{ReportesBean.reporteTareasFinalizadasTecnico}"
 				var="tarea" border="1">
 				<h:column>
 					<f:facet name="header">
@@ -93,25 +94,7 @@
 					<h:outputText value="#{tarea.tipo.descripcion}">
 					</h:outputText>
 				</h:column>
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="ACCIÓN"></h:outputText>
-					</f:facet>
-					<h:commandLink value="Cerrar" action="#{TareaBean.pasarPamCerrarTarea}"> 
-						<f:param id="idTareaCerrar" name="idTareaCerrar" value="#{tarea.id}" /> 
-					</h:commandLink>				
-				</h:column>
-				<h:column>
-					<f:facet name="header">
-						<h:outputText value="ACCIÓN"></h:outputText>
-					</f:facet>
-					<h:commandLink value="Re-Abrir" action="#{TareaBean.pasarPamReabrirTarea}"> 
-						<f:param id="idTareaReAbrir" name="idTareaReAbrir" value="#{tarea.id}" /> 
-					</h:commandLink>
-
-				
-				</h:column>
-
+		
 			</h:dataTable>
 		</center>
 

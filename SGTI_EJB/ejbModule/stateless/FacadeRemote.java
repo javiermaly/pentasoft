@@ -8,8 +8,6 @@ import beans.*;
 
 @Remote
 public interface FacadeRemote {
-	
-	public List<Encargado> listarEncargadosSinGrupoMasActual(Grupo g) ;
         //TAREAS
 		public long abrirTarea(Tarea t, Tiene tiene, Grupo g);//queda dada de alta y asignada a un grupo con una prioridad determinada
        // public boolean tomarTarea(Tarea t, Realiza r);//cuando el tecnico trabaja sobre la tarea
@@ -74,7 +72,9 @@ public interface FacadeRemote {
        // public boolean avanzarTareaEstado(Tarea tar, Estado est);
         public List<Tarea> listadoTareasPendientesPorGrupo(Encargado enc, Grupo gr);//Tareas sin asignar por grupo y encargado, ordenadas por prioridad, si hay mas de una con la misma prioridad se ordenan por id
         
-        
+        //REPORTES
+        public List<Tarea> reporteTareasFinalizadasTecnico(Usuario u);
+        public List<Tarea> reporteTareasPorGrupo(Grupo g);
         
         
         

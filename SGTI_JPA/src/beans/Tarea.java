@@ -28,8 +28,17 @@ import javax.persistence.*;
 
     @NamedNativeQuery(name="listTareasEnProcesoTecnico",
     query = "select * from Tarea where id= any(select tarea_id from Realiza where fechaFin IS NULL and usu_cedula=?1) and id=any(select id from Tarea where id=any(select Tarea_id from Tarea_Tiene where colTiene_id = any(select id from Tiene where estado_id=3 and fechaFin IS NULL)));",
+    resultClass=Tarea.class),
+    
+    @NamedNativeQuery(name="reporteTareasFinalizadasTecnico",
+    query = "select * from Tarea where id= any(select tarea_id from Realiza where fechaInicio IS NOT NULL and usu_cedula=?1) and id=any(select id from Tarea where id=any(select Tarea_id from Tarea_Tiene where colTiene_id = any(select id from Tiene where estado_id=5)));",
+    resultClass=Tarea.class),
+    
+    @NamedNativeQuery(name="reporteTareasPorGrupo",
+    query = "select * from Tarea where id = any(select colTareas_id from Grupo_Tarea where grupo_id=?1) and id=any(select tarea_id from Tarea_Tiene where colTiene_id=any(SELECT id FROM Tiene t where t.estado_id=1 OR t.estado_id=2 OR t.estado_id=3 OR t.estado_id=4));",
     resultClass=Tarea.class)
-		}
+    
+	}
 	
 	
 )
@@ -46,9 +55,9 @@ public class Tarea implements Serializable {
 	private boolean esExterna;
 	private String descripcion;
 	private String observacion;
-	private @Temporal(TemporalType.DATE) Calendar fechaApertura;
-	private @Temporal(TemporalType.DATE) Calendar fechaComprometida;
-	private @Temporal(TemporalType.DATE) Calendar fechaCierre;
+	private @Temporal(TemporalType.TIMESTAMP) Calendar fechaApertura;
+	private @Temporal(TemporalType.TIMESTAMP) Calendar fechaComprometida;
+	private @Temporal(TemporalType.TIMESTAMP) Calendar fechaCierre;
 	@ManyToOne(fetch=FetchType.EAGER)
 	private Tipo tipo;	
 	@OneToMany(mappedBy="tarea")

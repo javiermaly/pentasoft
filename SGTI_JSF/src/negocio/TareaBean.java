@@ -56,7 +56,7 @@ public class TareaBean {
 	private List<Tarea> listadoTareasAsignadas;//
 	private List<Tarea> listTareasEnProcesoTecnico;
 	
-	private List<Tarea> reporteTareasFinalizadasTecnico;
+//	private List<Tarea> reporteTareasFinalizadasTecnico;
 
 	private String grupoId;
 	private int evento = 0;
@@ -295,9 +295,10 @@ public class TareaBean {
 	}
 	
 	
+	
+	
+	
 	//LISTADOS
-	
-	
 	public List<Tarea> getListTareasEnProcesoTecnico() {
 		Tecnico t = (Tecnico) usuSession.getUsuarioSession();
 		System.out.println("Esta es la cedula del ENCARGADO  " + t.getCedula());

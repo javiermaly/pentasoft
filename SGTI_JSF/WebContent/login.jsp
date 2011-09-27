@@ -41,9 +41,8 @@
 			
 			<label for="password">Password</label>
 			<h:inputSecret styleClass="login"  id="pwd" value="#{LoginBean.pwd}" required="true"></h:inputSecret>
-			<div class="clear"></div>		
+			<div class="clear"></div>			
 			
-			<h:form rendered="#{LoginBean.evento==2 }"><h3 style="color:red"><f:verbatim>El usuario no esta habilitado, contacte al administrador</f:verbatim></h3></h:form>
 			<br/>
 			<h:commandButton styleClass="boton" value="Aceptar" action="#{LoginBean.login}"></h:commandButton>
 			

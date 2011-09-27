@@ -17,8 +17,8 @@ public class Realiza implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	private @Temporal(TemporalType.DATE) Calendar fechaInicio;
-	private @Temporal(TemporalType.DATE) Calendar fechaFin;
+	private @Temporal(TemporalType.TIMESTAMP) Calendar fechaInicio;
+	private @Temporal(TemporalType.TIMESTAMP) Calendar fechaFin;
 	@ManyToOne
 	private Usuario usu;
 	

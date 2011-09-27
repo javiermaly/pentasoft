@@ -20,7 +20,7 @@
 			</tr>
 		</table>
 	</h:form>
-	<h:form rendered="#{ClienteBean.nombreRazSocial == null }">
+	<h:form rendered="#{ClienteBean.cedRut != 0 }">
 		<table border="1">
 			<tr>
 				<th>Es empresa: </th>

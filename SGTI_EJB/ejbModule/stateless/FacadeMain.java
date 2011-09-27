@@ -84,7 +84,7 @@ public class FacadeMain implements FacadeRemote {
 		boolean retorno =false;
 		
 		if ((usu instanceof Encargado)||(usu instanceof Tecnico)) {
-			if(statelessMTar.tomarTarea(tar)){
+			if(statelessMTar.tomarTarea(tar, usu)){
 				retorno = true;
 			}			
 		}	
@@ -420,8 +420,17 @@ public class FacadeMain implements FacadeRemote {
 			return listTareasEnProcesoTecnico;
 	 }
 	
-	 public List<Encargado> listarEncargadosSinGrupoMasActual(Grupo g) {
-		 return statelessMUsu.listarEncargadosSinGrupoMasActual(g);
+	 //REPORTES
+	 public List<Tarea> reporteTareasFinalizadasTecnico(Usuario u){
+		 List<Tarea> reporteTareasFinalizadasTecnico=null;
+		 reporteTareasFinalizadasTecnico=statelessMTar.reporteTareasFinalizadasTecnico(u);
+			return reporteTareasFinalizadasTecnico;
+	 }
+	 
+	 public List<Tarea> reporteTareasPorGrupo(Grupo g){
+		 List<Tarea> reporteTareasPorGrupo=null;
+		 reporteTareasPorGrupo=statelessMTar.reporteTareasPorGrupo(g);
+		return reporteTareasPorGrupo;
 	 }
 	
 }

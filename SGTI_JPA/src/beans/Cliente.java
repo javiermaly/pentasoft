@@ -23,7 +23,7 @@ public class Cliente implements Serializable {
 	private String nombre_RazonSocial;
 	private String telefono;
 	private String direccion;
-	private @Temporal(TemporalType.DATE)Calendar fechaFinGarantia;
+	private @Temporal(TemporalType.TIMESTAMP)Calendar fechaFinGarantia;
 		
 	@OneToMany(mappedBy="cliente")
 	private List<Tarea> tareas= new ArrayList<Tarea>();

@@ -31,61 +31,61 @@
 		<table border="1">
 			<tr>
 				<th>Cliente:</th>
-				<th><h:outputText
+				<td><h:outputText
 						value="#{TareaBean.cliente.nombre_RazonSocial}"></h:outputText>
-				</th>
+				</td>
 			</tr>
 
 			<tr>
 				<th>Prioridad:</th>
-				<th><h:outputText value="#{TareaBean.prioridadStr}"></h:outputText>
-				</th>
+				<td><h:outputText value="#{TareaBean.prioridadStr}"></h:outputText>
+				</td>
 			</tr>
 			<tr>
 				<th>Externa:</th>
-				<th><h:selectBooleanCheckbox disabled="true"
-						value="#{TareaBean.esExterna}"></h:selectBooleanCheckbox></th>
+				<td><h:selectBooleanCheckbox disabled="true"
+						value="#{TareaBean.esExterna}"></h:selectBooleanCheckbox></td>
 			</tr>
 			<tr>
 				<th>Descripción:</th>
-				<th><h:outputText value="#{TareaBean.descripcion}"></h:outputText>
-				</th>
+				<td><h:outputText value="#{TareaBean.descripcion}"></h:outputText>
+				</td>
 			</tr>
 			<tr>
 				<th>Observaciones: </th>
-				<th><h:outputText value="#{TareaBean.observacion}"></h:outputText>
-				</th>
+				<td><h:outputText value="#{TareaBean.observacion}"></h:outputText>
+				</td>
 			</tr>
 			<tr>
 				<th>Fecha Apertura: </th>
-				<th><h:outputText value="#{TareaBean.fechaApertura.time}">
+				<td><h:outputText value="#{TareaBean.fechaApertura.time}">
    						 	<f:convertDateTime type="both" dateStyle="short" pattern="yyyy/MM/dd" />
 							</h:outputText>
-				</th>
+				</td>
 			</tr>
 			<tr>
 				<th>Fecha Comprometida: </th>
-				<th><h:outputText value="#{TareaBean.fechaComprometida.time}">
+				<td><h:outputText value="#{TareaBean.fechaComprometida.time}">
    						 	<f:convertDateTime type="both" dateStyle="short" pattern="yyyy/MM/dd" />
 							</h:outputText>
-				</th>
+				</td>
 			</tr>
 			<tr>
 				<th>Tipo: </th>
-				<th><h:outputText value="#{TareaBean.tipoTarea.descripcion}"></h:outputText>
-				</th>
+				<td><h:outputText value="#{TareaBean.tipoTarea.descripcion}"></h:outputText>
+				</td>
 			</tr>
 			<tr>
 				<th>Estado: </th>
-				<th><h:outputText value="#{TareaBean.tiene.estado.descripcion}"></h:outputText>
-				</th>
+				<td><h:outputText value="#{TareaBean.tiene.estado.descripcion}"></h:outputText>
+				</td>
 			</tr>
 			<tr>
 				<th>Fecha Cierre: </th>
-				<th><h:outputText value="#{TareaBean.fechaCierre.time}">
+				<td><h:outputText value="#{TareaBean.fechaCierre.time}">
    						 	<f:convertDateTime type="both" dateStyle="short" pattern="yyyy/MM/dd" />
 							</h:outputText>
-				</th>
+				</td>
 			</tr>
 		</table>
 	</h:form>

@@ -126,7 +126,7 @@ public class ManagerT implements TareaRemote {
 
 	}
 
-	public boolean tomarTarea(Tarea t) {// obtiene el realiza de esta tarea le ponemos fecha actual de incio, y avanzamos el estado de la tarea en #3 En proceso
+	public boolean tomarTarea(Tarea t, Usuario u) {// obtiene el realiza de esta tarea le ponemos fecha actual de incio, y avanzamos el estado de la tarea en #3 En proceso
 		boolean retorno = false;
 		t = em.merge(t);
 		Realiza r = realizaDeTarea(t);
@@ -490,4 +490,16 @@ public class ManagerT implements TareaRemote {
 		return listTareasEnProcesoTecnico;
 	}
 	
+	public List<Tarea> reporteTareasFinalizadasTecnico(Usuario u){
+		
+		List<Tarea> reporteTareasFinalizadasTecnico = em.createNamedQuery("reporteTareasFinalizadasTecnico").setParameter(1, em.getReference(Usuario.class, u.getCedula())).getResultList();
+		return reporteTareasFinalizadasTecnico;
 	}
+	public List<Tarea> reporteTareasPorGrupo(Grupo g){
+		List<Tarea> reporteTareasPorGrupo = em.createNamedQuery("reporteTareasPorGrupo").setParameter(1, em.getReference(Grupo.class, g.getId())).getResultList();
+		return reporteTareasPorGrupo;
+		
+	}
+	
+}
+
