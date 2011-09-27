@@ -5,11 +5,14 @@ import java.util.List;
 import javax.ejb.Remote;
 
 import beans.Encargado;
+import beans.Grupo;
 import beans.Tecnico;
 import beans.Usuario;
 
 @Remote
 public interface UsuarioRemote  {
+	
+	public List<Encargado> listarEncargadosSinGrupoMasActual(Grupo g) ;
 
 	public boolean agregarUsuario(Usuario u);	
 	public boolean eliminarUsuario(long ced);	

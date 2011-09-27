@@ -40,7 +40,7 @@ public interface TareaRemote {
 	public List<Estado> dameEstadosSgtes(Estado est);
 	public boolean validarEstadoSiguiente(Estado estadoActual, Estado estadoSgte);
 	public boolean avanzarTareaEstado(Tarea tar, Estado sigEst);
-	public boolean tomarTarea(Tarea t, Usuario u);
+	public boolean tomarTarea(Tarea t);
 	public boolean finalizarTarea(Tarea t, Usuario u);
 	public boolean derivarTarea(Tarea t, Grupo gr);
 	public boolean reabrirTarea(Tarea t);
