@@ -10,22 +10,16 @@ import java.util.List;
 
 import javax.persistence.*;
 
-@NamedQueries(value = { 
-		@NamedQuery(name="todosTareas", query="select t from Tarea t"),
-		
+@NamedQueries(value = { @NamedQuery(name = "todosTareas", query = "select t from Tarea t"),
+
 })
-@NamedNativeQueries(
-		{
-		@NamedNativeQuery(name="tareasPorUsuario",
-    query = "SELECT * FROM Tarea T join Realiza R on T.id=R.tarea_id where ((R.usu_cedula = 1?))",
-    resultClass=Tarea.class),
-    
-    @NamedNativeQuery(name="tareasFinalizadasNoCerradas",
-    query = "select * from Tarea where id= ANY(select Tarea_id from Tarea_Tiene where colTiene_id=ANY(select id from Tiene where estado_id=6 and fechaFin IS NULL))",
-    resultClass=Tarea.class),
-    
+@NamedNativeQueries({
+		@NamedNativeQuery(name = "tareasPorUsuario", query = "SELECT * FROM Tarea T join Realiza R on T.id=R.tarea_id where ((R.usu_cedula = 1?))", resultClass = Tarea.class),
+
+		@NamedNativeQuery(name = "tareasFinalizadasNoCerradas", query = "select * from Tarea where id= ANY(select Tarea_id from Tarea_Tiene where colTiene_id=ANY(select id from Tiene where estado_id=5 and fechaFin IS NULL))", resultClass = Tarea.class),
+
      @NamedNativeQuery(name="listTareasAbiertasGrupos",
-    query = "select * from Tarea T where T.id= ANY(select TT.Tarea_id from Tarea_Tiene TT where TT.colTiene_id=ANY(select Ti.id from Tiene Ti where Ti.estado_id=1 and Ti.fechaFin IS NULL) AND (TT.Tarea_id= ANY(SELECT GT.colTareas_id FROM Grupo_Tarea GT where GT.Grupo_id=ANY(SELECT G.id FROM Grupo G where G.enc_cedula=?1))));",
+    query = "select * from Tarea T where T.id= ANY(select TT.Tarea_id from Tarea_Tiene TT where TT.colTiene_id=ANY(select Ti.id from Tiene Ti where (Ti.estado_id=1 or Ti.estado_id=4) and Ti.fechaFin IS NULL) AND (TT.Tarea_id= ANY(SELECT GT.colTareas_id FROM Grupo_Tarea GT where GT.Grupo_id=ANY(SELECT G.id FROM Grupo G where G.enc_cedula=?1))));",
     resultClass=Tarea.class),
     
     @NamedNativeQuery(name="listTareasAsignadaTecnico",
@@ -34,8 +28,17 @@ import javax.persistence.*;
 
     @NamedNativeQuery(name="listTareasEnProcesoTecnico",
     query = "select * from Tarea where id= any(select tarea_id from Realiza where fechaFin IS NULL and usu_cedula=?1) and id=any(select id from Tarea where id=any(select Tarea_id from Tarea_Tiene where colTiene_id = any(select id from Tiene where estado_id=3 and fechaFin IS NULL)));",
+    resultClass=Tarea.class),
+    
+    @NamedNativeQuery(name="reporteTareasFinalizadasTecnico",
+    query = "select * from Tarea where id= any(select tarea_id from Realiza where fechaInicio IS NOT NULL and usu_cedula=?1) and id=any(select id from Tarea where id=any(select Tarea_id from Tarea_Tiene where colTiene_id = any(select id from Tiene where estado_id=5)));",
+    resultClass=Tarea.class),
+    
+    @NamedNativeQuery(name="reporteTareasPorGrupo",
+    query = "select * from Tarea where id = any(select colTareas_id from Grupo_Tarea where grupo_id=?1) and id=any(select tarea_id from Tarea_Tiene where colTiene_id=any(SELECT id FROM Tiene t where t.estado_id=1 OR t.estado_id=2 OR t.estado_id=3 OR t.estado_id=4));",
     resultClass=Tarea.class)
-		}
+    
+	}
 	
 	
 )
@@ -52,9 +55,9 @@ public class Tarea implements Serializable {
 	private boolean esExterna;
 	private String descripcion;
 	private String observacion;
-	private @Temporal(TemporalType.DATE) Calendar fechaApertura;
-	private @Temporal(TemporalType.DATE) Calendar fechaComprometida;
-	private @Temporal(TemporalType.DATE) Calendar fechaCierre;
+	private @Temporal(TemporalType.TIMESTAMP) Calendar fechaApertura;
+	private @Temporal(TemporalType.TIMESTAMP) Calendar fechaComprometida;
+	private @Temporal(TemporalType.TIMESTAMP) Calendar fechaCierre;
 	@ManyToOne(fetch=FetchType.EAGER)
 	private Tipo tipo;	
 	@OneToMany(mappedBy="tarea")

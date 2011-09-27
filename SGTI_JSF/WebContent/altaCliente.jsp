@@ -56,7 +56,7 @@
 				</td>			
 			</tr>
 			<tr>
-				<th>Fecha de Fin de Garantia (año/mes/dia):</th>
+				<th>Fecha de Fin de Garantia (aï¿½o/mes/dia):</th>
 
 				<td><h:inputText id="fchaGarantia" value="#{ClienteBean.fechaFinGarantia}">
 						<f:convertDateTime  pattern="yyyy/MM/dd" />
