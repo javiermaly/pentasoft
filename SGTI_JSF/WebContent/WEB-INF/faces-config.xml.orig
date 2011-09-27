@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE faces-config PUBLIC "-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 1.1//EN" "http://java.sun.com/dtd/web-facesconfig_1_1.dtd">
+
+<faces-config>
+<application>
+		<message-bundle>negocio.JSFMessages</message-bundle>
+</application>
+
+<managed-bean>
+		<managed-bean-name>LoginBean</managed-bean-name>
+		<managed-bean-class>negocio.LoginBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+		<managed-property>
+			<property-name>usuSession</property-name>
+			<value>#{UsuarioBean}</value>
+		</managed-property>		
+</managed-bean>
+<managed-bean>
+		<managed-bean-name>ClienteBean</managed-bean-name>
+		<managed-bean-class>negocio.ClienteBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+		<managed-property>
+			<property-name>cliSession</property-name>
+			<value>#{ClienteSession}</value>
+		</managed-property>
+		
+</managed-bean>
+<managed-bean>
+		<managed-bean-name>TareaBean</managed-bean-name>
+		<managed-bean-class>negocio.TareaBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+		<managed-property>
+			<property-name>cliSession</property-name>
+			<value>#{ClienteSession}</value>
+		</managed-property>
+		<managed-property>
+			<property-name>usuSession</property-name>
+			<value>#{UsuarioBean}</value>
+		</managed-property>	
+		
+</managed-bean>
+<managed-bean>
+		<managed-bean-name>GrupoBean</managed-bean-name>
+		<managed-bean-class>negocio.GrupoBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>			
+</managed-bean>
+
+<managed-bean>
+		<managed-bean-name>UsuarioBean</managed-bean-name>
+		<managed-bean-class>negocio.UsuarioBean</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+</managed-bean>
+<managed-bean>
+		<managed-bean-name>UsuariosBean</managed-bean-name>
+		<managed-bean-class>negocio.UsuariosBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+		<managed-property>
+			<property-name>usuSession</property-name>
+			<value>#{UsuarioBean}</value>
+		</managed-property>					
+</managed-bean>
+<managed-bean>
+		<managed-bean-name>ClienteSession</managed-bean-name>
+		<managed-bean-class>negocio.ClienteSession</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+</managed-bean>
+<managed-bean>
+		<managed-bean-name>GrupoBean</managed-bean-name>
+		<managed-bean-class>negocio.GrupoBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+</managed-bean>
+
+
+<navigation-rule>
+		<from-view-id>/login.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>usuarioLogueado</from-outcome>
+			<to-view-id>/loginOK.jsp</to-view-id>
+		</navigation-case>
+</navigation-rule>
+
+<navigation-rule>
+		<from-view-id>/reAbrirTarea.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>tareaReAbierta</from-outcome>
+			<to-view-id>/reAbrirTarea.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>tareaNoReAbierta</from-outcome>
+			<to-view-id>/reAbrirTarea.jsp</to-view-id>
+		</navigation-case>
+</navigation-rule>
+
+<navigation-rule>
+		<from-view-id>/cerrarTarea.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>tareaCerrada</from-outcome>
+			<to-view-id>/cerrarTarea.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>tareaNoCerrada</from-outcome>
+			<to-view-id>/cerrarTarea.jsp</to-view-id>
+		</navigation-case>
+</navigation-rule>
+ <navigation-rule>
+		<from-view-id>/bajaGrupo.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>grupoEliminado</from-outcome>
+			<to-view-id>/bajaGrupo.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>grupoNoEliminado</from-outcome>
+			<to-view-id>/bajaGrupo.jsp</to-view-id>
+		</navigation-case>
+</navigation-rule>
+
+ <navigation-rule>
+	<from-view-id>/modificarGrupo.jsp</from-view-id>
+	<navigation-case>
+			<from-outcome>grupoModificado</from-outcome>
+			<to-view-id>/modificarGrupo.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>grupoNoModificado</from-outcome>
+			<to-view-id>/modificarGrupo.jsp</to-view-id>
+		</navigation-case>
+</navigation-rule>
+<navigation-rule>
+	<from-view-id>/modificarGrupo.jsp</from-view-id>
+	<navigation-case>
+			<from-outcome>grupoEncontrado</from-outcome>
+			<to-view-id>/modificarGrupo.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>grupoNoEncontrado</from-outcome>
+			<to-view-id>/modificarGrupo.jsp</to-view-id>
+		</navigation-case>
+</navigation-rule>
+
+<navigation-rule>
+		<from-view-id>/buscarGrupo.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>grupoEncontrado</from-outcome>
+			<to-view-id>/buscarGrupo.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>grupoNoEncontrado</from-outcome>
+			<to-view-id>/buscarGrupo.jsp</to-view-id>
+		</navigation-case>
+</navigation-rule>
+<navigation-rule>
+		<from-view-id>/login.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>errorLogin</from-outcome>
+			<to-view-id>/error.jsp</to-view-id>
+		</navigation-case>
+</navigation-rule>
+
+<navigation-rule>
+		<from-view-id>/loginOK.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>irAsignarTarea</from-outcome>
+			<to-view-id>/asignarTarea.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>errorIrAsignarTarea</from-outcome>
+			<to-view-id>/error.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>irDerivarTarea</from-outcome>
+			<to-view-id>/derivarTarea.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>errorIrDerivarTarea</from-outcome>
+			<to-view-id>/error.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>irTomarTarea</from-outcome>
+			<to-view-id>/tomarTarea.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>errorIrTomarTarea</from-outcome>
+			<to-view-id>/error.jsp</to-view-id>
+		</navigation-case>
+</navigation-rule>
+
+<navigation-rule>
+		<from-view-id>/altaUsuario.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>UsuarioIngresado</from-outcome>
+			<to-view-id>/altaUsuario.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>UsuarioYaExiste</from-outcome>
+			<to-view-id>/altaUsuario.jsp</to-view-id>
+		</navigation-case>		
+</navigation-rule>
+
+<navigation-rule>
+		<from-view-id>/buscarUsuario.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>usuarioEncontrado</from-outcome>
+			<to-view-id>/buscarUsuario.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>usuarioNoEncontrado</from-outcome>
+			<to-view-id>/buscarUsuario.jsp</to-view-id>
+		</navigation-case>
+</navigation-rule>
+<navigation-rule>
+		<from-view-id>/modificarUsuario.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>UsuarioModificado</from-outcome>
+			<to-view-id>/modificarUsuario.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>errorModificarUsuario</from-outcome>
+			<to-view-id>/modificarUsuario.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>UsuarioNoExiste</from-outcome>
+			<to-view-id>/modificarUsuario.jsp</to-view-id>
+		</navigation-case>
+</navigation-rule>
+
+<navigation-rule>
+		<from-view-id>/abrirTarea.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>clienteEcontrado</from-outcome>
+			<to-view-id>/abrirTarea.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>clienteNoEcontrado</from-outcome>
+			<to-view-id>/abrirTarea.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>TareaAbierta</from-outcome>
+			<to-view-id>/abrirTarea.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>ErrorTareaAbierta</from-outcome>
+			<to-view-id>/abrirTarea.jsp</to-view-id>
+		</navigation-case>
+</navigation-rule>
+
+<navigation-rule>
+		<from-view-id>/asignarTarea.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>tareaAsignada</from-outcome>
+			<to-view-id>/asignarTarea.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>errorTareaAsignada</from-outcome>
+			<to-view-id>/asignarTarea.jsp</to-view-id>
+		</navigation-case>		
+</navigation-rule>
+<navigation-rule>
+		<from-view-id>/tomarTarea.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>tareaTomada</from-outcome>
+			<to-view-id>/tomarTarea.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>errorTareaTomada</from-outcome>
+			<to-view-id>/tomarTarea.jsp</to-view-id>
+		</navigation-case>			
+</navigation-rule>
+<navigation-rule>
+		<from-view-id>/derivarTarea.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>tareaDerivada</from-outcome>
+			<to-view-id>/derivarTarea.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>errorTareaDerivada</from-outcome>
+			<to-view-id>/derivarTarea.jsp</to-view-id>
+		</navigation-case>		
+</navigation-rule>
+
+
+<navigation-rule>
+		<from-view-id>/altaCliente.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>clienteEcontrado</from-outcome>
+			<to-view-id>/clienteExistente.jsp</to-view-id>
+		</navigation-case>
+			<navigation-case>
+			<from-outcome>clienteNoEcontrado</from-outcome>
+			<to-view-id>/altaCliente.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>falloAltaCliente</from-outcome>
+			<to-view-id>/altaCliente</to-view-id>
+		</navigation-case>
+</navigation-rule>
+
+<navigation-rule>
+		<from-view-id>/modificarCliente.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>clienteModificado</from-outcome>
+			<to-view-id>/modificarCliente.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>errorModificarCliente</from-outcome>
+			<to-view-id>/modificarCliente.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>clienteNoExiste</from-outcome>
+			<to-view-id>/modificarCliente.jsp</to-view-id>
+		</navigation-case>
+</navigation-rule>
+
+<navigation-rule>
+		<from-view-id>/bajaCliente.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>bajaClienteOK</from-outcome>
+			<to-view-id>/bajaCliente.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>errorBajaCliente</from-outcome>
+			<to-view-id>/bajaCliente.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>clienteEcontrado</from-outcome>
+			<to-view-id>/bajaCliente.jsp</to-view-id>
+		</navigation-case>	
+		<navigation-case>
+			<from-outcome>clienteNoEncontrado</from-outcome>
+			<to-view-id>/bajaCliente.jsp</to-view-id>
+		</navigation-case>
+</navigation-rule>
+
+</faces-config>
