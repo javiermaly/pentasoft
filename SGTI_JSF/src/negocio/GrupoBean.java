@@ -18,8 +18,6 @@ public class GrupoBean {
 	//private String encargadoSeleccionado;
 	private int evento = 0;
 
-	private GrupoSession grSession;
-
 	ConexionEJB con = new ConexionEJB();
 	FacadeRemote statelessFacade = con.conectar();
 
@@ -126,8 +124,8 @@ public class GrupoBean {
 	public ArrayList getEncargadosSinGrupo() {
 		System.out.println("Entro al metodo getEncargadosSinGrupo");
 		
-		List<Encargado> encargados = statelessFacade.listarEncargadosSinGrupo();
-		//encargadosSinGrupo.clear();
+		List<Encargado> encargados = statelessFacade.listarEncargadosHabilitados();
+		encargadosSinGrupo.clear();
 		for (int i = 0; i < encargados.size(); i++) {
 			Encargado enc = new Encargado();
 			enc = (Encargado) encargados.get(i);
@@ -140,21 +138,29 @@ public class GrupoBean {
 	}
 
 	public void setEncargadosSinGrupo(ArrayList encargadosSinGrupo) {
+
 		this.encargadosSinGrupo = encargadosSinGrupo;
 	}
 
 	@SuppressWarnings("unchecked")
 	public ArrayList getEncargadosSinGrupoMasEncargadoActual() {
 	//	encargadosSinGrupoMasEncargadoActual.clear();
-		Grupo g = statelessFacade.buscarGrupo(grSession.grSession.getId());
-		List<Encargado> encargados = statelessFacade.listarEncargadosSinGrupoMasActual(g);
-		//encargadosSinGrupo.clear();
+		List<Encargado> encargados = statelessFacade.listarEncargadosSinGrupo();
+		
+		Grupo g = statelessFacade.buscarGrupo(id);
+		Encargado enc=g.getEnc();
+		
+		System.out.println("getEncargadosSinGrupoMasEncargadoActual " +enc.getCedula() );
+		
+		encargadosSinGrupoMasEncargadoActual.add(new SelectItem(enc.getCedula(),enc.getApellido()));
+		
 		for (int i = 0; i < encargados.size(); i++) {
-			Encargado enc = new Encargado();
-			enc = (Encargado) encargados.get(i);
-			encargadosSinGrupoMasEncargadoActual.add(new SelectItem(enc.getCedula(), enc
-					.getApellido()));
-			System.out.println(enc.getCedula() + enc.getApellido());
+			Encargado enca = new Encargado();
+			enca = (Encargado) encargados.get(i);
+
+			encargadosSinGrupoMasEncargadoActual.add(new SelectItem(enca
+					.getCedula(), enca.getApellido()));
+			System.out.println(enca.getCedula() + enca.getApellido());
 		}
 		return encargadosSinGrupoMasEncargadoActual;
 	}
@@ -200,11 +206,10 @@ public class GrupoBean {
 			System.out.println("grupo encontrado: " + gr.getDescripcion());
 			if (gr.getId() != 0) {
 				this.descripcion = gr.getDescripcion();
-				this.encargadoCed = gr.getEnc().getCedula() + "";
+				this.encargadoCed = gr.getEnc().getApellido() + ", "
+						+ gr.getEnc().getNombre();
 				this.evento = 4;// encontrado
 				System.out.println(encargadoCed);
-				grSession.setGrSession(gr);
-				System.out.println(grSession.grSession.getDescripcion());
 				return "grupoEncontrado";
 			} else {
 				System.out.println("grupo nulo!!");
@@ -246,7 +251,8 @@ public class GrupoBean {
 
 		System.out.println(encargado.getApellido());
 
-		Grupo g = grSession.getGrSession();
+		System.out.println("id del grupo a modificar: " + id);
+		Grupo g = statelessFacade.buscarGrupo(id);
 		System.out.println("modifico el grupo: " + g.getDescripcion());
 		g.setDescripcion(getDescripcion());
 		g.setEnc(encargado);
@@ -257,14 +263,6 @@ public class GrupoBean {
 		} else
 			evento = 6;
 		return "grupoNoModificado";
-	}
-
-	public void setGrSession(GrupoSession grSession) {
-		this.grSession = grSession;
-	}
-
-	public GrupoSession getGrSession() {
-		return grSession;
 	}
 
 }

@@ -126,7 +126,7 @@ public class ManagerT implements TareaRemote {
 
 	}
 
-	public boolean tomarTarea(Tarea t) {// obtiene el realiza de esta tarea le ponemos fecha actual de incio, y avanzamos el estado de la tarea en #3 En proceso
+	public boolean tomarTarea(Tarea t, Usuario u) {// obtiene el realiza de esta tarea le ponemos fecha actual de incio, y avanzamos el estado de la tarea en #3 En proceso
 		boolean retorno = false;
 		t = em.merge(t);
 		Realiza r = realizaDeTarea(t);

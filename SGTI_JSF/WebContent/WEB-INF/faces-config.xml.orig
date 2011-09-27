@@ -69,6 +69,11 @@
 		<managed-bean-class>negocio.GrupoBean</managed-bean-class>
 		<managed-bean-scope>request</managed-bean-scope>
 </managed-bean>
+<managed-bean>
+		<managed-bean-name>ReportesBean</managed-bean-name>
+		<managed-bean-class>negocio.ReportesBean</managed-bean-class>
+		<managed-bean-scope>request</managed-bean-scope>
+</managed-bean>
 
 
 <navigation-rule>
@@ -182,6 +187,30 @@
 			<from-outcome>errorIrTomarTarea</from-outcome>
 			<to-view-id>/error.jsp</to-view-id>
 		</navigation-case>
+		<navigation-case>
+			<from-outcome>irFinalizarTarea</from-outcome>
+			<to-view-id>/finalizarTarea.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>errorIrFinalizarTarea</from-outcome>
+			<to-view-id>/error.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>irReAbrirTarea</from-outcome>
+			<to-view-id>/reAbrirTarea.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>errorIrReAbrirTarea</from-outcome>
+			<to-view-id>/error.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>irCerrarTarea</from-outcome>
+			<to-view-id>/cerrarTarea.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>errorIrCerrarTarea</from-outcome>
+			<to-view-id>/error.jsp</to-view-id>
+		</navigation-case>
 </navigation-rule>
 
 <navigation-rule>
@@ -266,6 +295,17 @@
 		</navigation-case>			
 </navigation-rule>
 <navigation-rule>
+		<from-view-id>/finalizarTarea.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>tareaFinalizada</from-outcome>
+			<to-view-id>/finalizarTarea.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>errorTareaFinalizada</from-outcome>
+			<to-view-id>/finalizarTarea.jsp</to-view-id>
+		</navigation-case>			
+</navigation-rule>
+<navigation-rule>
 		<from-view-id>/derivarTarea.jsp</from-view-id>
 		<navigation-case>
 			<from-outcome>tareaDerivada</from-outcome>
@@ -276,7 +316,28 @@
 			<to-view-id>/derivarTarea.jsp</to-view-id>
 		</navigation-case>		
 </navigation-rule>
-
+<navigation-rule>
+		<from-view-id>/reAbrirTarea.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>tareaReAbierta</from-outcome>
+			<to-view-id>/reAbrirTarea.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>tareaNoReAbierta</from-outcome>
+			<to-view-id>/reAbrirTarea.jsp</to-view-id>
+		</navigation-case>		
+</navigation-rule>
+<navigation-rule>
+		<from-view-id>/cerrarTarea.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>tareaCerrada</from-outcome>
+			<to-view-id>/cerrarTarea.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>tareaNoCerrada</from-outcome>
+			<to-view-id>/cerrarTarea.jsp</to-view-id>
+		</navigation-case>		
+</navigation-rule>
 
 <navigation-rule>
 		<from-view-id>/altaCliente.jsp</from-view-id>

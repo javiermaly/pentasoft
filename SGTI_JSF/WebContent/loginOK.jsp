@@ -12,8 +12,7 @@
 	<center>
 			<h1>Listado de tareas</h1>
 
-			<h:dataTable value="#{TareaBean.listadoTareasFinalizadasNoCerradas}"
-				var="tarea" border="1">
+			<h:dataTable value="#{TareaBean.listadoTareasFinalizadasNoCerradas}" var="tarea" border="1">
 				<h:column>
 					<f:facet name="header">
 						<h:outputText id="idTarea" value="Id"></h:outputText>
@@ -75,7 +74,7 @@
 				</h:column>
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="ACCIï¿½N"></h:outputText>
+						<h:outputText value="ACCIÓN"></h:outputText>
 					</f:facet>
 					<h:commandLink value="Cerrar" action="#{TareaBean.pasarPamCerrarTarea}"> 
 						<f:param id="idTareaCerrar" name="idTareaCerrar" value="#{tarea.id}" /> 
@@ -83,7 +82,7 @@
 				</h:column>
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="ACCIï¿½N"></h:outputText>
+						<h:outputText value="ACCIÓN"></h:outputText>
 					</f:facet>
 					<h:commandLink value="Re-Abrir" action="#{TareaBean.pasarPamReabrirTarea}"> 
 						<f:param id="idTareaReAbrir" name="idTareaReAbrir" value="#{tarea.id}" /> 
