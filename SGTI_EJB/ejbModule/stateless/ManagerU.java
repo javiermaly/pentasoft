@@ -7,7 +7,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import beans.Encargado;
-import beans.Grupo;
 import beans.Tecnico;
 import beans.Usuario;
 
@@ -103,11 +102,6 @@ public class ManagerU implements UsuarioRemote {
 	}
 	public List<Encargado> listarEncargadosSinGrupo() {
 		List<Encargado> todosEncargados = em.createNamedQuery("encSinGrupo").getResultList();
-		return todosEncargados;
-	}
-	
-	public List<Encargado> listarEncargadosSinGrupoMasActual(Grupo g) {
-		List<Encargado> todosEncargados = em.createNamedQuery("encSinGrupoMasEncActual").setParameter("cedEncargado", g.getEnc().getCedula()).getResultList();
 		return todosEncargados;
 	}
 

@@ -8,8 +8,6 @@ import beans.*;
 
 @Remote
 public interface FacadeRemote {
-	
-	public List<Encargado> listarEncargadosSinGrupoMasActual(Grupo g) ;
         //TAREAS
 		public long abrirTarea(Tarea t, Tiene tiene, Grupo g);//queda dada de alta y asignada a un grupo con una prioridad determinada
        // public boolean tomarTarea(Tarea t, Realiza r);//cuando el tecnico trabaja sobre la tarea
