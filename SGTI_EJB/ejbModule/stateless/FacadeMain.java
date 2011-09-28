@@ -1,5 +1,7 @@
 package stateless;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -326,7 +328,9 @@ public class FacadeMain implements FacadeRemote {
 		return statelessMTar.encontrarEstado(id);
 	}
 
-	
+	 public List<Estado> listEstados(){
+		 return statelessMTar.listadoEstados();
+	 }
 
 	@Override
 	public List<Tarea> listadoTareasPorUsuario(Usuario u) {
@@ -421,7 +425,7 @@ public class FacadeMain implements FacadeRemote {
 	 }
 	  public List<Encargado> listarEncargadosSinGrupoMasActual(Grupo g) {
 		 return statelessMUsu.listarEncargadosSinGrupoMasActual(g);
-
+	  }
 	
 	 //REPORTES
 	 public List<Tarea> reporteTareasFinalizadasTecnico(Usuario u){
@@ -435,5 +439,26 @@ public class FacadeMain implements FacadeRemote {
 		 reporteTareasPorGrupo=statelessMTar.reporteTareasPorGrupo(g);
 		return reporteTareasPorGrupo;
 	 }
-	
+	 
+	 public List<Tarea> reporteTareasEntraronEstado(Estado e, Date fechaU, Date fechaD){
+		 List<Tarea> reporteTareasEntraronEstado=null;
+		 reporteTareasEntraronEstado=statelessMTar.reporteTareasEntraronEstado(e, fechaU, fechaD);
+		return reporteTareasEntraronEstado;
+	 }
+	 public List<Tarea> reporteTareasSalieronEstado(Estado e, Date fechaU, Date fechaD){
+		 List<Tarea> reporteTareasSalieronEstado=null;
+		 reporteTareasSalieronEstado=statelessMTar.reporteTareasSalieronEstado(e, fechaU, fechaD);
+		return reporteTareasSalieronEstado;
+	 }
+	 public List<Tarea> reporteTareasNoComprometidas(Date fechaU,Date fechaD){
+		 List<Tarea> reporteTareasNoComprometidas=null;
+		 reporteTareasNoComprometidas=statelessMTar.reporteTareasNoComprometidas(fechaU, fechaD);
+		return reporteTareasNoComprometidas;
+	 }
+	 public List<Tarea> reporteTareasComprometidas(Date fechaU,Date fechaD){
+		 List<Tarea> reporteTareasComprometidas=null;
+		 reporteTareasComprometidas=statelessMTar.reporteTareasComprometidas(fechaU, fechaD);
+		return reporteTareasComprometidas;
+	 }
+	 
 }

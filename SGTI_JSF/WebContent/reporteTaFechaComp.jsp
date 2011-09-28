@@ -5,35 +5,40 @@
 <f:subview id="header">
 	<%@include file="header.jsp"%>
 </f:subview>
+
 <h:form>
-		<h1>Reporte de Tareas Finalizadas</h1>
-		<p>Todas las Tareas que un Tecnico pasó al estado Finalizada</p>
-		<table>
+	<h1>Reporte de Tareas con fecha comprometida</h1>
+	<p>Todas las Tareas que cumplieron con la fecha comprometida de finalización, en un determinado periodo de tiempo</p>
+	<table>
 			<tr>
-				<td><h:outputText>Cedula del Tecnico </h:outputText>
+				<th>Fecha Inicial (año/mes/dia):</th>
+				<td><h:inputText id="fchaInicial" value="#{ReportesBean.fechaUno}">
+						<f:convertDateTime  pattern="yyyy/MM/dd" />
+					</h:inputText>
 				</td>
-				<td><h:inputText id="cedula" value="#{ReportesBean.cedula}"	required="true">
-						<f:validateLength  maximum="8"></f:validateLength>
-						<f:converter converterId="javax.faces.Long"/></h:inputText></td>
-						<h:message for="cedula" style="color:red"></h:message>						
-				<td><h:commandButton value="Aceptar" action="#{ReportesBean.buscarUsuario}"></h:commandButton>
+					<h:message for="fchaInicial" style="color:red"></h:message>
+			</tr>
+			<tr>
+				<th>Fecha Final (año/mes/dia):</th>
+				<td><h:inputText id="fchaFinal" value="#{ReportesBean.fechaDos}">
+						<f:convertDateTime  pattern="yyyy/MM/dd" />
+					</h:inputText>
+				</td>
+					<h:message for="fchaFinal" style="color:red"></h:message>
+			</tr>
+			<tr>
+				<td></td>
+				<td>
+					<h:commandButton value="Buscar" onchange="submit()"></h:commandButton>
 				</td>
 			</tr>
 		</table>
-</h:form>
-<h:form rendered="#{ReportesBean.evento==3}">
-		<table border="1">
-			<tr>
-				<th> No existe un Tecnico con esa cedula!</th>
-			</tr>
-		</table>
-</h:form>
-<h:form rendered="#{ReportesBean.evento==4}">
+</h:form>	
 	
+<h:form rendered="#{ReportesBean.fechaUno!=null}">	
 	<center>
 			<h2>Lista de Tareas</h2>
-
-			<h:dataTable value="#{ReportesBean.reporteTareasFinalizadasTecnico}"
+			<h:dataTable value="#{ReportesBean.reporteTareasComprometidas}"
 				var="tarea" border="1">
 				<h:column>
 					<f:facet name="header">
@@ -93,8 +98,8 @@
 					</f:facet>
 					<h:outputText value="#{tarea.tipo.descripcion}">
 					</h:outputText>
-				</h:column>
-		
+				</h:column>			
+				
 			</h:dataTable>
 		</center>
 

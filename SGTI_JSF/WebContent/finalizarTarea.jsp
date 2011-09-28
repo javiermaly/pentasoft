@@ -60,8 +60,8 @@
 			</tr>
 			<tr>
 				<th>Estado:</th>
-				<th><h:outputText value="#{TareaBean.tiene.estado.descripcion}"></h:outputText>
-				</th>
+				<td><h:outputText value="#{TareaBean.tiene.estado.descripcion}"></h:outputText>
+				</td>
 			</tr>
 			<tr>
 				<td colspan="2" align="right"><h:commandButton value="Aceptar"
