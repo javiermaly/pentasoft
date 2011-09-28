@@ -76,7 +76,7 @@
 						</td>
 					</tr>
 					<tr>
-					<th>Fecha Comprometida (año/mes/dia):</th>
+					<th>Fecha Comprometida (aï¿½o/mes/dia):</th>
 	
 					<td><h:inputText id="fchaComprometida" value="#{TareaBean.fechaComprometida}">
 							<f:convertDateTime  pattern="yyyy/MM/dd" />

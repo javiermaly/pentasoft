@@ -10,7 +10,7 @@
 		<table>
 			<h1>Modificar Usuario</h1>
 		   	<tr>
-				<td><h:outputText>Cédula del Usuario </h:outputText>
+				<td><h:outputText>Cï¿½dula del Usuario </h:outputText>
 				</td>
 				<td><h:inputText id="cedula" value="#{UsuariosBean.cedula}"	required="true"><f:validateLength  maximum="8"></f:validateLength>
 						<f:converter converterId="javax.faces.Long"/></h:inputText></td>
@@ -92,7 +92,7 @@
 				</td>										
 			</tr>			
 			<tr>
-				<th>Contraseña:</th>
+				<th>Contraseï¿½a:</th>
 				<td><h:inputSecret  value="#{UsuariosBean.pwd}" ></h:inputSecret>
 				</td>
 				
@@ -158,7 +158,7 @@
 				</td>										
 			</tr>
 			<tr>
-				<th>Contraseña:</th>
+				<th>Contraseï¿½a:</th>
 				<td><h:inputSecret  value="#{UsuariosBean.pwd}" ></h:inputSecret>
 				</td>
 				

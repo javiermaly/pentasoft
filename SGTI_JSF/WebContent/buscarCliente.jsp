@@ -11,8 +11,8 @@
 		<h1>Buscar Cliente</h1>
 		<table>
 			<tr>
-				<th><h:outputText >Cedula o RUT</h:outputText>
-				</th>
+				<td><h:outputText> Cedula o RUT del Cliente </h:outputText>
+				</td>
 				<td>
 					<h:inputText id="cedrut" value="#{ClienteBean.cedRut}" required="true" size="15">
 					<f:validateLength maximum="15"></f:validateLength>

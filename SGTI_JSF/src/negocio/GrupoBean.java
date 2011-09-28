@@ -195,7 +195,7 @@ public class GrupoBean {
 		System.out.println("id de grupo que me llega" + id);
 		// this.id = getId();
 		Grupo gr = new Grupo();
-	try{
+		try {
 			gr = statelessFacade.buscarGrupo(id);
 	}
 	catch(Exception e){

@@ -30,25 +30,25 @@
   					</h:column>  
   					<h:column>
   						<f:facet name="header">
-  						<h:outputText value="Nombre / Razón Social"></h:outputText>
+  						<h:outputText value="Nombre / Razï¿½n Social"></h:outputText>
   						</f:facet>
   							<h:outputText value="#{cliente.nombre_RazonSocial}"></h:outputText>
   					</h:column>             
   					<h:column>
   						<f:facet name="header">
-  						<h:outputText value="Teléfono"></h:outputText>
+  						<h:outputText value="Telï¿½fono"></h:outputText>
   						</f:facet>
   							<h:outputText value="#{cliente.telefono}"></h:outputText>
   					</h:column>  
   					<h:column>
   						<f:facet name="header">
-  						<h:outputText value="Dirección"></h:outputText>
+  						<h:outputText value="Direcciï¿½n"></h:outputText>
   						</f:facet>
   							<h:outputText value="#{cliente.direccion}"></h:outputText>
   					</h:column>  
   					<h:column>
   						<f:facet name="header">
-  						<h:outputText value="Fecha Fin Garantía"></h:outputText>
+  						<h:outputText value="Fecha Fin Garantï¿½a"></h:outputText>
   						</f:facet>
   							  							
   							<h:outputText value="#{cliente.fechaFinGarantia.time}">

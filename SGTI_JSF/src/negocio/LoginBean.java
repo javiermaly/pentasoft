@@ -12,11 +12,12 @@ import beans.Usuario;
 import stateless.FacadeRemote;
 import conexion.ConexionEJB;
 
+
 public class LoginBean {
 	UsuarioBean usuSession;
 	private long cedula;
 	private String pwd;
-	private int evento = 0;
+	private int evento=0;
 	private String pwd2;
 
 	ConexionEJB con = new ConexionEJB();
