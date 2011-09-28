@@ -14,13 +14,10 @@
 	<div class="wrap">
 		<f:subview id="header">
 			<div class="header">
-				<h:outputLink value="loginOK.jsf">
-					<f:verbatim>
-						<div class="logo">
-
-							<img src="./images/logo.png" alt="" title="" border="0">
-					</f:verbatim>
-				</h:outputLink>
+			 <div class="logo">
+				
+					<a href="loginOK.jsf"> <img src="./images/logo.png"  alt="" title="home" border="0"></a>					
+				
 			</div>
 			<div class="usuarioLog">
 				Usuario:
@@ -86,13 +83,17 @@
 				<li><span>Listados</span>
 
 					<ul>
-                  <li><a href="reporteTareasPorUsuario.jsf">Tareas Finalizadas por un Tecnico</a></li>   
-                  <li><a href="reporteTareasPorGrupo.jsf">Tareas por Grupo</a></li>         
-               </ul>
-						</li>
+                 		 <li><a href="reporteTareasPorUsuario.jsf">Tareas Finalizadas por un Tecnico</a></li>   
+                  		 <li><a href="reporteTareasPorGrupo.jsf">Tareas por Grupo</a></li>         
+                  		 <li><a href="reporteTareasEntraronEstado.jsf">Tareas que Ingresaron a un Estado</a></li>
+                  		 <li><a href="reporteTareasSalieronEstado.jsf">Tareas que Salieron de un Estado</a></li>
+                  		 <li><a href="reporteTaPasFechComp.jsf">Tareas No Comprometidas</a></li>
+                  		 <li><a href="reporteTaFechaComp.jsf">Tareas Comprometidas</a></li>
+              		 </ul>
+				</li>
 
-					</ul></li>
 			</ul>
+			
 
 		</div>
 	</h:form>
@@ -136,12 +137,11 @@
 				<li><span>Listados</span>
 
 					<ul>
-                  <li><a href="reporteTareasPorUsuario.jsf">Tareas Finalizadas por un Tecnico</a></li>            
-                  <li><a href="reporteTareasPorGrupo.jsf">Tareas por Grupo</a></li>
-               </ul>
-						</li>
+                  		<li><a href="reporteTareasPorUsuario.jsf">Tareas Finalizadas por un Tecnico</a></li>            
+                  		<li><a href="reporteTareasPorGrupo.jsf">Tareas por Grupo</a></li>
+               		</ul>
+				</li>
 
-					</ul></li>
 			</ul>
 
 		</div>

@@ -36,9 +36,25 @@ import javax.persistence.*;
     
     @NamedNativeQuery(name="reporteTareasPorGrupo",
     query = "select * from Tarea where id = any(select colTareas_id from Grupo_Tarea where grupo_id=?1) and id=any(select tarea_id from Tarea_Tiene where colTiene_id=any(SELECT id FROM Tiene t where t.estado_id=1 OR t.estado_id=2 OR t.estado_id=3 OR t.estado_id=4));",
-    resultClass=Tarea.class)
+    resultClass=Tarea.class),
     
+    @NamedNativeQuery(name="reporteTareasEntraronEstado",
+    	    query = " select * from Tarea where id=any(select Tarea_id from Tarea_Tiene where colTiene_id=any(select id from Tiene where fechaInicio between :fechaUno and :fechaDos and estado_id=?1));",
+    	    resultClass=Tarea.class),
+    	    
+    @NamedNativeQuery(name="reporteTareasSalieronEstado",
+       query = " select * from Tarea where id=any(select Tarea_id from Tarea_Tiene where colTiene_id=any(select id from Tiene where fechaFin between :fechaUno and :fechaDos and estado_id=?1));",
+       resultClass=Tarea.class),
+    
+    @NamedNativeQuery(name="reporteTareasNoComprometidas",
+    	    query = "SELECT * FROM Tarea T where (fechaCierre > fechaComprometida and fechaApertura between :fechaUno and :fechaDos) ;",
+    	    resultClass=Tarea.class),
+    	  
+    @NamedNativeQuery(name="reporteTareasComprometidas",
+      	    query = "SELECT * FROM Tarea T where (fechaCierre < fechaComprometida and fechaApertura between :fechaUno and :fechaDos) ;",
+       	    resultClass=Tarea.class)
 	}
+
 	
 	
 )

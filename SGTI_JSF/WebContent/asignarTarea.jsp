@@ -43,12 +43,12 @@
 			</tr>
 			<tr>
 				<th>Descripcion:</th>
-				<td><h:inputTextarea rows="5" cols="25" value="#{TareaBean.descripcion}"></h:inputTextarea>
+				<td><h:inputTextarea rows="5" cols="25" disabled="true" value="#{TareaBean.descripcion}"></h:inputTextarea>
 				</td>
 			</tr>
 			<tr>
 				<th>Observaciones:</th>
-				<td><h:inputTextarea rows="5" cols="25" value="#{TareaBean.observacion}"></h:inputTextarea></td>
+				<td><h:inputTextarea rows="5" cols="25" disabled="true" value="#{TareaBean.observacion}"></h:inputTextarea></td>
 			</tr>
 			<tr>
 				<th>Fecha Apertura:</th>
@@ -71,8 +71,8 @@
 			</tr>
 			<tr>
 				<th>Estado:</th>
-				<th><h:outputText value="#{TareaBean.tiene.estado.descripcion}"></h:outputText>
-				</th>
+				<td><h:outputText value="#{TareaBean.tiene.estado.descripcion}"></h:outputText>
+				</td>
 			</tr>
 			<tr>
 				<td colspan="2" align="right"><h:commandButton value="Aceptar"
