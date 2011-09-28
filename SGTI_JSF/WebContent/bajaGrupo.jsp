@@ -71,7 +71,7 @@
 	<h:form rendered="#{GrupoBean.evento==3}">
 		<table border="1">
 			<tr>
-				<th>Cliente no existe!!!</th>
+				<th>El grupo que intenta dar de baja no existe!!!</th>
 			</tr>
 		</table>
 	</h:form>

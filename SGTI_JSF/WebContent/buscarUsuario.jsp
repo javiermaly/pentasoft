@@ -26,40 +26,40 @@
 		<table border="1">
 			<tr>
 				<th>Nombre: </th>
-				<th><h:outputText value="#{UsuariosBean.nombre}"></h:outputText></th>
+				<td><h:outputText value="#{UsuariosBean.nombre}"></h:outputText></td>
 			</tr>
 			<tr>
 				<th>Apellido:</th>
-				<td><h:inputText value="#{UsuariosBean.apellido}"></h:inputText>
+				<td><h:outputText value="#{UsuariosBean.apellido}"></h:outputText>
 				</td>
 			</tr>
 			<tr>
 				<th>Celular: </th>
-				<th><h:outputText value="#{UsuariosBean.celular}"></h:outputText></th>
+				<td><h:outputText value="#{UsuariosBean.celular}"></h:outputText></td>
 			</tr>
 			<tr>
 				<th>Perfil: </th>
-				<th><h:outputText value="#{UsuariosBean.perfil}"></h:outputText></th>
+				<td><h:outputText value="#{UsuariosBean.perfil}"></h:outputText></td>
 			</tr>
 			<tr>
 				<th>Direccion:</th>
-				<td><h:inputText value="#{UsuariosBean.direccion}"></h:inputText>
+				<td><h:outputText value="#{UsuariosBean.direccion}"></h:outputText>
 				</td>
 			</tr>
 			<tr>
 				<th>Telefono:</th>
-				<td><h:inputText id="telefono" value="#{UsuariosBean.telefono}">
-					<f:converter converterId="javax.faces.Integer"/>
-					</h:inputText>
-					<h:message for="telefono" style="color:red"></h:message>					
+				<td><h:outputText id="telefono" value="#{UsuariosBean.telefono}">
+					
+					</h:outputText>
+									
 				</td>			
 			</tr>
 			<tr>
 				<th>Celular:</th>
-				<td><h:inputText id="celular" value="#{UsuariosBean.celular}">
-					<f:converter converterId="javax.faces.Integer"/>
-					</h:inputText>
-					<h:message for="celular" style="color:red"></h:message>					
+				<td><h:outputText id="celular" value="#{UsuariosBean.celular}">
+					
+					</h:outputText>
+							
 				</td>			
 			</tr>		
 			

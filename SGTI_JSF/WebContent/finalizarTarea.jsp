@@ -5,8 +5,27 @@
 <f:subview id="header">
 	<%@include file="header.jsp"%>
 </f:subview>
-<h:form >
 <h1>Finalizar Tarea</h1>
+<h:form rendered="#{TareaBean.id !=null}">
+		
+		<table>
+			<tr>
+				<th><h:outputText> Identificador de la tarea:  </h:outputText>
+				</th>
+				<td><h:inputText id="id" value="#{TareaBean.id}"
+						required="true">
+						<f:validateLength minimum="1" maximum="15"></f:validateLength>
+						<f:converter converterId="javax.faces.Long" />
+					</h:inputText></td>
+
+				<h:message for="id" style="color:red"></h:message>
+				<td><h:commandButton value="Aceptar"action="#{TareaBean.buscarTarea}"></h:commandButton>
+				</td>
+			</tr>
+		</table>
+	</h:form>
+<h:form rendered="#{TareaBean.id!=0 && TareaBean.descripcion!=null}">
+
 		<table border="1">		
 			<tr>
 				<th>Id:</th>
@@ -77,10 +96,17 @@
 			</tr>
 		</table>
 	</h:form>
-	<h:form rendered="#{TareaBean.evento==2}">
+	<h:form rendered="#{TareaBean.evento==3}">
 		<table border="1">
 			<tr>
-				<th>Error: No se pudo Finalizar la tarea!</th>
+				<th>Tarea no encontrada.</th>
+			</tr>
+		</table>
+	</h:form>
+		<h:form rendered="#{TareaBean.evento==4}">
+		<table border="1">
+			<tr>
+				<th>Tarea no encontrada.</th>
 			</tr>
 		</table>
 	</h:form>

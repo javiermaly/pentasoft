@@ -1,8 +1,6 @@
 package stateless;
 
 
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import javax.ejb.Remote;
@@ -59,15 +57,9 @@ public interface TareaRemote {
     public Tipo encontrarTipo(int id);
     public List<Tipo> listadoTipos();
     
-    public List<Estado> listadoEstados();
-    
     //reportes
 	public List<Tarea> reporteTareasFinalizadasTecnico(Usuario u);
 	public List<Tarea> reporteTareasPorGrupo(Grupo g);
-	public List<Tarea> reporteTareasEntraronEstado(Estado e, Date fechaU, Date fechaD);
-	public List<Tarea> reporteTareasSalieronEstado(Estado e, Date fechaU, Date fechaD);
-	public List<Tarea> reporteTareasNoComprometidas(Date fechaU, Date fechaD);
-	public List<Tarea> reporteTareasComprometidas(Date fechaU, Date fechaD);
 
 	
 }

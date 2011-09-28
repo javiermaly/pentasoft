@@ -37,11 +37,7 @@
 				<h:inputHidden value="#{UsuariosBean.cedula}"></h:inputHidden>				
 				</td>										
 			</tr>			
-			<tr>
-				<th>Contraseña:</th>
-				<td><h:inputSecret value="#{UsuariosBean.pwd}" ></h:inputSecret>
-				</td>				
-			</tr>		
+				
 			<tr>
 				<th>Nombre:</th>
 				<td><h:inputText value="#{UsuariosBean.nombre}"></h:inputText>

@@ -195,10 +195,14 @@ public class GrupoBean {
 		System.out.println("id de grupo que me llega" + id);
 		// this.id = getId();
 		Grupo gr = new Grupo();
-		try {
+	try{
 			gr = statelessFacade.buscarGrupo(id);
-			System.out.println("grupo encontrado: " + gr.getDescripcion());
-			if (gr.getId() != 0) {
+	}
+	catch(Exception e){
+		
+	}
+			
+			if ((gr!=null)&&(gr.getId() != 0)) {
 				this.descripcion = gr.getDescripcion();
 				this.encargadoCed = gr.getEnc().getCedula() + "";
 				this.evento = 4;// encontrado
@@ -212,11 +216,7 @@ public class GrupoBean {
 				return "grupoNoEncontrado";
 			}
 
-		} catch (Exception e) {
-			this.evento = 3;// noexiste
-			return "grupoNoEncontrado";
-
-		}
+		
 
 	}
 

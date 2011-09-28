@@ -15,7 +15,7 @@
 		<table border="1">
 			
 			<tr>
-				<th>Descripci�n</th>
+				<th>Descripcion</th>
 				<td>
 				<h:inputText id="descripcion" value="#{GrupoBean.descripcion}" ></h:inputText>
 				</td>

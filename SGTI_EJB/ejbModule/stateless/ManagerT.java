@@ -1,15 +1,12 @@
 package stateless;
 
 import java.util.Calendar;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
-import javax.persistence.TemporalType;
 
 import beans.Cliente;
 import beans.Encargado;
@@ -286,14 +283,6 @@ public class ManagerT implements TareaRemote {
 		return listTipos;
 
 	}
-	
-	@SuppressWarnings(value = "unchecked")
-	// para que deje de mostrar advertencia List need unchecked convertion
-	public List<Estado> listadoEstados() {
-		List<Estado> listadoEstados = em.createNamedQuery("todosEstados").getResultList();
-	return listadoEstados;
-
-	}
 
 	// OBTIENE EL TIENE SIN FINALIZAR DE UNA TAREA
 	public Tiene tieneDeTarea(Tarea t) {
@@ -511,45 +500,6 @@ public class ManagerT implements TareaRemote {
 		return reporteTareasPorGrupo;
 		
 	}
-	public List<Tarea> reporteTareasEntraronEstado(Estado e, Date fechaU, Date fechaD){
-		Query query =em.createNamedQuery("reporteTareasEntraronEstado");
-		query.setParameter(1, em.getReference(Grupo.class, e.getId()));
-		query.setParameter("fechaUno", fechaU, TemporalType.DATE);
-		query.setParameter("fechaDos", fechaD, TemporalType.DATE);
-		List<Tarea> reporteTareasEntraronEstado = query.getResultList();
-				
-		return reporteTareasEntraronEstado;
-		
-	}
 	
-
-	public List<Tarea> reporteTareasSalieronEstado(Estado e, Date fechaU, Date fechaD){
-		Query query =em.createNamedQuery("reporteTareasSalieronEstado");
-		query.setParameter(1, em.getReference(Grupo.class, e.getId()));
-		query.setParameter("fechaUno", fechaU, TemporalType.DATE);
-		query.setParameter("fechaDos", fechaD, TemporalType.DATE);
-		List<Tarea> reporteTareasSalieronEstado = query.getResultList();
-				
-		return reporteTareasSalieronEstado;
-	}
-	
-	
-	public List<Tarea> reporteTareasNoComprometidas(Date fechaU, Date fechaD){
-		Query query =em.createNamedQuery("reporteTareasNoComprometidas");
-		query.setParameter("fechaUno", fechaU, TemporalType.DATE);
-		query.setParameter("fechaDos", fechaD, TemporalType.DATE);
-		List<Tarea> reporteTareasNoComprometidas = query.getResultList();
-				
-		return reporteTareasNoComprometidas;		
-	}
-	
-	public List<Tarea> reporteTareasComprometidas(Date fechaU, Date fechaD){
-		Query query =em.createNamedQuery("reporteTareasComprometidas");
-		query.setParameter("fechaUno", fechaU, TemporalType.DATE);
-		query.setParameter("fechaDos", fechaD, TemporalType.DATE);
-		List<Tarea> reporteTareasComprometidas = query.getResultList();
-				
-		return reporteTareasComprometidas;		
-	}
 }
 

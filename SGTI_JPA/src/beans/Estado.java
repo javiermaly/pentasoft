@@ -14,7 +14,6 @@ import javax.persistence.*;
 
 @NamedQueries(value = { 
 		@NamedQuery(name="estadosSgtes", query="SELECT e.colEstadosSgtes FROM Estado e where e.id=:id"),
-		@NamedQuery(name="todosEstados", query="select e from Estado e")
 })
 
 @Entity

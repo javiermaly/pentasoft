@@ -774,6 +774,29 @@ public class TareaBean {
 			
 	}
 
+	public String modificarTarea(){
+		Tarea t=statelessFacade.buscarTarea(id);
+		t.setPrioridad(prioridad);
+		t.setEsExterna(esExterna);
+		Tipo tipo=statelessFacade.buscarTipo(Integer.parseInt(varId));
+		t.setTipo(tipo);
+		if (fechaComprometida != null) { // comprueba si no ingresó una fecha
+			Calendar cal = Calendar.getInstance();
+			cal.setTime(fechaComprometida);
+			t.setFechaComprometida(cal);
+		}
+		t.setDescripcion(descripcion);
+		
+		if(statelessFacade.modificarTarea(t) != null){
+			evento=6;
+			return "tareaModificada";
+		}
+		else{
+			evento=7;
+			return "tareaNoModificada";
+		}
+		
+	}
 
 	
 }

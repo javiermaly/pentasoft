@@ -1,7 +1,5 @@
 package stateless;
 
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import javax.ejb.Remote;
@@ -68,7 +66,6 @@ public interface FacadeRemote {
         
         //ESTADOS
         public Estado buscarEstado(int id);
-        public List<Estado> listEstados();
         
         //LISTADOS
         //listado de tareas asignadas por usuario.
@@ -80,9 +77,7 @@ public interface FacadeRemote {
         //REPORTES
         public List<Tarea> reporteTareasFinalizadasTecnico(Usuario u);
         public List<Tarea> reporteTareasPorGrupo(Grupo g);
-        public List<Tarea> reporteTareasEntraronEstado(Estado e, Date fechaU, Date fechaD);
-        public List<Tarea> reporteTareasSalieronEstado(Estado e, Date fechaU, Date fechaD);
-        public List<Tarea> reporteTareasNoComprometidas(Date fechaU,Date fechaD);
-        public List<Tarea> reporteTareasComprometidas(Date fechaU,Date fechaD);
+        
+        
         
 }

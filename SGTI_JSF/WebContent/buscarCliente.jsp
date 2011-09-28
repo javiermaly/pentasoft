@@ -11,10 +11,10 @@
 		<h1>Buscar Cliente</h1>
 		<table>
 			<tr>
-				<td><h:outputText> Cedula o RUT del Cliente </h:outputText>
-				</td>
+				<th><h:outputText >Cedula o RUT</h:outputText>
+				</th>
 				<td>
-					<h:inputText id="cedrut" value="#{ClienteBean.cedRut}" required="true">
+					<h:inputText id="cedrut" value="#{ClienteBean.cedRut}" required="true" size="15">
 					<f:validateLength maximum="15"></f:validateLength>
 					<f:converter converterId="javax.faces.Long"/></h:inputText>
 				</td>			
@@ -38,24 +38,24 @@
 				</td>
 			</tr>
 			<tr>
-				<th>Nombre o Raz�n Social: </th>
-				<th><h:outputText value="#{ClienteSession.clienteSession.nombre_RazonSocial}"></h:outputText></th>
+				<th>Nombre o Razon Social: </th>
+				<td><h:outputText value="#{ClienteSession.clienteSession.nombre_RazonSocial}"></h:outputText></td>
 			</tr>
 			<tr>
-				<th>Direcci�n:</th>
+				<th>Direccion:</th>
 				<td><h:outputText value="#{ClienteSession.clienteSession.direccion}"></h:outputText>
 				</td>
 			</tr>
 			<tr>
 				<th>Telefono</th>
-				<th><h:outputText value="#{ClienteSession.clienteSession.telefono}"></h:outputText></th>
+				<td><h:outputText value="#{ClienteSession.clienteSession.telefono}"></h:outputText></td>
 			</tr>
 			<tr>
 				<th>Fecha fin de Garantia</th>
- 				<th><h:outputText value="#{ClienteSession.clienteSession.fechaFinGarantia.time}">
+ 				<td><h:outputText value="#{ClienteSession.clienteSession.fechaFinGarantia.time}">
  						<f:convertDateTime pattern="dd/MM/yyyy"/>
  					</h:outputText>
- 				</th> 
+ 				</td> 
 			</tr>
 		</table>
 	</h:form>

@@ -7,10 +7,10 @@
 </f:subview>
 <h:form>
 		<h1>Reporte de Tareas Finalizadas</h1>
-		<p>Todas las Tareas que un Tecnico pasó al estado Finalizada</p>
+		<p>Todas las Tareas que un Tï¿½cnico pasï¿½ al estado Finalizada</p>
 		<table>
 			<tr>
-				<td><h:outputText>Cedula del Tecnico </h:outputText>
+				<td><h:outputText>Cï¿½dula del Tï¿½cnico </h:outputText>
 				</td>
 				<td><h:inputText id="cedula" value="#{ReportesBean.cedula}"	required="true">
 						<f:validateLength  maximum="8"></f:validateLength>

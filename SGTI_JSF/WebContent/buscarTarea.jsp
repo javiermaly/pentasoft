@@ -47,7 +47,7 @@
 						value="#{TareaBean.esExterna}"></h:selectBooleanCheckbox></td>
 			</tr>
 			<tr>
-				<th>Descripci�n:</th>
+				<th>Descripcion:</th>
 				<td><h:outputText value="#{TareaBean.descripcion}"></h:outputText>
 				</td>
 			</tr>

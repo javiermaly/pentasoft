@@ -22,6 +22,14 @@
   					</h:column>
   					<h:column>
   						<f:facet name="header">
+  						<h:outputText value="Es Empresa"></h:outputText>
+  						</f:facet>  					
+  						<h:selectBooleanCheckbox disabled="true" value="#{cliente.empresa}" ></h:selectBooleanCheckbox>		  							
+  							
+   						 
+  					</h:column>  
+  					<h:column>
+  						<f:facet name="header">
   						<h:outputText value="Nombre / Razón Social"></h:outputText>
   						</f:facet>
   							<h:outputText value="#{cliente.nombre_RazonSocial}"></h:outputText>
