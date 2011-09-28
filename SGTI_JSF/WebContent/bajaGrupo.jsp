@@ -38,7 +38,7 @@
 				</td>
 			</tr>
 			<tr>
-				<th>Descripción:</th>
+				<th>Descripciï¿½n:</th>
 				<td><h:outputText value="#{GrupoBean.descripcion}"></h:outputText>
 				</td>
 			</tr>

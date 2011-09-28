@@ -11,8 +11,8 @@
 		<h1>Cerrar Tarea</h1>
 		<table>
 			<tr>
-				<th><h:outputText> Identificador de la tarea:  </h:outputText>
-				</th>
+				<td><h:outputText> Identificador de la tarea:  </h:outputText>
+				</td>
 				<td><h:inputText id="id" value="#{TareaBean.id}"
 						required="true">
 						<f:validateLength minimum="1" maximum="15"></f:validateLength>
@@ -48,7 +48,7 @@
 				</td>
 			</tr>
 			<tr>
-				<th>Descripción:</th>
+				<th>Descripciï¿½n:</th>
 				<td><h:inputTextarea rows="5" cols="25"  value="#{TareaBean.descripcion}"></h:inputTextarea>
 				</td>
 			</tr>
@@ -94,7 +94,7 @@
 	<h:form rendered="#{TareaBean.evento==1}">
 		<table border="1">
 			<tr>
-				<th>La tarea se cerró correctamente!!!</th>
+				<th>La tarea se cerrï¿½ correctamente!!!</th>
 			</tr>
 		</table>
 	</h:form>

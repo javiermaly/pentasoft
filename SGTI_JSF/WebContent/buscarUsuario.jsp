@@ -11,7 +11,7 @@
 		<h1>Buscar Usuario</h1>
 		<table>
 			<tr>
-				<td><h:outputText>Cédula del Usuario </h:outputText>
+				<td><h:outputText>Cï¿½dula del Usuario </h:outputText>
 				</td>
 				<td><h:inputText id="cedula" value="#{UsuariosBean.cedula}"	required="true"><f:validateLength  maximum="8"></f:validateLength>
 						<f:converter converterId="javax.faces.Long"/></h:inputText></td>

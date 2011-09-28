@@ -556,5 +556,50 @@
 			<to-view-id>/login.jsp</to-view-id>
 		</navigation-case>
 	</navigation-rule>
-
+<navigation-rule>
+		<from-view-id>/reporteTareasEntraronEstado.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>logout</from-outcome>
+			<to-view-id>/login.jsp</to-view-id>
+		</navigation-case>
+</navigation-rule>
+<navigation-rule>
+		<from-view-id>/reporteTaPasFechComp.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>tareasNoComp</from-outcome>
+			<to-view-id>/reporteTaPasFechComp.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>logout</from-outcome>
+			<to-view-id>/login.jsp</to-view-id>
+		</navigation-case>
+</navigation-rule>
+<navigation-rule>
+		<from-view-id>/reporteTareasSalieronEstado.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>logout</from-outcome>
+			<to-view-id>/login.jsp</to-view-id>
+		</navigation-case>
+</navigation-rule>
+<navigation-rule>
+		<from-view-id>/reporteTaFechaComp.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>logout</from-outcome>
+			<to-view-id>/login.jsp</to-view-id>
+		</navigation-case>
+</navigation-rule>
+<navigation-rule>
+		<from-view-id>/reporteTareasPorUsuario.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>logout</from-outcome>
+			<to-view-id>/login.jsp</to-view-id>
+		</navigation-case>
+</navigation-rule>
+<navigation-rule>
+		<from-view-id>/reporteTareasPorGrupo.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>logout</from-outcome>
+			<to-view-id>/login.jsp</to-view-id>
+		</navigation-case>
+</navigation-rule>
 </faces-config>
