@@ -81,17 +81,20 @@
 		<managed-bean-class>negocio.ClienteSession</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 </managed-bean>
-<managed-bean>
-		<managed-bean-name>GrupoBean</managed-bean-name>
-		<managed-bean-class>negocio.GrupoBean</managed-bean-class>
-		<managed-bean-scope>request</managed-bean-scope>
-</managed-bean>
+
 <managed-bean>
 		<managed-bean-name>ReportesBean</managed-bean-name>
 		<managed-bean-class>negocio.ReportesBean</managed-bean-class>
 		<managed-bean-scope>request</managed-bean-scope>
 </managed-bean>
 
+<navigation-rule>
+		<from-view-id>/header.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>logout</from-outcome>
+			<to-view-id>/login.jsp</to-view-id>
+		</navigation-case>
+		</navigation-rule>
 
 	<navigation-rule>
 		<from-view-id>/login.jsp</from-view-id>
@@ -267,7 +270,21 @@
 			<to-view-id>/login.jsp</to-view-id>
 		</navigation-case>
 	</navigation-rule>
-
+	<navigation-rule>
+		<from-view-id>/cambioContrasenia.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>pwdCambiado</from-outcome>
+			<to-view-id>/cambioContrasenia.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>pwdNoCambiado</from-outcome>
+			<to-view-id>/cambioContrasenia.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>logout</from-outcome>
+			<to-view-id>/login.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 	<navigation-rule>
 		<from-view-id>/altaUsuario.jsp</from-view-id>
 		<navigation-case>
@@ -373,6 +390,40 @@
 			<to-view-id>/login.jsp</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	
+	
+	
+	<navigation-rule>
+		<from-view-id>/asignarTarea.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>tareaAsignada</from-outcome>
+			<to-view-id>/asignarTarea.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>errorTareaAsignada</from-outcome>
+			<to-view-id>/asignarTarea.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>logout</from-outcome>
+			<to-view-id>/login.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/modificarTarea.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>tareaModificada</from-outcome>
+			<to-view-id>/modificarTarea.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>tareaNoModificada</from-outcome>
+			<to-view-id>/modificarTarea.jsp</to-view-id>
+		</navigation-case>
+			<navigation-case>
+			<from-outcome>logout</from-outcome>
+			<to-view-id>/login.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
 	<navigation-rule>
 		<from-view-id>/finalizarTarea.jsp</from-view-id>
 		<navigation-case>
@@ -497,57 +548,13 @@
 			<to-view-id>/login.jsp</to-view-id>
 		</navigation-case>
 	</navigation-rule>
-<navigation-rule>
+	<navigation-rule>
 		<from-view-id>/header.jsp</from-view-id>
 		<navigation-case>
+
 			<from-outcome>logout</from-outcome>
 			<to-view-id>/login.jsp</to-view-id>
 		</navigation-case>
-</navigation-rule>
-<navigation-rule>
-		<from-view-id>/reporteTareasEntraronEstado.jsp</from-view-id>
-		<navigation-case>
-			<from-outcome>logout</from-outcome>
-			<to-view-id>/login.jsp</to-view-id>
-		</navigation-case>
-</navigation-rule>
-<navigation-rule>
-		<from-view-id>/reporteTaPasFechComp.jsp</from-view-id>
-		<navigation-case>
-			<from-outcome>tareasNoComp</from-outcome>
-			<to-view-id>/reporteTaPasFechComp.jsp</to-view-id>
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>logout</from-outcome>
-			<to-view-id>/login.jsp</to-view-id>
-		</navigation-case>
-</navigation-rule>
-<navigation-rule>
-		<from-view-id>/reporteTareasSalieronEstado.jsp</from-view-id>
-		<navigation-case>
-			<from-outcome>logout</from-outcome>
-			<to-view-id>/login.jsp</to-view-id>
-		</navigation-case>
-</navigation-rule>
-<navigation-rule>
-		<from-view-id>/reporteTaFechaComp.jsp</from-view-id>
-		<navigation-case>
-			<from-outcome>logout</from-outcome>
-			<to-view-id>/login.jsp</to-view-id>
-		</navigation-case>
-</navigation-rule>
-<navigation-rule>
-		<from-view-id>/reporteTareasPorUsuario.jsp</from-view-id>
-		<navigation-case>
-			<from-outcome>logout</from-outcome>
-			<to-view-id>/login.jsp</to-view-id>
-		</navigation-case>
-</navigation-rule>
-<navigation-rule>
-		<from-view-id>/reporteTareasPorGrupo.jsp</from-view-id>
-		<navigation-case>
-			<from-outcome>logout</from-outcome>
-			<to-view-id>/login.jsp</to-view-id>
-		</navigation-case>
-</navigation-rule>
+	</navigation-rule>
+
 </faces-config>

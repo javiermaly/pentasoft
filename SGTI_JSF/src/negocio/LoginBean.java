@@ -12,12 +12,12 @@ import beans.Usuario;
 import stateless.FacadeRemote;
 import conexion.ConexionEJB;
 
-
 public class LoginBean {
 	UsuarioBean usuSession;
 	private long cedula;
 	private String pwd;
-	private int evento=0;
+	private int evento = 0;
+	private String pwd2;
 
 	ConexionEJB con = new ConexionEJB();
 	FacadeRemote statelessFacade = con.conectar();
@@ -45,6 +45,7 @@ public class LoginBean {
 	public void setUsuSession(UsuarioBean usuSession) {
 		this.usuSession = usuSession;
 	}
+
 	public void setEvento(int evento) {
 		this.evento = evento;
 	}
@@ -53,13 +54,20 @@ public class LoginBean {
 		return evento;
 	}
 
+	public void setPwd2(String pwd2) {
+		this.pwd2 = pwd2;
+	}
 
-//	public int getPerfil() {
-//		return perfil;
-//	}
-//	public void setPerfil(int perfil) {
-//		this.perfil = perfil;
-//	}
+	public String getPwd2() {
+		return pwd2;
+	}
+
+	// public int getPerfil() {
+	// return perfil;
+	// }
+	// public void setPerfil(int perfil) {
+	// this.perfil = perfil;
+	// }
 	public String login() {
 
 		if (!((statelessFacade.login(cedula, pwd)) == null)) {
@@ -93,7 +101,7 @@ public class LoginBean {
 				return "usuarioLogueado";
 
 			} else {
-				evento=2;
+				evento = 2;
 				return "usuarioInhabilitado";
 			}
 		} else {
@@ -102,16 +110,37 @@ public class LoginBean {
 		}
 
 	}
-	
-	public String logOut(){
-		System.out.println("logout: "+usuSession.getUsuarioSession().getCedula());
-		
+
+	public String logOut() {
+		System.out.println("logout: "
+				+ usuSession.getUsuarioSession().getCedula());
+
 		FacesContext context = FacesContext.getCurrentInstance();
-		HttpServletRequest myRequest = (HttpServletRequest)context.getExternalContext().getRequest();
+		HttpServletRequest myRequest = (HttpServletRequest) context
+				.getExternalContext().getRequest();
 		myRequest.getSession().invalidate();
-		
+
 		return "logout";
 	}
 
+	public String cambioContrasenia() {
+		if (pwd.equalsIgnoreCase(pwd2)) {
+			Usuario u = usuSession.usuarioSession;
+			u.setPwd(pwd);
+			if (statelessFacade.modifUsuario(u)) {
+				evento=6;
+				return "pwdCambiado";
+			}
+			else{
+				evento=7;
+				return "pwdNoCambiado";
+			}
+		}
+		else{
+			evento=8;
+			return "pwdNoCambiado";
+		}
+
+	}
 
 }

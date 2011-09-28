@@ -11,8 +11,8 @@
 		<h1>Buscar Grupo</h1>
 		<table>
 			<tr>
-				<td><h:outputText> Identificador de grupo </h:outputText>
-				</td>
+				<th><h:outputText> Identificador de grupo </h:outputText>
+				</th>
 				<td>
 					<h:inputText id="id" value="#{GrupoBean.id}" required="true">
 					<f:validateLength minimum="1" maximum="4"></f:validateLength>
@@ -31,7 +31,7 @@
 			
 			<tr>
 				<th>Id: </th>
-				<th><h:outputText value="#{GrupoBean.id}"></h:outputText></th>
+				<td><h:outputText value="#{GrupoBean.id}"></h:outputText></td>
 			</tr>
 			<tr>
 				<th>Descripción:</th>
@@ -40,7 +40,7 @@
 			</tr>
 			<tr>
 				<th>Encargado</th>
-				<th><h:outputText value="#{GrupoBean.encargadoCed}"></h:outputText></th>
+				<td><h:outputText value="#{GrupoBean.encargadoCed}"></h:outputText></td>
 			</tr>
 			
 		</table>
