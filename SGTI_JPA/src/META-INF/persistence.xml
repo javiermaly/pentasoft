@@ -3,8 +3,7 @@
 	<persistence-unit name="SGTI_JPA" transaction-type="JTA">
 		<jta-data-source>java:mysqlds_sgti</jta-data-source>
 	 
-	 
-		<class>beans.Usuario</class>
+	 	<class>beans.Usuario</class>
 		<class>beans.Estado</class>
 		<class>beans.Tarea</class>
 		<class>beans.Tiene</class>

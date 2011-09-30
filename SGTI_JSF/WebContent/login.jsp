@@ -42,6 +42,7 @@
 			<label for="password">Password</label>
 			<h:inputSecret styleClass="login"  id="pwd" value="#{LoginBean.pwd}" required="true"></h:inputSecret>
 			<div class="clear"></div>		
+			<h:form rendered="#{LoginBean.evento==3 }"><h3 style="color:red"><f:verbatim>Error: verfique cedula y/o contraseña.</f:verbatim></h3></h:form>
 			
 			<h:form rendered="#{LoginBean.evento==2 }"><h3 style="color:red"><f:verbatim>El usuario no esta habilitado, contacte al administrador</f:verbatim></h3></h:form>
 			<br/>

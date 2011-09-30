@@ -106,6 +106,7 @@ public class LoginBean {
 				return "usuarioInhabilitado";
 			}
 		} else {
+			evento=4;
 			System.out.println("error login");
 			return "errorLogin";
 		}
