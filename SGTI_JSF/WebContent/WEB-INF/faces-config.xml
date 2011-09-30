@@ -76,25 +76,25 @@
 			<value>#{UsuarioBean}</value>
 		</managed-property>
 	</managed-bean>
-<managed-bean>
+	<managed-bean>
 		<managed-bean-name>ClienteSession</managed-bean-name>
 		<managed-bean-class>negocio.ClienteSession</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
-</managed-bean>
+	</managed-bean>
 
-<managed-bean>
+	<managed-bean>
 		<managed-bean-name>ReportesBean</managed-bean-name>
 		<managed-bean-class>negocio.ReportesBean</managed-bean-class>
 		<managed-bean-scope>request</managed-bean-scope>
-</managed-bean>
+	</managed-bean>
 
-<navigation-rule>
+	<navigation-rule>
 		<from-view-id>/header.jsp</from-view-id>
 		<navigation-case>
 			<from-outcome>logout</from-outcome>
 			<to-view-id>/login.jsp</to-view-id>
 		</navigation-case>
-		</navigation-rule>
+	</navigation-rule>
 
 	<navigation-rule>
 		<from-view-id>/login.jsp</from-view-id>
@@ -144,6 +144,39 @@
 			<to-view-id>/login.jsp</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/buscarTarea.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>tareaEncontrada</from-outcome>
+			<to-view-id>/buscarTarea.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>tareaNoEncontrada</from-outcome>
+			<to-view-id>/buscarTarea.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>logout</from-outcome>
+			<to-view-id>/login.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
+	<navigation-rule>
+		<from-view-id>/modificarTarea.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>tareaModificada</from-outcome>
+			<to-view-id>/modificarTarea.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>tareaNoModificada</from-outcome>
+			<to-view-id>/modificarTarea.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>logout</from-outcome>
+			<to-view-id>/login.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+
 	<navigation-rule>
 		<from-view-id>/bajaGrupo.jsp</from-view-id>
 		<navigation-case>
@@ -211,7 +244,7 @@
 		<from-view-id>/login.jsp</from-view-id>
 		<navigation-case>
 			<from-outcome>errorLogin</from-outcome>
-			<to-view-id>/error.jsp</to-view-id>
+			<to-view-id>/login.jsp</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 
@@ -390,9 +423,9 @@
 			<to-view-id>/login.jsp</to-view-id>
 		</navigation-case>
 	</navigation-rule>
-	
-	
-	
+
+
+
 	<navigation-rule>
 		<from-view-id>/asignarTarea.jsp</from-view-id>
 		<navigation-case>
@@ -418,12 +451,12 @@
 			<from-outcome>tareaNoModificada</from-outcome>
 			<to-view-id>/modificarTarea.jsp</to-view-id>
 		</navigation-case>
-			<navigation-case>
+		<navigation-case>
 			<from-outcome>logout</from-outcome>
 			<to-view-id>/login.jsp</to-view-id>
 		</navigation-case>
 	</navigation-rule>
-	
+
 	<navigation-rule>
 		<from-view-id>/finalizarTarea.jsp</from-view-id>
 		<navigation-case>
@@ -524,7 +557,21 @@
 			<to-view-id>/login.jsp</to-view-id>
 		</navigation-case>
 	</navigation-rule>
-
+	<navigation-rule>
+		<from-view-id>/buscarCliente.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>clienteEcontrado</from-outcome>
+			<to-view-id>/buscarCliente.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>clienteNoEncontrado</from-outcome>
+			<to-view-id>/buscarCliente.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-outcome>logout</from-outcome>
+			<to-view-id>/login.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
 	<navigation-rule>
 		<from-view-id>/bajaCliente.jsp</from-view-id>
 		<navigation-case>
@@ -556,14 +603,14 @@
 			<to-view-id>/login.jsp</to-view-id>
 		</navigation-case>
 	</navigation-rule>
-<navigation-rule>
+	<navigation-rule>
 		<from-view-id>/reporteTareasEntraronEstado.jsp</from-view-id>
 		<navigation-case>
 			<from-outcome>logout</from-outcome>
 			<to-view-id>/login.jsp</to-view-id>
 		</navigation-case>
-</navigation-rule>
-<navigation-rule>
+	</navigation-rule>
+	<navigation-rule>
 		<from-view-id>/reporteTaPasFechComp.jsp</from-view-id>
 		<navigation-case>
 			<from-outcome>tareasNoComp</from-outcome>
@@ -573,33 +620,33 @@
 			<from-outcome>logout</from-outcome>
 			<to-view-id>/login.jsp</to-view-id>
 		</navigation-case>
-</navigation-rule>
-<navigation-rule>
+	</navigation-rule>
+	<navigation-rule>
 		<from-view-id>/reporteTareasSalieronEstado.jsp</from-view-id>
 		<navigation-case>
 			<from-outcome>logout</from-outcome>
 			<to-view-id>/login.jsp</to-view-id>
 		</navigation-case>
-</navigation-rule>
-<navigation-rule>
+	</navigation-rule>
+	<navigation-rule>
 		<from-view-id>/reporteTaFechaComp.jsp</from-view-id>
 		<navigation-case>
 			<from-outcome>logout</from-outcome>
 			<to-view-id>/login.jsp</to-view-id>
 		</navigation-case>
-</navigation-rule>
-<navigation-rule>
+	</navigation-rule>
+	<navigation-rule>
 		<from-view-id>/reporteTareasPorUsuario.jsp</from-view-id>
 		<navigation-case>
 			<from-outcome>logout</from-outcome>
 			<to-view-id>/login.jsp</to-view-id>
 		</navigation-case>
-</navigation-rule>
-<navigation-rule>
+	</navigation-rule>
+	<navigation-rule>
 		<from-view-id>/reporteTareasPorGrupo.jsp</from-view-id>
 		<navigation-case>
 			<from-outcome>logout</from-outcome>
 			<to-view-id>/login.jsp</to-view-id>
 		</navigation-case>
-</navigation-rule>
+	</navigation-rule>
 </faces-config>
