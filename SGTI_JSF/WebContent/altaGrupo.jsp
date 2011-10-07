@@ -15,10 +15,11 @@
 		<table border="1">
 			
 			<tr>
-				<th>Descripcion</th>
+				<th>*Descripcion</th>
 				<td>
-				<h:inputText id="descripcion" value="#{GrupoBean.descripcion}" ></h:inputText>
+				<h:inputText id="descripcion" value="#{GrupoBean.descripcion}" required="true"></h:inputText>
 				</td>
+				<h:message for="telefono" style="color:red"></h:message>
 			</tr>
 			<tr>
 				<th>Encargado</th>
@@ -48,7 +49,8 @@
 		</table>
 	</h:form>
 	
-
+<f:subview id="footer">
+	<%@include file="footer.jsp"%>		
+</f:subview>
 </f:view>
-</body>
-</html>
+

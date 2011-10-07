@@ -8,7 +8,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	
-	<title>Login</title>
+	<title>Ingreso al Sistema</title>
 	
 	<link rel="shortcut icon" href="/favicon.ico">
 	<link rel="stylesheet" type="text/css" href="estilo.css" />
@@ -33,14 +33,15 @@
 			<h2>INGRESAR</h2>
 			<div class="clear"></div>
 			
-			<label for="login">Cedula</label>
+			<label for="login">C&eacute;dula   -solo n&uacute;meros-</label>
 			<h:inputText styleClass="login" id="cedula" value="#{LoginBean.cedula}" required="true">
 				<f:converter converterId="javax.faces.Long"/></h:inputText>
 				<h:message for="cedula" style="color:red"></h:message>				
 			<div class="clear"></div>
 			
-			<label for="password">Password</label>
+			<label for="password">Contrase&ntilde;a</label>
 			<h:inputSecret styleClass="login"  id="pwd" value="#{LoginBean.pwd}" required="true"></h:inputSecret>
+				<h:message for="pwd" style="color:red"></h:message>
 			<div class="clear"></div>		
 			<h:form rendered="#{LoginBean.evento==3 }"><h3 style="color:red"><f:verbatim>Error: verfique cedula y/o contraseña.</f:verbatim></h3></h:form>
 			

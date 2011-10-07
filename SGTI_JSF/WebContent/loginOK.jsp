@@ -75,7 +75,7 @@
 				</h:column>
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="ACCI�N"></h:outputText>
+						<h:outputText value="Accion"></h:outputText>
 					</f:facet>
 					<h:commandLink value="Cerrar" action="#{TareaBean.pasarPamCerrarTarea}"> 
 						<f:param id="idTareaCerrar" name="idTareaCerrar" value="#{tarea.id}" /> 
@@ -83,7 +83,7 @@
 				</h:column>
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="ACCI�N"></h:outputText>
+						<h:outputText value="Accion"></h:outputText>
 					</f:facet>
 					<h:commandLink value="Re-Abrir" action="#{TareaBean.pasarPamReabrirTarea}"> 
 						<f:param id="idTareaReAbrir" name="idTareaReAbrir" value="#{tarea.id}" /> 
@@ -165,7 +165,7 @@
 				</h:column>
 				<h:column>
 					<f:facet name="header" >
-						<h:outputText value="ACCION" ></h:outputText>
+						<h:outputText value="Accion" ></h:outputText>
 					</f:facet>
 					<h:commandLink value="Asignar" action="#{TareaBean.pasarPamAsignarTarea}">
 						<f:param  id="idTareaAsignar" name="idTareaAsignar" value="#{tarea.id}"></f:param>
@@ -232,7 +232,7 @@
 				</h:column>
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="ACCION"></h:outputText>
+						<h:outputText value="Accion"></h:outputText>
 					</f:facet>
 					<h:commandLink value="Tomar" action="#{TareaBean.pasarPamTomarTarea}"> 
 						<f:param  id="idTareaTomar" name="idTareaTomar" value="#{tarea.id}" /> 
@@ -310,7 +310,7 @@
 				</h:column>
 				<h:column>
 					<f:facet name="header" >
-						<h:outputText value="ACCION" ></h:outputText>
+						<h:outputText value="Accion" ></h:outputText>
 					</f:facet>
 					<h:commandLink value="Finalizar" action="#{TareaBean.pasarPamFinalizarTarea}">
 						<f:param  id="idTareaFinalizar" name="idTareaFinalizar" value="#{tarea.id}"></f:param>
@@ -318,7 +318,7 @@
 				</h:column>
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="ACCION"></h:outputText>
+						<h:outputText value="Accion"></h:outputText>
 					</f:facet>
 					<h:commandLink value="Derivar" action="#{TareaBean.pasarPamDerivarTarea}"> 
 						<f:param  id="idTareaDerivar" name="idTareaDerivar" value="#{tarea.id}" /> 
@@ -388,7 +388,7 @@
 				</h:column>
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="ACCION"></h:outputText>
+						<h:outputText value="Accion"></h:outputText>
 					</f:facet>
 					<h:commandLink value="Tomar" action="#{TareaBean.pasarPamTomarTarea}"> 
 						<f:param  id="idTareaTomar" name="idTareaTomar" value="#{tarea.id}" /> 
@@ -464,7 +464,7 @@
 				</h:column>
 				<h:column>
 					<f:facet name="header" >
-						<h:outputText value="ACCION" ></h:outputText>
+						<h:outputText value="Accion" ></h:outputText>
 					</f:facet>
 					<h:commandLink value="Finalizar" action="#{TareaBean.pasarPamFinalizarTarea}">
 						<f:param  id="idTareaFinalizar" name="idTareaFinalizar" value="#{tarea.id}"></f:param>
@@ -472,7 +472,7 @@
 				</h:column>
 				<h:column>
 					<f:facet name="header">
-						<h:outputText value="ACCION"></h:outputText>
+						<h:outputText value="Accion"></h:outputText>
 					</f:facet>
 					<h:commandLink value="Derivar" action="#{TareaBean.pasarPamDerivarTarea}"> 
 						<f:param  id="idTareaDerivar" name="idTareaDerivar" value="#{tarea.id}" /> 
@@ -482,8 +482,8 @@
 			</h:dataTable>
 		</center>
 </h:form>
+<f:subview id="footer">
+	<%@include file="footer.jsp"%>		
+</f:subview>
 </f:view>
 
-</div>
-</body>
-</html>

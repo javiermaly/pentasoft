@@ -6,7 +6,7 @@
 </f:subview>
 
 	<h2>Error!!!</h2>
-	
+<f:subview id="footer">
+	<%@include file="footer.jsp"%>		
+</f:subview>	
 </f:view>
-</body>
-</html>

@@ -48,7 +48,7 @@
 				</td>
 			</tr>
 			<tr>
-				<th>Descripci�n:</th>
+				<th>Descripcion:</th>
 				<td><h:inputTextarea rows="5" cols="25"  value="#{TareaBean.descripcion}"></h:inputTextarea>
 				</td>
 			</tr>
@@ -94,7 +94,7 @@
 	<h:form rendered="#{TareaBean.evento==1}">
 		<table border="1">
 			<tr>
-				<th>La tarea se cerr� correctamente!!!</th>
+				<th>La tarea se cerro correctamente!!!</th>
 			</tr>
 		</table>
 	</h:form>
@@ -105,10 +105,11 @@
 			</tr>
 		</table>
 	</h:form>
-
+<f:subview id="footer">
+	<%@include file="footer.jsp"%>		
+</f:subview>
 </f:view>
-</body>
-</html>
+
 
 
 

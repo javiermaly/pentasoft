@@ -34,24 +34,24 @@
 				</td>
 			</tr>
 			<tr>
-				<th>C�dula / RUT: </th>
+				<th>Cedula / RUT: </th>
 				<td><h:inputText id="cedrut" value="#{ClienteBean.cedRut}" required="true">
 					<f:validateLength minimum="8" maximum="15"></f:validateLength>
 					<f:converter converterId="javax.faces.Long"/></h:inputText>
 				</td><h:message for="cedrut" style="color:red"></h:message>
 			</tr>
 			<tr>
-				<th>Nombre Completo / Raz�n Social:</th>
+				<th>Nombre Completo / Razon Social:</th>
 				<td><h:inputText value="#{ClienteSession.clienteSession.nombre_RazonSocial}"></h:inputText>
 				</td>
 			</tr>
 			<tr>
-				<th>Direcci�n:</th>
+				<th>Direccion:</th>
 				<td><h:inputText value="#{ClienteSession.clienteSession.direccion}"></h:inputText>
 				</td>
 			</tr>
 			<tr>
-				<th>Tel�fono</th>
+				<th>Telefono</th>
 					<td><h:inputText id="telefono" value="#{ClienteSession.clienteSession.telefono}">
 							<f:converter converterId="javax.faces.Integer"/>							
 						</h:inputText>
@@ -71,7 +71,8 @@
 			</tr>			
 		</table>
 	</h:form>
-
+<f:subview id="footer">
+	<%@include file="footer.jsp"%>		
+</f:subview>
 </f:view>
-</body>
-</html>
+

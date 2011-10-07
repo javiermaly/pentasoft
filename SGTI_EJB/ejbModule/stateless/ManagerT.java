@@ -148,7 +148,7 @@ public class ManagerT implements TareaRemote {
 		return retorno;
 	}
 
-	public boolean finalizarTarea(Tarea t, Usuario u) {// obtiene el realiza de esta tarea le ponemos  fecha de fin, y avanzamos el estado de la tarea en #5Finalizada
+	public boolean finalizarTarea(Tarea t) {// obtiene el realiza de esta tarea le ponemos  fecha de fin, y avanzamos el estado de la tarea en #5Finalizada
 		boolean retorno = false;
 		t = em.merge(t);
 		Realiza r = realizaDeTareaFechaFin(t);

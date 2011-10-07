@@ -20,11 +20,13 @@
 
 						<td><h:inputSecret id="pwd" value="#{LoginBean.pwd}"
 								required="true"></h:inputSecret></td>
+								<h:message for="pwd" style="color:red"></h:message>
 					</tr>
 					<tr>
 						<th><label id="oo" for="password2">Repita contraseña</label></th>
 						<td><h:inputSecret id="pwd2" value="#{LoginBean.pwd2}"
 								required="true"></h:inputSecret></td>
+								<h:message for="pwd2" style="color:red"></h:message>
 					</tr>
 					
 					<tr>
@@ -52,7 +54,7 @@
 
 				</table>
 			</h:form>
-		</f:view>
-	</div>
-</body>
-</html>
+<f:subview id="footer">
+	<%@include file="footer.jsp"%>		
+</f:subview>
+</f:view>

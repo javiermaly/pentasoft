@@ -112,9 +112,8 @@
 			</tr>
 		</table>
 	</h:form>
-	
+<f:subview id="footer">
+	<%@include file="footer.jsp"%>		
+</f:subview>	
 </f:view>
 
-</div>
-</body>
-</html>

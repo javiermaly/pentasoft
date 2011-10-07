@@ -11,8 +11,8 @@
 		<h1>Buscar Grupo</h1>
 		<table>
 			<tr>
-				<th><h:outputText> Identificador de grupo </h:outputText>
-				</th>
+				<td><h:outputText> Identificador de grupo </h:outputText>
+				</td>
 				<td>
 					<h:inputText id="id" value="#{GrupoBean.id}" required="true">
 					<f:validateLength minimum="1" maximum="4"></f:validateLength>
@@ -34,7 +34,7 @@
 				<td><h:outputText value="#{GrupoBean.id}"></h:outputText></td>
 			</tr>
 			<tr>
-				<th>Descripci�n:</th>
+				<th>Descripcion:</th>
 				<td><h:outputText value="#{GrupoBean.descripcion}"></h:outputText>
 				</td>
 			</tr>
@@ -52,10 +52,11 @@
 			</tr>
 		</table>
 	</h:form>
-
+<f:subview id="footer">
+	<%@include file="footer.jsp"%>		
+</f:subview>
 </f:view>
-</body>
-</html>
+
 
 
 

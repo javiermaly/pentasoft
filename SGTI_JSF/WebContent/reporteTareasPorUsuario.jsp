@@ -7,7 +7,7 @@
 </f:subview>
 <h:form>
 		<h1>Reporte de Tareas Finalizadas</h1>
-		<p>Todas las Tareas que un Tecnico pasï¿½ al estado Finalizada</p>
+		<p>Todas las Tareas que un Tecnico pasó al estado Finalizada</p>
 		<table>
 			<tr>
 				<td><h:outputText>Cedula del Tecnico </h:outputText>
@@ -100,8 +100,8 @@
 
 
 </h:form>	
+<f:subview id="footer">
+	<%@include file="footer.jsp"%>		
+</f:subview>
 </f:view>
 
-</div>
-</body>
-</html>

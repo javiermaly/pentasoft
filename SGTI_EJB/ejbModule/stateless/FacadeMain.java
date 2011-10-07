@@ -12,7 +12,7 @@ import singleton.Singleton;
 
 import beans.*;
 
-@WebService
+
 
 @Stateless
 public class FacadeMain implements FacadeRemote {
@@ -98,7 +98,7 @@ public class FacadeMain implements FacadeRemote {
 		boolean retorno =false;
 		
 		if ((usu instanceof Encargado)||(usu instanceof Tecnico)) {
-			if(statelessMTar.finalizarTarea(tar, usu)){
+			if(statelessMTar.finalizarTarea(tar)){
 				retorno = true;
 			}			
 		}	
@@ -147,7 +147,7 @@ public class FacadeMain implements FacadeRemote {
 	
 	
 //CLIENTES
-	@WebMethod
+	
 	public Cliente buscarCliente(long cedRut){
 		System.out.println("EJB facade buscarClienre: "+cedRut);
 		return statelessMCli.encontrarCliente(cedRut);

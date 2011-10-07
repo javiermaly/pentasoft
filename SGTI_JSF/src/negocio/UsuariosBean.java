@@ -387,7 +387,6 @@ public class UsuariosBean {
 			ussu.setCelular(celular);
 			ussu.setDireccion(direccion);
 			ussu.setNombre(nombre);
-			ussu.setPwd(pwd);
 			ussu.setTelefono(telefono);
 			ussu.setHabilitado(habilitado);
 			

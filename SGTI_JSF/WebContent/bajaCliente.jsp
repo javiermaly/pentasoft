@@ -11,7 +11,7 @@
 		<h1>Eliminar Cliente</h1>
 		<table>
 			<tr>
-				<td><h:outputText> Cedula o RUT del Cliente </h:outputText>
+				<td><h:outputText>Cedula o RUT del Cliente </h:outputText>
 				</td>
 				<td><h:inputText id="cedrut" value="#{ClienteBean.cedRut}" required="true">
 					<f:validateLength maximum="15"></f:validateLength>
@@ -57,7 +57,8 @@
   				</td> 
  			</tr>
  			<tr>
-				<td><h:commandButton value="Eliminar" action="#{ClienteBean.bajaCliente}"></h:commandButton></td>
+ 				<td></td>
+				<td align="right"><h:commandButton value="Eliminar" action="#{ClienteBean.bajaCliente}"></h:commandButton></td>
 			</tr> 
 		</table>
 		
@@ -84,10 +85,11 @@
 		</table>
 	</h:form>
 
-
+<f:subview id="footer">
+	<%@include file="footer.jsp"%>		
+</f:subview>
 </f:view>
-</body>
-</html>
+
 
 
 

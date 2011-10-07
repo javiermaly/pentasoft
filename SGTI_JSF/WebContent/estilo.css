@@ -59,6 +59,27 @@ margin:0px;
 text-align:justify;
 line-height:19px;
 }
+/* footer{align:center; */
+/* 	text-align:center;} */
+/* footer { */
+/* 	position:fixed;} */
+/* 	margin-top: -150px; valor negativo del alto del footer */
+/* 	height: 150px; */
+/* 	clear:both;}  */
+.push{
+height:29px;
+}
+
+.footer{
+align-text:center;
+width:100%;
+margin:auto;
+position:absolute;
+bottom:0;
+height:29px;
+align:center;
+}
+
 .boton{
         font-family:Verdana,Helvetica;
         font-size: 16px;
@@ -87,6 +108,8 @@ input.login				{ width: 220px; display: block; padding: 4px; margin: 0 0 10px 0;
  *            CABEZAL
  * ##############################
  */
+.contrasenia{color:#606060}
+ 
 .header{
 width:960px;
 height:75px;
@@ -117,7 +140,7 @@ margin:auto;
 table {margin: 0px auto; border-color: #0D1F29;}
 thead th {background-color:#0D1F29; border-bottom:4px solid #4EB4E6; color:#CCCCCC; cursor:default; font-weight:bold; padding:4px; text-align:center; text-transform:uppercase;}
 thead td {text-align: right;}
-tbody th {background-color:#AACC44; border-bottom:1px solid #4EB4E6; color:#0D1F29; padding:2px 9px; text-align:center;}
+tbody th {background-color:#CEE3F6; border-bottom:1px solid #4EB4E6; color:#0D1F29; padding:2px 9px; text-align:center;}
 tbody td {padding: 3px; color: #464646;}
 tbody tr:hover td {color: #000;}
 tfoot td {padding: 2px; padding-right: 5px; background-color: #D6DBC3; font-size: 9px; text-align: right; color: #878787;}

@@ -106,7 +106,7 @@ public class LoginBean {
 				return "usuarioInhabilitado";
 			}
 		} else {
-			evento=4;
+			evento=3;
 			System.out.println("error login");
 			return "errorLogin";
 		}
@@ -114,8 +114,7 @@ public class LoginBean {
 	}
 
 	public String logOut() {
-		System.out.println("logout: "
-				+ usuSession.getUsuarioSession().getCedula());
+		System.out.println("logout: "	+ usuSession.getUsuarioSession().getCedula());
 
 		FacesContext context = FacesContext.getCurrentInstance();
 		HttpServletRequest myRequest = (HttpServletRequest) context
