@@ -31,7 +31,7 @@
 		<h1>Abrir Tarea</h1>			
 				<table border="1">
 				<tr>
-					<th><h:outputText> Cedula o RUT del Cliente: </h:outputText>
+					<th><h:outputText>*Cedula o RUT del Cliente: </h:outputText>
 					</th>
 					<td><h:inputText id="cedrut" value="#{ClienteBean.cedRut}" required="true" maxlength="15"  >
 						<f:converter converterId="javax.faces.Integer"/></h:inputText>
@@ -46,10 +46,12 @@
 <h:form rendered="#{ClienteSession.clienteSession.nombre_RazonSocial!=null}">				
 				<table border="1">
 					<tr>
-						<th>Nombre: </th><td><h:outputText value="#{ClienteSession.clienteSession.nombre_RazonSocial}" ></h:outputText></td>
+						<th>*Nombre: </th>
+						<td><h:outputText id="nombre" value="#{ClienteSession.clienteSession.nombre_RazonSocial}" ></h:outputText>
+							</td>
 					</tr>
 					<tr>
-						<th>Prioridad: </th>
+						<th>*Prioridad: </th>
 						<td><h:selectOneRadio id="prioridad" required="true" value="#{TareaBean.prioridad}">
 							<f:selectItem itemValue="1" itemLabel="Alta"/>
 							<f:selectItem itemValue="2" itemLabel="Media"/>
@@ -59,11 +61,12 @@
 						</td>
 					</tr>					
 					<tr>
-						<th>Lugar: </th>
-						<td><h:selectOneRadio value="#{TareaBean.esExterna}">
+						<th>*Lugar: </th>
+						<td><h:selectOneRadio id="lugar" value="#{TareaBean.esExterna}" >
 							<f:selectItem itemValue="false" itemLabel="Interna"/>
 							<f:selectItem itemValue="true" itemLabel="Externa"/>
 							</h:selectOneRadio>
+							<h:message for="lugar" style="color:red"></h:message>
 						</td>
 					</tr>
 					<tr>
@@ -98,12 +101,12 @@
 						
 					</tr>
 					<tr>
-						<td colspan="2" align="right"><h:commandButton value="Aceptar" action="#{TareaBean.abrirTarea}"></h:commandButton></td>
+						<td></td>
+						<td align="right"><h:commandButton value="Aceptar" action="#{TareaBean.abrirTarea}"></h:commandButton></td>
 					</tr>					
 				</table>		
 </h:form>
-
+<f:subview id="footer">
+	<%@include file="footer.jsp"%>		
+</f:subview>
 </f:view>
-</div>
-</body>
-</html>

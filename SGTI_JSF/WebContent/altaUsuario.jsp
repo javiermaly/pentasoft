@@ -28,16 +28,17 @@
 	<h:form rendered="#{UsuarioBean.tipo =='Administrador' || UsuarioBean.tipo =='Administrativo'}">
 		<table border="1">
 			<tr>
-				<th>Cedula: </th>
+				<th>*Cedula: </th>
 				<td><h:inputText id="cedula" value="#{UsuariosBean.cedula}" required="true">
 						<f:validateLength  maximum="8"></f:validateLength>
 						<f:converter converterId="javax.faces.Long"/></h:inputText></td>
 						<h:message for="cedula" style="color:red"></h:message>				
 			</tr>
 			<tr>
-				<th>Contraseña:</th>
-				<td><h:inputSecret value="#{UsuariosBean.pwd}"></h:inputSecret>
+				<th>*Contraseña:</th>
+				<td><h:inputSecret id="pass" value="#{UsuariosBean.pwd}"></h:inputSecret>
 				</td>
+				<h:message for="pass" style="color:red"></h:message>			
 			</tr>			
 			<tr>
 				<th>Nombre:</th>
@@ -78,7 +79,7 @@
 	<h:form rendered="#{UsuarioBean.tipo =='Encargado'}">
 		<table border="1">
 			<tr>
-				<th>Cedula:</th>
+				<th>*Cedula:</th>
 				<td><h:inputText id="cedula" value="#{UsuariosBean.cedula}"
 						required="true">
 						<f:validateLength maximum="8"></f:validateLength>
@@ -88,9 +89,10 @@
 				<h:message for="cedula" style="color:red"></h:message>
 			</tr>
 			<tr>
-				<th>Contraseña:</th>
-				<td><h:inputSecret value="#{UsuariosBean.pwd}"></h:inputSecret>
+				<th>*Contraseña:</th>
+				<td><h:inputSecret id = "passe"value="#{UsuariosBean.pwd}"></h:inputSecret>
 				</td>
+				<h:message for="passe" style="color:red"></h:message>
 			</tr>
 			
 			<tr>
@@ -148,7 +150,7 @@
 	<h:form rendered="#{UsuarioBean.tipo =='Tecnico'}">
 		<table border="1">
 			<tr>
-				<th>Cedula:</th>
+				<th>*Cedula:</th>
 				<td><h:inputText id="cedula" value="#{UsuariosBean.cedula}"
 						required="true">
 						<f:validateLength maximum="8"></f:validateLength>
@@ -158,9 +160,10 @@
 				<h:message for="cedula" style="color:red"></h:message>
 			</tr>
 			<tr>
-				<th>Contraseña:</th>
-				<td><h:inputSecret value="#{UsuariosBean.pwd}"></h:inputSecret>
+				<th>*Contraseña:</th>
+				<td><h:inputSecret id="passt" value="#{UsuariosBean.pwd}"></h:inputSecret>
 				</td>
+				<h:message for="passt" style="color:red"></h:message>
 			</tr>
 		
 			<tr>
@@ -239,7 +242,8 @@
 		</table>
 	</h:form>
 	
-
+<f:subview id="footer">
+	<%@include file="footer.jsp"%>		
+</f:subview>
 </f:view>
-</body>
-</html>
+

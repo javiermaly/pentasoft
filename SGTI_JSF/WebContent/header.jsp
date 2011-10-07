@@ -47,8 +47,6 @@
 	<div class="clear"></div>
 
 	<h:form rendered="#{UsuarioBean.perfil==1}">
-		<h1>ADMINISTRADOR</h1>
-
 		<div id="menu">
 			<ul id="nav">
 
@@ -74,7 +72,8 @@
 						<li><a href="modificarUsuario.jsf">Modificación Usuario</a></li>
 						<li><a href="listadoUsuarios.jsf">Listado de Usuarios</a>
 						</li>
-					</ul></li>
+					</ul>
+				</li>
 				<li><span>Grupos</span>
 
 					<ul>
@@ -88,7 +87,8 @@
 						</li>
 						<li><a href="listadoGrupos.jsf">Listado de Grupos</a>
 						</li>
-					</ul></li>
+					</ul>
+				</li>
 				<li><span>Listados</span>
 
 					<ul>
@@ -108,19 +108,16 @@
 						</li>
 						<li><a href="reporteTaFechaComp.jsf">Tareas Comprometidas</a>
 						</li>
-					</ul></li>
-			</ul>
-			<ul>
-			<li><span><a href="cambiarContrasenia.jsf">Contraseña</a>
-			</span>
-			</li>
-
+					</ul>
+				</li>
+				<li><span><a href="cambiarContrasenia.jsf" class="contrasenia" >Contraseña</a>
+				</span>
+				</li>
 			</ul>
 
 		</div>
 	</h:form>
 	<h:form rendered="#{UsuarioBean.perfil==2}">
-		<h1>ADMINISTRATIVO</h1>
 		<div id="menu">
 			<ul id="nav">
 
@@ -163,8 +160,9 @@
 								Finalizadas por un Tecnico</a></li>
 						<li><a href="reporteTareasPorGrupo.jsf">Tareas por Grupo</a>
 						</li>
-					</ul></li>
-				<li><span><a href="cambiarContrasenia.jsf">Contraseña</a>
+					</ul>
+				</li>
+				<li><span><a href="cambiarContrasenia.jsf" class="contrasenia">Contraseña</a>
 				</span>
 				</li>
 
@@ -173,8 +171,6 @@
 		</div>
 	</h:form>
 	<h:form rendered="#{UsuarioBean.perfil==3}">
-		<h1>ENCARGADO</h1>
-
 		<div id="menu">
 			<ul id="nav">
 
@@ -203,11 +199,10 @@
 				</li>
 				<li><span>Listados</span>
 					<ul>
-						<li><a href="reporteTareasPorUsuario.jsf">Tareas
-								Finalizadas por un Tecnico</a></li>
+						<li><a href="reporteTareasPorUsuario.jsf">Tareas Finalizadas por un Tecnico</a></li>
 					</ul>
 				</li>
-				<li><span><a href="cambiarContrasenia.jsf">Contraseña</a>
+				<li><span><a href="cambiarContrasenia.jsf" class="contrasenia">Contraseña</a>
 				</span>
 				</li>
 			</ul>
@@ -217,7 +212,7 @@
 
 	</h:form>
 	<h:form rendered="#{UsuarioBean.perfil==4}">
-		<h1>TECNICO</h1>
+		
 		<div id="menu">
 			<ul id="nav">
 
@@ -234,7 +229,7 @@
 
 
 					</ul>
-				<li><span><a href="cambiarContrasenia.jsf">Contraseña</a>
+				<li><span><a href="cambiarContrasenia.jsf" class="contrasenia">Contraseña</a>
 				</span>
 				</li>
 

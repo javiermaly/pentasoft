@@ -39,10 +39,11 @@
          </h:form>
     </body>
 </html>
-
+<f:subview id="footer">
+	<%@include file="footer.jsp"%>		
+</f:subview>
 </f:view>
-</body>
-</html>
+
 
 
 

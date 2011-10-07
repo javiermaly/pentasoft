@@ -38,7 +38,7 @@
 				</td>
 			</tr>
 			<tr>
-				<th>Descripci�n:</th>
+				<th>Descripcion:</th>
 				<td><h:outputText value="#{GrupoBean.descripcion}"></h:outputText>
 				</td>
 			</tr>
@@ -76,10 +76,11 @@
 		</table>
 	</h:form>
 
-
+<f:subview id="footer">
+	<%@include file="footer.jsp"%>		
+</f:subview>
 </f:view>
-</body>
-</html>
+
 
 
 

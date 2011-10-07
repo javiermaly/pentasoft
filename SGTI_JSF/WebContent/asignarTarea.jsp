@@ -2,11 +2,10 @@
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
 
 <f:view>
-
-
 <f:subview id="header">
 	<%@include file="header.jsp"%>
 </f:subview>
+
 <h:form rendered="#{TareaBean.id!='0'}">
 <h1>Asignar Tarea</h1>
 		<table border="1">		
@@ -96,8 +95,10 @@
 		</table>
 	</h:form>
 
+
+<f:subview id="footer">
+	<%@include file="footer.jsp"%>		
+</f:subview>
 </f:view>
 
-</div>
-</body>
-</html>
+

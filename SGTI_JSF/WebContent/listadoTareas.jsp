@@ -20,12 +20,6 @@
   						</f:facet>
   							<h:outputText value="#{tarea.id}"></h:outputText>
   					</h:column>
-<%--   					<h:column> --%>
-<%--   						<f:facet name="header"> --%>
-<%--   						<h:outputText value="Cliente"></h:outputText> --%>
-<%--   						</f:facet> --%>
-<%--   							<h:outputText value="#{tarea.cliente_cedRut}"></h:outputText> --%>
-<%--   					</h:column>              --%>
   					<h:column>
   						<f:facet name="header">
   						<h:outputText value="Prioridad"></h:outputText>
@@ -90,12 +84,12 @@
                 </h:dataTable>
          </center>
          </h:form>
-    </body>
-</html>
+<f:subview id="footer">
+	<%@include file="footer.jsp"%>		
+</f:subview>
 
 </f:view>
-</body>
-</html>
+
 
 
 

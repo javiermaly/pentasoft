@@ -5,13 +5,13 @@
 
 <f:view>
 	<f:subview id="header">
-		<%@include file="header.jsp"%>
+		<%@include file="header.jsp"%>		
 	</f:subview>
 	<h:form>
 		<h1>Buscar Usuario</h1>
 		<table>
 			<tr>
-				<td><h:outputText>C�dula del Usuario </h:outputText>
+				<td><h:outputText>Cedula del Usuario </h:outputText>
 				</td>
 				<td><h:inputText id="cedula" value="#{UsuariosBean.cedula}"	required="true"><f:validateLength  maximum="8"></f:validateLength>
 						<f:converter converterId="javax.faces.Long"/></h:inputText></td>
@@ -73,9 +73,12 @@
 		</table>
 	</h:form>
 
+
+<f:subview id="footer">
+	<%@include file="footer.jsp"%>		
+</f:subview>
 </f:view>
-</body>
-</html>
+
 
 
 

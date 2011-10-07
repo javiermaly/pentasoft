@@ -107,6 +107,10 @@
 			<to-view-id>/login.jsp</to-view-id>
 		</navigation-case>
 		<navigation-case>
+			<from-outcome>errorLogin</from-outcome>
+			<to-view-id>/login.jsp</to-view-id>
+		</navigation-case>
+		<navigation-case>
 			<from-outcome>logout</from-outcome>
 			<to-view-id>/login.jsp</to-view-id>
 		</navigation-case>
@@ -304,14 +308,14 @@
 		</navigation-case>
 	</navigation-rule>
 	<navigation-rule>
-		<from-view-id>/cambioContrasenia.jsp</from-view-id>
+		<from-view-id>/cambiarContrasenia.jsp</from-view-id>
 		<navigation-case>
 			<from-outcome>pwdCambiado</from-outcome>
-			<to-view-id>/cambioContrasenia.jsp</to-view-id>
+			<to-view-id>/cambiarContrasenia.jsp</to-view-id>
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>pwdNoCambiado</from-outcome>
-			<to-view-id>/cambioContrasenia.jsp</to-view-id>
+			<to-view-id>/cambiarContrasenia.jsp</to-view-id>
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>logout</from-outcome>
@@ -522,7 +526,7 @@
 		<from-view-id>/altaCliente.jsp</from-view-id>
 		<navigation-case>
 			<from-outcome>clienteEcontrado</from-outcome>
-			<to-view-id>/clienteExistente.jsp</to-view-id>
+			<to-view-id>/altaCliente.jsp</to-view-id>
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>clienteNoEcontrado</from-outcome>
@@ -644,6 +648,34 @@
 	</navigation-rule>
 	<navigation-rule>
 		<from-view-id>/reporteTareasPorGrupo.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>logout</from-outcome>
+			<to-view-id>/login.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>	
+	<navigation-rule>
+		<from-view-id>/listadoGrupos.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>logout</from-outcome>
+			<to-view-id>/login.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/listadoTareas.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>logout</from-outcome>
+			<to-view-id>/login.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/listadoClientes.jsp</from-view-id>
+		<navigation-case>
+			<from-outcome>logout</from-outcome>
+			<to-view-id>/login.jsp</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+		<from-view-id>/listadoUsuarios.jsp</from-view-id>
 		<navigation-case>
 			<from-outcome>logout</from-outcome>
 			<to-view-id>/login.jsp</to-view-id>

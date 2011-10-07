@@ -11,7 +11,7 @@
 		<h1>Alta de Cliente</h1>
 		<table>
 			<tr>
-				<td><h:outputText> Cedula o RUT del Cliente </h:outputText></td>
+				<td><h:outputText> *Cedula o RUT del Cliente </h:outputText></td>
 				<td><h:inputText id="cedRut" value="#{ClienteBean.cedRut}" required="true">
 					<f:converter converterId="javax.faces.Integer"/></h:inputText></td>
 					<h:message for="cedRut" style="color:red"></h:message>
@@ -23,7 +23,7 @@
 	<h:form rendered="#{ClienteBean.cedRut != 0 }">
 		<table border="1">
 			<tr>
-				<th>Es empresa: </th>
+				<th>*Es empresa: </th>
 				<td><h:selectOneRadio value="#{ClienteBean.empresa}">
 					<f:selectItem itemValue="true" itemLabel="Si"/>
 					<f:selectItem itemValue="false" itemLabel="No"/>					
@@ -31,16 +31,17 @@
 				</td>
 			</tr>
 			<tr>
-				<th>Cedula / RUT</th>
+				<th>*Cedula / RUT</th>
 				<td><h:inputText value="#{ClienteBean.cedRut}" required="true" readonly="true"></h:inputText>
 				</td>
 					<h:message for="cedRut" style="color:red"></h:message>
 			</tr>
 
 			<tr>
-				<th>Nombre Completo / Razon Social:</th>
-				<td><h:inputText value="#{ClienteBean.nombreRazSocial}"></h:inputText>
+				<th>*Nombre Completo / Razon Social:</th>
+				<td ><h:inputText id="nombre" value="#{ClienteBean.nombreRazSocial}" required="true"></h:inputText>
 				</td>
+				<h:message for="nombre" style="color:red"></h:message>
 			</tr>
 			<tr>
 				<th>Direccion:</th>
@@ -65,8 +66,8 @@
 					<h:message for="fchaGarantia" style="color:red"></h:message>
 			</tr>
 			<tr>
-				<td><h:commandButton value="Aceptar" 
-						action="#{ClienteBean.altaCliente}"></h:commandButton></td>
+				<td></td>
+				<td align="right"><h:commandButton value="Aceptar" action="#{ClienteBean.altaCliente}"></h:commandButton></td>
 			</tr>
 		</table>
 	</h:form>
@@ -91,7 +92,7 @@
 			</tr>
 		</table>
 	</h:form>
-
+<f:subview id="footer">
+	<%@include file="footer.jsp"%>		
+</f:subview>
 </f:view>
-</body>
-</html>
