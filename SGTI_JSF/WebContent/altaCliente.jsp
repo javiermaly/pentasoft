@@ -33,8 +33,7 @@
 			<tr>
 				<th>*Cedula / RUT</th>
 				<td><h:inputText value="#{ClienteBean.cedRut}" required="true" readonly="true"></h:inputText>
-				</td>
-					<h:message for="cedRut" style="color:red"></h:message>
+				</td>					
 			</tr>
 
 			<tr>
@@ -58,12 +57,11 @@
 			</tr>
 			<tr>
 				<th>Fecha de Fin de Garantia (año/mes/dia):</th>
-
 				<td><h:inputText id="fchaGarantia" value="#{ClienteBean.fechaFinGarantia}">
 						<f:convertDateTime  pattern="yyyy/MM/dd" />
 					</h:inputText>
-				</td>
 					<h:message for="fchaGarantia" style="color:red"></h:message>
+				</td>					
 			</tr>
 			<tr>
 				<td></td>
@@ -92,7 +90,9 @@
 			</tr>
 		</table>
 	</h:form>
+
 <f:subview id="footer">
 	<%@include file="footer.jsp"%>		
 </f:subview>
+
 </f:view>

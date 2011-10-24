@@ -94,6 +94,15 @@
 				</h:column>
 				<h:column>
 					<f:facet name="header">
+						<h:outputText value="Fecha Cierre"></h:outputText>
+					</f:facet>
+					<h:outputText value="#{tarea.fechaCierre.time}">
+						<f:convertDateTime type="both" dateStyle="short"
+							pattern="yyyy/MM/dd" />
+					</h:outputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
 						<h:outputText value="Tipo"></h:outputText>
 					</f:facet>
 					<h:outputText value="#{tarea.tipo.descripcion}">

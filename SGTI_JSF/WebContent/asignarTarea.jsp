@@ -6,7 +6,7 @@
 	<%@include file="header.jsp"%>
 </f:subview>
 
-<h:form rendered="#{TareaBean.id!='0'}">
+<h:form rendered="#{TareaBean.fechaApertura.time!=null}">
 <h1>Asignar Tarea</h1>
 		<table border="1">		
 			<tr>
