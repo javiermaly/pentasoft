@@ -15,7 +15,7 @@
 		<class>beans.Encargado</class>
 		<class>beans.Administrador</class>
 		<class>beans.Administrativo</class>		
-		
+		 
 		<properties>
 			
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect" /> 

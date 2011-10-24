@@ -83,9 +83,8 @@
 				</td>
 			</tr>
 			<tr>
-				<td align="right"><h:commandButton value="Aceptar"
-						action="#{TareaBean.tomarTarea}"></h:commandButton>
-				<h:commandButton value="Cancelar" ><h:outputLink value="./SGTI_JSF//loginOK.jsp"></h:outputLink> </h:commandButton>
+				<td></td>
+				<td align="right"><h:commandButton value="Aceptar"	action="#{TareaBean.tomarTarea}"></h:commandButton>
 				</td>
 			</tr>
 		</table>
