@@ -321,7 +321,7 @@ public class UsuariosBean {
 			} else if (usuario instanceof Encargado) {
 				usuario.setPerfil("Encargado");
 			} else if (usuario instanceof Tecnico) {
-				usuario.setPerfil("Técnico");
+				usuario.setPerfil("Tecnico");
 			}
 
 		}
@@ -333,6 +333,7 @@ public class UsuariosBean {
 	// buscador para usuarios
 	public String buscarUsuario() {
 		Usuario u = new Usuario();
+		
 				
 		u = statelessFacade.encontrarUsuario(cedula);
 		
@@ -356,6 +357,7 @@ public class UsuariosBean {
 				System.out.println("es administrador");
 				this.perfil = "Administrador";
 			} else if (u instanceof Encargado) {
+				this.esExterno=((Encargado) u).isEsExterno();
 				this.perfil = "Encargado";
 			} else if (u instanceof Tecnico) {
 				this.esExterno=((Tecnico) u).isEsExterno();
@@ -389,6 +391,7 @@ public class UsuariosBean {
 			ussu.setNombre(nombre);
 			ussu.setTelefono(telefono);
 			ussu.setHabilitado(habilitado);
+			
 			
 			
 			if (ussu instanceof Encargado ) {

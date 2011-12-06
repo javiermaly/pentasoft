@@ -700,7 +700,7 @@ public class TareaBean {
 	public String cerrarTarea() {
 			String retorno;
 			Tarea tarea = statelessFacade.buscarTarea(getId());
-			tarea.setObservacion(getObservacion());
+			//tarea.setObservacion(getObservacion());
 			Usuario usu = statelessFacade.encontrarUsuario(usuSession.usuarioSession.getCedula());
 
 			if (statelessFacade.cerrarTarea(tarea, usu)) {

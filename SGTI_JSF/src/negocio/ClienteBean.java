@@ -176,6 +176,7 @@ public List<ClienteSession> getListClienteSession() {
 			c.setNombre_RazonSocial(cliSession.getClienteSession().getNombre_RazonSocial());
 			c.setTelefono(cliSession.getClienteSession().getTelefono());
 			c.setDireccion(cliSession.getClienteSession().getDireccion());
+			c.setEmpresa(cliSession.getClienteSession().getEmpresa());
 	
 			if (cliSession.getFechaGarant()!= null){
 				

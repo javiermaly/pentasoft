@@ -61,7 +61,14 @@
 					</h:outputText>
 							
 				</td>			
-			</tr>		
+			</tr>	
+			<tr>
+				<th><h:outputLabel>Es Externo:</h:outputLabel> </th>
+				<td><h:selectBooleanCheckbox disabled="true" value="#{UsuariosBean.esExterno}" ></h:selectBooleanCheckbox>
+  										
+							
+				</td>			
+			</tr>	
 			
 		</table>
 	</h:form>
