@@ -32,12 +32,7 @@
   						</f:facet>
   							<h:outputText value="#{usuario.apellido}"></h:outputText>
   					</h:column>  
-  					<h:column>
-  						<f:facet name="header">
-  						<h:outputText value="Usuario"></h:outputText>
-  						</f:facet>
-  							<h:outputText value="#{usuario.usuario}"></h:outputText>
-  					</h:column>  
+  					
   					<h:column>
   						<f:facet name="header">
   						<h:outputText value="Teléfono"></h:outputText>
@@ -68,7 +63,7 @@
   							
    						 
   					</h:column>  
-  					
+  					  					
   					<h:column>
   						<f:facet name="header">
   						<h:outputText value="Perfil"></h:outputText>
